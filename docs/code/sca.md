@@ -98,6 +98,72 @@ In this example, the SCA tool is integrated into the pipeline using the Snyk Git
 
 
 
+## OWASP Dependency-Check
+
+
+1- Perform a scan on a local project
+
+```
+dependency-check.sh --scan <path/to/project>
+```
+
+
+2- Scan a Maven Project
+
+```
+dependency-check.sh --scan <path/to/pom.xml>
+```
+
+
+3- Scan a Gradle Project
+
+```
+dependency-check.sh --scan <path/to/build.gradle>
+```
+
+
+4- Perform a scan on a local project
+
+```
+dependency-check.sh --updateonly
+```
+
+
+5- Specify Database Connection String
+
+```
+dependency-check.sh --scan <path/to/project> --connectionString <db-connection-string>
+```
+
+6- Specify CVSS Severity Threshold
+
+```
+dependency-check.sh --scan <path/to/project> --suppression <suppression-file>
+```
+
+7- Specify Output Format
+
+```
+dependency-check.sh --scan <path/to/project> --format <output-format>
+```
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 

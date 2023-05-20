@@ -196,3 +196,119 @@ jobs:
     - name: Checkout code
       uses: actions/
 ```
+
+
+
+## Git
+
+1- Scan a Git Repository:
+
+
+
+```
+gitleaks --repo=/path/to/repository
+```
+
+or
+
+```
+trufflehog --regex --entropy=True /path/to/repository
+```
+
+
+2- Specify Rules and Configurations
+
+```
+gitleaks --config=/path/to/config.yaml
+```
+
+
+3- Generate an HTML report of the scan results
+
+```
+trufflehog --regex --entropy=True --output=results.html /path/to/repository
+```
+
+
+4- Generate JSON output for further processing or reporting
+
+```
+trufflehog --json --output=results.json /path/to/repository
+```
+
+
+Regex List:
+
+| SAST Tool    | Description   | Languages Supported |
+|:---------------|:---------------------|:---------------------|
+| `API Keys` | Matches potential API keys, which are typically a combination of uppercase letters or alphanumeric characters with a minimum length of 24 characters.  | `(?:\b|_)(?:[A-Z]{2,}|\w{24,})(?:\b|_)` |
+| `AWS Access Keys` | Matches potential API keys, which are typically a combination of uppercase letters or alphanumeric characters with a minimum length of 24 characters.  | `(?:\b|_)(?:[A-Z]{2,}|\w{24,})(?:\b|_)` |
+| `Cryptocurrency Wallets` | Matches popular cryptocurrency wallet addresses, including Bitcoin (BTC), Ethereum (ETH), Litecoin (LTC), Monero (XMR), and Dogecoin (DOGE).  | `(?i)(?:btc|bitcoin|eth|ethereum|ltc|litecoin|xmr|monero|doge|dogecoin)(?:[1-9A-HJ-NP-Za-km-z]{25,34})` |
+| `Email Addresses` | Matches email addresses with alphanumeric characters, dots, underscores, hyphens, and a domain with at least two letters.  | `[A-Za-z0-9._%+-]+@[A-Za-z0-9.-]+\.[A-Za-z]{2,}` |
+| `Private Keys` | Matches 40-character base64-encoded strings, often used for private keys.  | `(?:[^a-zA-Z0-9/+]|^)([a-zA-Z0-9/+]{40})(?:[^a-zA-Z0-9/+]|$)` |
+| `Passwords` | Matches passwords or passphrases of at least 8 characters, preceded by "password", "passphrase", or "secret" and followed by a whitespace character, colon, or URL-encoded colon (%3A).  | `(?i)(?:pass(?:word|phrase)|secret)(?:[\s:=]|%3A)(["']?[\w!@#$%^&*()]{8,}["']?)` |
+| `Social Security Numbers (SSN)` | Matches U.S. Social Security Numbers with or without dashes.  | `\d{3}[-]?\d{2}[-]?\d{4}` |
+| `URLs with Query Parameters` | Matches URLs with query parameters, ensuring that the query parameter contains at least one character.  | `(http|https):\/\/[^\s/$.?#].[^\s]*\?[^\s]*` |
+| `Credit Card Numbers` | Matches 16-digit credit card numbers, with or without dashes or spaces in the format XXXX-XXXX-XXXX-XXXX or XXXXXXXXXXXXXXXX.  | `(\d{4}[- ]){3}\d{4}|\d{16}` |
+
+
+
+## SBOM
+
+1- Generate SBOM from Maven Project:
+
+```
+mvn org.cyclonedx:cyclonedx-maven-plugin:makeBom
+```
+
+2- Generate SBOM from Gradle Project
+
+```
+./gradlew cyclonedx
+```
+
+3- Specify Output Format
+
+```
+mvn org.cyclonedx:cyclonedx-maven-plugin:makeBom --format XML
+```
+
+4- Include Hashes in SBOM
+
+```
+mvn org.cyclonedx:cyclonedx-maven-plugin:makeBom -DincludeHashes=true
+```
+
+
+5- Exclude Specific Components
+
+```
+mvn org.cyclonedx:cyclonedx-maven-plugin:makeBom -Dexclude=com.example:unused-component
+```
+
+
+6- Include Direct Dependencies Only
+
+```
+mvn org.cyclonedx:cyclonedx-maven-plugin:makeBom -DincludeDependencies=false
+```
+
+
+7- Specify Output File
+
+```
+mvn org.cyclonedx:cyclonedx-maven-plugin:makeBom -DoutputFile=/path/to/bom.xml
+```
+
+8- Specify Output Format
+
+```
+mvn org.cyclonedx:cyclonedx-maven-plugin:makeBom --format XML
+```
+
+
+
+
+
+
+
