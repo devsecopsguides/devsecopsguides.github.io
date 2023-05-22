@@ -28,8 +28,6 @@ To address AppSec threats, various standards and frameworks have been developed.
 
 7. CWE/SANS Top 25: A list of the top 25 most dangerous software errors, as identified by the Common Weakness Enumeration (CWE) and the SANS Institute.
 
-8. NIST Cybersecurity Framework: A framework developed by the National Institute of Standards and Technology (NIST) to help organizations manage and reduce cybersecurity risk.
-
 
 Cheatsheet with rules/policies for preventing OWASP Top 10 vulnerabilities
 
