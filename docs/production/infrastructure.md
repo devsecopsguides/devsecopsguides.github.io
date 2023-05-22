@@ -319,5 +319,157 @@ masscan -p1-65535 192.168.1.1-254 -oL ips.txt && cat ips.txt
 ```
 
 
+### Define Guardrails via HashiCorp
+
+Applies HashiCorp Sentinel policies to enforce guardrails defined in the policy file.
+
+```
+sentinel apply -policy=<policy_file>
+```
+
+### Vulnerability Scanning via nessuscli
+
+Initiates a vulnerability scan on the target system using Nessus.
+
+```
+nessuscli scan -t <target>
+```
+
+### Patch Vulnerabilities via Ansible playbook
+
+Executes an Ansible playbook to patch vulnerabilities specified in the playbook.
+
+```
+ansible-playbook -i inventory.ini patch_vulnerabilities.yml
+```
+
+### Compliance Checks via aws-nuke
+
+Deletes AWS resources non-compliant with the defined configuration in the AWS Nuke configuration file.
+
+```
+aws-nuke --config=config.yml
+```
+
+### Continuous Compliance Monitoring via opa
+
+Evaluates Open Policy Agent (OPA) policies against input data to enforce compliance.
+
+```
+opa eval -i <input_data> -d <policy_file>
+```
+
+
+## Tunnel & Proxy
+
+
+### Nebula
+
+Generates a certificate authority (CA) for Nebula using the specified name and outputs the CA certificate and key files.
+
+```
+nebula-cert ca -name "<ca_name>" -out <ca_cert_file> -key <ca_key_file>
+```
+
+Signs a node certificate with the specified CA certificate and key files, node name, IP address, and outputs the node certificate file.
+
+```
+nebula-cert sign -ca-crt <ca_cert_file> -ca-key <ca_key_file> -name "<node_name>" -out <node_cert_file> -ip <node_ip>
+```
+
+Starts a Nebula node using the specified configuration file
+
+```
+nebula -config <config_file>
+```
+
+Adds a static route to the Nebula node for the specified destination subnet via the specified node
+
+```
+nebula route add -dst-subnet <destination_subnet> -via <via_node>
+```
+
+Starts a Nebula proxy using the specified configuration file.
+
+```
+nebula-proxy -config <config_file>
+```
+
+Initiates a connection to a remote host using the Nebula overlay network.
+
+```
+nebula connect <host_ip>
+```
+
+Checks the status and connectivity of the Nebula node.
+
+```
+nebula status
+```
+
+Displays statistics and metrics about the Nebula node.
+
+```
+nebula stats
+```
+
+
+### Chisel
+
+
+Starts the Chisel server on the specified port, enabling reverse tunneling.
+
+```
+chisel server -p <listen_port> --reverse
+```
+
+Starts the Chisel client and establishes a reverse tunnel to the Chisel server. It forwards traffic from the local port to the remote host and port.
+
+```
+chisel client <server_host>:<server_port> R:<remote_host>:<remote_port>:<local_port>
+```
+
+
+Creates a tunnel from the local port to the remote host and port via the Chisel server. The -f flag keeps the connection alive.
+
+```
+chisel client <server_host>:<server_port> -f -L <local_port>:<remote_host>:<remote_port>
+```
+
+Sets up a local HTTP proxy that forwards traffic to the Chisel server and then to the internet.
+
+```
+chisel client <server_host>:<server_port> -f -P <local_port>
+```
+
+Configures a local SOCKS proxy that routes traffic through the Chisel server.
+
+
+```
+chisel client <server_host>:<server_port> -f -S <local_port>
+```
+Description: 
+
+Sets up a reverse tunnel and exposes a local web service through the Chisel server using the HTTP proxy protocol.
+
+```
+chisel client <server_host>:<server_port> --reverse --proxy-protocol http
+```
+
+
+Creates multiple tunnels from different local ports to different remote hosts and ports via the Chisel server.
+
+```
+chisel client <server_host>:<server_port> -f -L <local_port1>:<remote_host1>:<remote_port1> -L <local_port2>:<remote_host2>:<remote_port2>
+```
+
+
+Tests the connectivity to the Chisel server and displays the round-trip time (RTT).
+
+```
+chisel client <server_host>:<server_port> --ping
+```
+
+
 
 

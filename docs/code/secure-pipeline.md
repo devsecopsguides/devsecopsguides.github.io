@@ -157,4 +157,60 @@ The `if` parameter is used to conditionally run a job based on a specific condit
 
 
 
+## Privacy as Code
+
+
+Installs the Fides tool using pip, the Python package manager
+
+```
+pip install fides
+```
+
+Scans the specified directory for privacy-related issues and sensitive data
+
+```
+fides scan <directory_path>
+```
+
+
+Generates a detailed report of the scan results and saves it to the specified output file
+
+```
+fides report -o <output_file>
+```
+
+
+Specifies a pattern to exclude specific files or directories from the scan
+
+```
+fides scan --exclude <pattern>
+```
+
+
+Uses a custom ruleset file for the scan, allowing you to define specific privacy rules and checks
+
+```
+fides scan --ruleset <ruleset_file>
+```
+
+
+Ignores specific patterns or files from triggering false positive alerts during the scan.
+
+```
+fides scan --ignore <pattern>
+```
+
+Sets the output format for the generated report, such as JSON, CSV, or HTML
+
+```
+fides report --format <output_format>
+```
+
+
+Configures the scan to exit with a non-zero code if privacy issues are detected, enabling integration with CI/CD pipelines.
+
+```
+fides scan --exit-code
+```
+
 
