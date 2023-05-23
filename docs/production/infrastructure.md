@@ -11,6 +11,8 @@ parent: Production
 ## Service Mesh
 
 
+### linkerd + istioctl
+
 Linkerd Security Cheatsheet:
 
 
@@ -79,6 +81,34 @@ istioctl --context <context> -n <namespace> pcaps <pod-name> -o <output-file.pca
 istioctl --context <context> -n <namespace> dashboard jaeger
 ```
 
+### Chaos
+
+
+1- Configure Chaos Monkey
+
+Edit the `chaos.properties` file to specify the target service, frequency of chaos events, and other settings.
+
+2- Start Chaos Monkey	
+
+```
+./gradlew bootRun
+```
+
+4	Verify Chaos Monkey is running	
+
+Access the Chaos Monkey dashboard at `http://localhost:8080/chaosmonkey`
+
+5	Enable Chaos Monkey for a specific service	
+
+Set the `chaos.monkey.enabled` property to `true` for the desired service in the configuration file.
+
+6	Disable Chaos Monkey for a specific service	
+
+Set the `chaos.monkey.enabled` property to `false` for the desired service in the configuration file.
+
+7- Customize Chaos Monkey behavior	
+
+Modify the `chaos.monkey...` properties in the configuration file to define the chaos events, such as `chaos.monkey.watcher.probablility` for adjusting the likelihood of an event occurring.
 
 
 ## Container

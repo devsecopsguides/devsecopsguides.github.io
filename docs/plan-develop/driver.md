@@ -86,3 +86,111 @@ OpenSCAP
 4. Sensitive information exposure 
 No specific open source tool in this area. However, we may define specific regular expression patterns
 
+
+## ENGAGE
+
+https://engage.mitre.org/matrix/
+
+
+
+## IACD
+
+
+### Playbooks
+
+Process Oriented
+
+* Reflects organization's policies and procedures
+* List activities that may require human interaction
+* Organization-to-organization shareable
+
+
+
+#### Playbooks
+
+Process Oriented
+
+* Reflects organization's policies and procedures
+* List activities that may require human interaction
+* Organization-to-organization shareable
+
+
+
+#### Workflows
+
+Technical Steps
+
+* Focused on machine interaction
+* Supports tailorable levels of automation
+* Machine-to-machine shareable
+
+
+#### Local Instance
+
+Execution at the System Level
+
+* Activity conducted is tailored to target system
+* Describes specific decision logic and thresholds
+* Machine-to-machine shareable in organization
+
+
+### Example Playbook
+
+To represent a general security process in a manner that:
+1. Most organizations can associate with a process they are a
+performing
+2. Can be mapped to governance or regulatory
+requirements (e.g., NIST 800-53)
+3. Demonstrates a path to automation of the process over time
+4. Identifies industry best practices for steps in the process
+
+Playbook Content Types:
+
+1. Initiating Condition
+2. Process Steps
+3. Best Practices and Local Policies
+4. End State
+5. Relationship to Governance or Regulatory Requirements
+
+
+
+![IACD](../../../assets/images/iacd.png)
+
+
+Steps to Build a Playbook:
+
+
+1. Identify the initiating condition.
+
+ Think About: What event or condition is going to start this playbook? This could be a time-based trigger,
+the detection of an event, or the decision to act.
+
+2. List all possible actions that could occur in response to this initiating condition.
+ Think About: How could I respond to this condition? What steps would I take to mitigate this threat?
+Don’t worry about order right now!
+
+3. Iterate through the actions list from Step 2 and categorize the actions based on whether they are required
+steps or whether they are optional.
+ Think About: Is this step necessary to mitigate or investigate this event, or is it a best practice? Some
+best practices have become standardized or widely implemented, while others may be considered extraneous.
+It’s OK if it’s unclear whether some actions are required or optional; it’s up to you to categorize accordingly.
+
+4. Use the required steps from Step 3 to build the playbook process steps diagram.
+ Think About: Ordering. This is the time to think about the order in which you would perform these
+actions.
+
+5. Iterate through the optional actions and decide whether the actions can be grouped by activity or function.
+For example: Monitoring, Enrichment, Response, Verification, or Mitigation.
+
+6. Think About: Are there possible actions that can only take place in certain parts of the playbook?
+This is how you would group the actions.
+
+7. Modify the playbook process steps diagram from Step 4 to include the points where optional actions
+would be selected.
+
+
+
+
+
+
+
