@@ -156,6 +156,239 @@ The `if` parameter is used to conditionally run a job based on a specific condit
 
 
 
+## Frameworks
+
+### Tekton
+
+#### Sample Flow
+
+1- Create a Dockerfile:
+
+```
+FROM golang:1.16-alpine
+WORKDIR /app
+COPY . .
+RUN go build -o myapp
+CMD ["./myapp"]
+```
+
+2- Create a Tekton Task (build-task.yaml):
+
+```
+apiVersion: tekton.dev/v1beta1
+kind: Task
+metadata:
+  name: build-task
+spec:
+  steps:
+    - name: build
+      image: golang:1.16-alpine
+      workingDir: /workspace/source
+      command:
+        - go
+      args:
+        - build
+        - -o
+        - /workspace/myapp
+        - .
+      volumeMounts:
+        - name: workspace
+          mountPath: /workspace
+    - name: package
+      image: alpine
+      command:
+        - tar
+      args:
+        - czf
+        - /workspace/myapp.tar.gz
+        - -C
+        - /workspace
+        - myapp
+      volumeMounts:
+        - name: workspace
+          mountPath: /workspace
+    - name: publish
+      image: ubuntu
+      command:
+        - echo
+      args:
+        - "Publishing artifact: /workspace/myapp.tar.gz"
+      volumeMounts:
+        - name: workspace
+          mountPath: /workspace
+  volumes:
+    - name: workspace
+      emptyDir: {}
+```
+
+3- Create a Tekton Pipeline (pipeline.yaml):
+
+
+```
+apiVersion: tekton.dev/v1beta1
+kind: Pipeline
+metadata:
+  name: myapp-pipeline
+spec:
+  tasks:
+    - name: build-task
+      taskRef:
+        name: build-task
+```
+
+4- Apply the Task and Pipeline:
+
+```
+kubectl apply -f build-task.yaml
+kubectl apply -f pipeline.yaml
+```
+
+5- Create a Tekton PipelineRun (pipelinerun.yaml):
+
+```
+apiVersion: tekton.dev/v1beta1
+kind: PipelineRun
+metadata:
+  name: myapp-pipelinerun
+spec:
+  pipelineRef:
+    name: myapp-pipeline
+```
+
+6- Apply the PipelineRun:
+
+```
+kubectl apply -f pipelinerun.yaml
+```
+
+
+
+#### Cheatsheet
+
+1- Install Tekton Pipelines  
+
+```
+kubectl apply --filename https://storage.googleapis.com/tekton-releases/pipeline/latest/release.yaml
+```
+
+2- Create a Task 
+
+```
+kubectl apply --filename <task-definition.yaml>
+```
+
+3- Create a Pipeline 
+
+```
+kubectl apply --filename <pipeline-definition.yaml>
+```
+
+4- Create a PipelineRun  
+
+```
+kubectl apply --filename <pipelinerun-definition.yaml>
+```
+
+5- List Pipelines  
+
+```
+tkn pipeline list
+```
+
+6- Describe a Pipeline 
+
+```
+tkn pipeline describe <pipeline-name>
+```
+
+7- List PipelineRuns 
+
+```
+tkn pipelinerun list
+```
+
+8- Describe a PipelineRun  
+
+```
+tkn pipelinerun describe <pipelinerun-name>
+```
+
+9- List Tasks  
+
+```
+tkn task list
+```
+
+10- Describe a Task 
+
+```
+tkn task describe <task-name>
+```
+
+11- List TaskRuns 
+
+```
+tkn taskrun list
+```
+
+12- Describe a TaskRun  
+
+```
+tkn taskrun describe <taskrun-name>
+```
+
+13- Create a TriggerBinding 
+
+```
+kubectl apply --filename <triggerbinding-definition.yaml>
+```
+
+14- Create a TriggerTemplate  
+
+```
+kubectl apply --filename <triggertemplate-definition.yaml>
+```
+
+15- Create a Trigger  
+
+```
+kubectl apply --filename <trigger-definition.yaml>
+```
+
+16- List Triggers 
+
+```
+tkn trigger list
+```
+
+17- Describe a Trigger  
+
+```
+tkn trigger describe <trigger-name>
+```
+
+18- Delete a Pipeline 
+
+```
+kubectl delete pipeline <pipeline-name>
+```
+
+19- Delete a PipelineRun  
+
+```
+kubectl delete pipelinerun <pipelinerun-name>
+```
+
+20- Delete a Task 
+
+```
+kubectl delete task <task-name>
+```
+
+
+
+
+
 
 ## Privacy as Code
 
