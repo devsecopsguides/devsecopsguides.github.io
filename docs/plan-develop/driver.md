@@ -32,7 +32,7 @@ DevSecOps is a methodology that seeks to integrate security into the software de
 4. Complexity: DevSecOps can be complex, particularly for organizations with large, complex applications. It can be difficult to integrate security into the development process without causing delays or creating additional complexity.
 
 
-## Application Security Verification Standard(ASVS):
+## Application Security Verification Standard (ASVS):
 
 Authentication, Session Management, Access Control, Malicious Input handling, Output encoding/escaping, Cryptography, Error handling and logging , Data Protection, Communication Security, Http Security configuration, Security configuration, Malicious, Internal Security, Business logic, Files and resources, Mobile, Web services
 
@@ -60,11 +60,11 @@ Authentication, Session Management, Access Control, Malicious Input handling, Ou
 
 ### Code Review
 
-* Static Application Security Testing (SAST)->FindSecbugs, Fortify, Coverity, klocwork.
-* Dynamic Application Security Testing (DAST)->OWASP ZAP, BurpSuite
-* Interactive Application Security Testing (IAST)->CheckMarks Varacode
-* Run-time Application Security Protection(RASP)->OpenRASP
-* https://www.owasp.org/index.php/Category:OWASP _Code_Review_Project SEI CERT Coding https://wiki.sei.cmu.edu/confluence/display/seccode/SEI+CERT+Coding+Standards
+* Static Application Security Testing (SAST) -> FindSecbugs, Fortify, Coverity, klocwork.
+* Dynamic Application Security Testing (DAST) -> OWASP ZAP, BurpSuite
+* Interactive Application Security Testing (IAST) -> CheckMarks Varacode
+* Run-time Application Security Protection(RASP) -> OpenRASP
+* SEI CERT Coding: https://wiki.sei.cmu.edu/confluence/display/seccode/SEI+CERT+Coding+Standards
 * Software Assurance Marketplace (SWAMP): https://www.mir-swamp.org/
 
 ### Environment Hardening 
