@@ -446,4 +446,132 @@ Configures the scan to exit with a non-zero code if privacy issues are detected,
 fides scan --exit-code
 ```
 
+## Continuous deployment security
+
+### secureCodeBox
+
+Install secureCodeBox 
+
+```
+kubectl apply -f https://raw.githubusercontent.com/secureCodeBox/secureCodeBox/master/deploy/complete.yaml
+```
+
+2.  Run a vulnerability scan  
+
+```
+kubectl apply -f https://raw.githubusercontent.com/secureCodeBox/secureCodeBox/master/demo/scan-job.yaml
+```
+
+3.  Monitor scan progress 
+
+```
+kubectl get scan -w
+```
+
+4.  View scan results 
+
+```
+kubectl describe scan <scan-name>
+```
+
+5. Integrate secureCodeBox with other security tools:
+
+```
+securecodebox-cli scan start --target <target-url> --scan-type <scan-type> --integration <integration-name>
+or
+Example: securecodebox-cli scan start --target https://example.com --scan-type zap-scan --integration jira
+```
+
+6. Schedule regular scans using Kubernetes CronJobs
+
+```
+kubectl apply -f https://raw.githubusercontent.com/secureCodeBox/secureCodeBox/master/demo/scheduled-scan.yaml
+```
+
+7. Integrate secureCodeBox with your CI/CD pipeline:
+
+```
+securecodebox-cli scan start --target <target-url> --scan-type <scan-type> --pipeline <pipeline-name>
+or
+Example: securecodebox-cli scan start --target https://example.com --scan-type nmap-scan --pipeline my-cicd-pipeline
+```
+
+8. Schedule regular scans using Kubernetes CronJobs
+
+```
+kubectl edit hook <hook-name>
+```
+
+
+### ThreatMapper
+
+1. Install ThreatMapper
+
+```
+git clone https://github.com/deepfence/ThreatMapper.git
+cd ThreatMapper
+./install.sh
+```
+
+2. Perform a security assessment on a specific target:
+
+```
+threat-mapper scan <target-ip>
+```
+
+3. View the scan results:
+
+```
+threat-mapper report <scan-id>
+```
+
+4. Integrate ThreatMapper with your CI/CD pipeline:
+
+```
+threat-mapper scan --target <target-ip> --pipeline <pipeline-name>
+Example: threat-mapper scan --target 192.168.0.1 --pipeline my-cicd-pipeline
+```
+
+5. Customize scan policies by modifying the configuration files:
+
+```
+vim ~/.threat-mapper/config.yaml
+```
+
+6. Enable notifications for scan results:
+
+```
+vim ~/.threat-mapper/config.yaml
+```
+
+7. Configure the desired notification settings, such as email notifications or Slack alerts.
+
+```
+crontab -e
+```
+
+Add a cron job entry to execute the threat-mapper scan command at specified intervals.
+
+8. Integrate ThreatMapper with other security tools:
+
+```
+threat-mapper scan --target <target-ip> --integration <integration-name>
+Example: threat-mapper scan --target 192.168.0.1 --integration jira
+```
+
+Monitor and address security issues based on the scan results:
+Regularly review the scan reports and take necessary actions to remediate the identified security issues.
+
+9. Generate visualizations and reports
+
+```
+threat-mapper visualize <scan-id>
+```
+
+This command generates visualizations of the scan results, such as network diagrams and attack surface maps.
+
+
+
+## Orchestration
+
 

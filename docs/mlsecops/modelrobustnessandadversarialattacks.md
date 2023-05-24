@@ -39,3 +39,81 @@ Conduct a threat modeling exercise to identify potential security risks and thre
 9- Implement Privacy Protection  Apply privacy-preserving techniques, such as differential privacy, anonymization, or federated learning, to protect sensitive data used in the machine learning system.
 
 10- Regularly Update MLSVS Practices  Stay updated with the latest MLSVS guidelines and best practices to adapt to evolving machine learning security threats.
+
+
+## Supply Chain Security for MLSecOps
+
+1. Install Sigstore
+
+```
+# Clone the Sigstore repository
+git clone https://github.com/sigstore/sigstore
+
+# Change to the Sigstore directory
+cd sigstore
+
+# Install the Sigstore CLI
+make install
+```
+
+2. Generate and manage cryptographic keys
+
+```
+# Generate a new key pair
+sigstore keygen
+
+# List the available keys
+sigstore key list
+
+# Set the active key
+sigstore key set <key-id>
+```
+
+3. Sign a software artifact
+
+```
+# Sign a software artifact using the active key
+sigstore sign <artifact-file>
+```
+
+4. Verify the signature of a signed artifact:
+
+```
+# Verify the signature of a signed artifact
+sigstore verify <signed-artifact-file>
+```
+
+5. Integrate Sigstore into the supply chain
+
+Sigstore can be integrated into various stages of the supply chain, such as during software development, build, deployment, and distribution. For example, you can configure your CI/CD pipeline to sign artifacts with Sigstore after successful builds and verify signatures during deployment.
+
+
+6. Real-world example
+
+Let's say you have a machine learning model file named "model.pkl" that you want to sign and verify using Sigstore:
+
+```
+# Sign the model file
+sigstore sign model.pkl
+
+# This will generate a signed artifact file named "model.pkl.sig"
+
+# Verify the signature of the signed model file
+sigstore verify model.pkl.sig
+```
+
+By signing and verifying the model file using Sigstore, you can ensure its integrity and authenticity throughout the software supply chain.
+
+
+
+
+
+
+
+
+
+
+
+
+
+

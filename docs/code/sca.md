@@ -149,15 +149,170 @@ dependency-check.sh --scan <path/to/project> --format <output-format>
 
 
 
+## scancode-toolkit
+
+
+1. Install scancode-toolkit:
+
+```
+pip install scancode-toolkit
+```
+
+
+2. Perform a scan on a specific project or directory
+
+```
+scancode <path-to-project>
+```
+
+3. Generate a scan report in JSON format
+
+```
+scancode --json-pp <path-to-project> > report.json
+```
+
+4. Exclude specific licenses from the scan
+
+```
+scancode --license-exclude <license-name> <path-to-project>
+```
 
 
 
+## Nexus Dependency Management
+
+1. Install Nexus Repository Manager 
+
+```
+wget <nexus_download_url> -O nexus.zip
+unzip nexus.zip  
+cd nexus-x.x.x ./bin/nexus start
+```
+
+2. Configure Nexus Repository Manager 
+
+Open web browser and access `http://localhost:8081`
 
 
 
+{: .note }
+Integrate vulnerability scanning tools like OWASP Dependency Check or Sonatype Nexus IQ with Nexus Repository Manager. These tools can analyze your dependencies for known security vulnerabilities and provide actionable insights to mitigate risks. Regularly scan your repositories for vulnerabilities and apply patches or upgrade dependencies as necessary.
 
 
+{: .note }
+Continuous Integration and Deployment (CI/CD) Integration: Integrate Nexus Repository Manager with your CI/CD pipelines to automate dependency management. Use build tool plugins or APIs provided by Nexus Repository Manager to fetch dependencies and publish artifacts seamlessly within your build and deployment processes.
 
+
+### Dependency Vulnerability Management
+
+Integrate Nexus Lifecycle or Nexus IQ into your CI/CD pipeline to scan and analyze dependencies for vulnerabilities.
+
+```
+# .gitlab-ci.yml
+stages:
+  - build
+  - test
+
+scan_dependencies:
+  stage: build
+  image: maven:3.8.4
+  script:
+    - mvn org.sonatype.plugins:nexus-staging-maven-plugin:1.6.8:rc-list -B
+    - mvn org.sonatype.plugins:nexus-staging-maven-plugin:1.6.8:rc-open -B
+    - mvn clean package
+    - mvn org.sonatype.plugins:nexus-staging-maven-plugin:1.6.8:rc-close -B
+  only:
+    - master
+```
+
+### License Compliance
+
+Code: Integrate Nexus Lifecycle or Nexus IQ to scan and enforce license compliance.
+
+```
+# Jenkinsfile
+pipeline {
+  agent any
+  stages {
+    stage('Build') {
+      steps {
+        sh 'mvn clean install'
+      }
+    }
+    stage('Scan Licenses') {
+      steps {
+        sh 'mvn org.sonatype.plugins:nexus-staging-maven-plugin:1.6.8:rc-list'
+        // Perform license compliance checks
+        sh 'mvn org.sonatype.plugins:nexus-staging-maven-plugin:1.6.8:rc-close'
+      }
+    }
+  }
+}
+```
+
+Configuration: Configure Nexus Repository Manager to enforce license policies and restrictions.
+
+```
+<!-- pom.xml -->
+<project>
+  <build>
+    <plugins>
+      <plugin>
+        <groupId>org.sonatype.plugins</groupId>
+        <artifactId>nexus-staging-maven-plugin</artifactId>
+        <version>1.6.8</version>
+      </plugin>
+    </plugins>
+  </build>
+</project>
+```
+
+### Continuous Monitoring
+
+Code: Implement continuous monitoring and scanning of your CI/CD pipeline for security vulnerabilities and compliance issues.
+
+```
+# .travis.yml
+language: java
+script:
+  - mvn clean install
+  - mvn org.sonatype.plugins:nexus-staging-maven-plugin:1.6.8:rc-list
+  # Run additional security scans and tests
+  - mvn org.sonatype.plugins:nexus-staging-maven-plugin:1.6.8:rc-close
+```
+
+Configuration: Set up automated alerts and notifications for any security or compliance issues detected during the CI/CD process.
+
+```
+<!-- pom.xml -->
+<project>
+  <build>
+    <plugins>
+      <plugin>
+        <groupId>org.sonatype.plugins</groupId>
+        <artifactId>nexus-staging-maven-plugin</artifactId>
+        <version>1.6.8</version>
+        <configuration>
+          <!-- Nexus Repository URL -->
+          <serverId>nexus-server</serverId>
+          <nexusUrl>https://nexus.example.com</nexusUrl>
+          <autoReleaseAfterClose>true</autoReleaseAfterClose>
+        </configuration>
+        <executions>
+          <execution>
+            <id>default-deploy</id>
+            <phase>deploy</phase>
+            <goals>
+              <goal>deploy</goal>
+            </goals>
+          </execution>
+        </executions>
+      </plugin>
+    </plugins>
+  </build>
+  <!-- Other project configurations -->
+</project>
+```
 
 
 
