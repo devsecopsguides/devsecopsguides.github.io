@@ -59,6 +59,8 @@ email, or any other method with the owners of this repository before making a ch
 and
 
 * [Okan YILDIZ](https://www.linkedin.com/in/yildizokan/)
+* [Dan Williams](https://www.linkedin.com/in/danwilliamssecurityengineer/)
+
 
 
 Brought to you by:
