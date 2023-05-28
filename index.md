@@ -62,6 +62,7 @@ and
 * [Dan Williams](https://www.linkedin.com/in/danwilliamssecurityengineer/)
 * [Barnavo Chowdhury](https://www.linkedin.com/in/barnavochowdhury/)
 * [Ayoub NAJIM](https://www.linkedin.com/in/ayoub-najim-299081151/)
+* [Nditah Samweld](https://www.linkedin.com/in/nditah/)
 
 
 
