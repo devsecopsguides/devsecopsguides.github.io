@@ -63,6 +63,9 @@ and
 * [Barnavo Chowdhury](https://www.linkedin.com/in/barnavochowdhury/)
 * [Ayoub NAJIM](https://www.linkedin.com/in/ayoub-najim-299081151/)
 * [Nditah Samweld](https://www.linkedin.com/in/nditah/)
+* [Mahesh Mahajan](https://linkedin.com/in/themr255)
+
+
 
 
 
