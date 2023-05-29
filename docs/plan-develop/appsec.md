@@ -102,7 +102,7 @@ By evaluating each of these factors, organizations can assign a score to a parti
 
 ### Response:
 
-1. Execute incident response plan 
+* Execute incident response plan 
 
 ## OWASP SAMM 
 

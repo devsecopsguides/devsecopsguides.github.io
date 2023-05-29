@@ -78,70 +78,100 @@ The Microsoft SDL includes specific practices and tools for each stage of the de
 
 ## Security guidelines and processes 
 
-1- Security training:
+- [ ] **Security training**
+
 Security awareness, Security certification program, Case study knowledge base, Top common issue, Penetration learning environment
 OWASP top 10, CWE top 25, OWASP VWAD
 
-2- Security maturity assessment
+- [ ] **Security maturity assessment**
+
 Microsoft SDL, OWASP SAMM self-assessment for maturity level
 Microsoft SDL, OWASP SAMM
 
-3- Secure design
+- [ ] **Secure design**
+
 Threat modeling templates (risks/mitigation knowledge base), Security requirements for release gate, Security design case study, Privacy protection 
 OWASP ASVS, NIST, Privacy risk assessment
 
-4- Secure coding
+- [ ] **Secure coding**
+
 Coding guidelines (C++, Java, Python, PHP, Shell, Mobile), Secure coding scanning tools, Common secure coding case study 
 CWE, Secure coding, CERT OWASP
 
-5- Security testing
+- [ ] **Security testing**
+
 Secure compiling options such as Stack Canary, NX, Fortify Source, PIE, and RELRO, Security testing plans, Security testing cases, Known CVE testing, Known secure coding issues, API-level security testing tools, Automation testing tools, Fuzz testing, Mobile testing, Exploitation and penetration, Security compliance
 Kali Linux tools, CIS
 
-6- Secure deployment
+- [ ] **Secure deployment**
+
 Configuration checklist, Hardening guide, Communication ports/protocols, Code signing
 CIS Benchmarks, CVE
 
-7- Incident and vulnerability handling
+- [ ] **Incident and vulnerability handling**
+
 Root cause analysis templates, Incident handling process and organization
 NIST SP800-61
 
-8- Security training
+- [ ] **Security training**
+
 Security awareness by email, Case study newsletter, Toolkit usage hands-on training, Security certificate and exam 
 NIST 800- 50, NIST 800- 16, SAFECode security engineering training
 
 
 
-## Stage 1 – basic security control 
+Stage 1 
+{: .label }
+
+## basic security control 
 
 * Leverage third-party cloud service provider security mechanisms (for example, AWS provides IAM, KMS, security groups, WAF, Inspector, CloudWatch, and Config) 
 * Secure configuration replies on external tools such as AWS Config and Inspector 
 * Service or operation monitoring may apply to AWS Config, Inspector, CloudWatch, WAF, and AWS shield
 
-Stage 2 – building a security testing team
 
-Vulnerability assessment:
+Stage 2 
+{: .label }
+## building a security testing team
+
+**Vulnerability assessment**
+
+{: .highlight }
 NMAP, OpenVAS
 
-Static security analysis:
+**Static security analysis:**
+
+{: .highlight }
 FindBugs for Java, Brakeman for Ruby on Rails, Infer for Java, C++, Objective C and C
 
-Web security:
+**Web security:**
+
+{: .highlight }
 OWASP dependency check, OWASP ZAP, Archni-Scanner, Burp Suite, SQLMap, w3af
 
-Communication:
+**Communication:**
+
+{: .highlight }
 Nmap, NCAT, Wireshark, SSLScan, sslyze
 
-Infrastructure security:
+**Infrastructure security:**
+
+{: .highlight }
 OpenSCAP, InSpec
 
-VM Toolset:
+**VM Toolset:**
+
+{: .highlight }
 Pentest Box for Windows, Kali Linux, Mobile Security Testing Framework
 
-Security monitoring:
+**Security monitoring:**
+
+{: .highlight }
 ELK, MISP—Open source Threat Intelligence Platform, OSSCE—Open source HIDS Security, Facebook/osquery—performant endpoint visibility, AlienValut OSSIM—opensource SIEM
 
-Stage 3 – SDL activities 
+Stage 3 
+{: .label }
+## SDL activities 
 
 * Security shifts to the left and involves every stakeholder 
 * Architect and design review is required to do threat modeling 
@@ -149,11 +179,15 @@ Stage 3 – SDL activities
 * Operation and development teams are as a closed-loop collaboration 
 * Adoption of industry best practices such as OWASP SAMM and Microsoft SDL for security maturity assessment 
 
-Stage 4 – self-build security services 
+Stage 4
+{: .label }
+## self-build security services 
 
 Take Salesforce as an example—the Salesforce Developer Center portal provides security training modules, coding, implementation guidelines, tools such as assessment tools, code scanning, testing or CAPTCHA modules, and also a developer forum. Whether you are building an application on top of salesforce or not, the Salesforce Developer Center is still a good reference not only for security knowledge but also for some open source tools you may consider applying.
 
-Stage 5 – big data security analysis and automation
+Stage 5 
+{: .label }
+## big data security analysis and automation
 
 Key characteristics at this stage are: 
 
@@ -170,31 +204,31 @@ Typical open source technical components in big data analysis frameworks include
 
 The key stages in big data security analysis are explained in the table: 
 
-Data collection:
+**Data collection:**
 
 Collects logs from various kinds of sources and systems such as firewalls, web services, Linux, networking gateways, endpoints, and so on. 
 
-Data normalization:
+**Data normalization:**
 
 Sanitizes or transforms data formats into JSON, especially, for critical information such as IP, hostname, email, port, and MAC.
 
-Data enrich/label:
+**Data enrich/label:**
 
 In terms of IP address data, it will further be associated with GeoIP and WhoIS information. Furthermore, it may also be labeled if it's a known black IP address. 
 
-Correlation:
+**Correlation:**
 
 The correlation analyzes the relationship between some key characteristics such as IP, hostname, DNS domain, file hash, email address, and threat knowledge bases.
 
-Storage:
+**Storage:**
 
 There are different kinds of data that will be stored —the raw data from the source, the data with enriched information, the results of correlation, GeoIP mapping, and the threat knowledge base. 
 
-Alerts:
+**Alerts:**
 
 Trigger alerts if threats were identified or based on specified alerting rules. 
 
-Presentation/query:
+**Presentation/query:**
 
 Security dashboards for motoring and queries. ElasticSearch, RESTful API, or third-party SIEM.
 
@@ -203,7 +237,7 @@ Security dashboards for motoring and queries. ElasticSearch, RESTful API, or thi
 
 ## Role of a security team in an organization
 
-1- Security office under a CTO 
+- [ ] **Security office under a CTO**
 
 ![Security office under a CTO](../../../assets/images/model1.png)
 
@@ -218,7 +252,7 @@ Security dashboards for motoring and queries. ElasticSearch, RESTful API, or thi
 
 
 
-2-Dedicated security team  
+- [ ] **Dedicated security team**  
 
 ![Dedicated security team](../../../assets/images/model2.png)
 
@@ -231,7 +265,7 @@ Security dashboards for motoring and queries. ElasticSearch, RESTful API, or thi
 
 
 
-3- Security technical committee (taskforce)
+- [ ] **Security technical committee (taskforce)**
 
 ![Security technical committee (taskforce)](../../../assets/images/model3.png)
 

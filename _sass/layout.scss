@@ -4,7 +4,8 @@
   z-index: 0;
   display: flex;
   flex-wrap: wrap;
-  background-color: #1b1a1c;
+  /*background-color: #1b1a1c;*/
+  background-color: #ffffff;
 
   @include mq(md) {
     flex-flow: column nowrap;

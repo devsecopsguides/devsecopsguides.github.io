@@ -21,7 +21,9 @@ permalink: stories
 
 ## DevSecOps War Stories: The Challenges of Implementing SAST 
 
-Source: [Devsecops War Stories](https://wehackpurple.com/devsecops-war-stories/)
+[Devsecops War Stories](https://wehackpurple.com/devsecops-war-stories/)
+{: .label .label-yellow }
+
 
 DevSecOps has emerged as a culture shift in software development, aiming to improve software security by breaking down silos and fostering collaboration among security professionals and IT teams. However, the transition to DevSecOps is not without its challenges. In this article, we will explore one such challenge through a war story of a SAST (Static Application Security Testing) rollout.
 
@@ -64,7 +66,9 @@ The SAST rollout experience serves as a valuable lesson in the DevSecOps journey
 
 ## Integrating DevSecOps into the Software Development Lifecycle: A Case Study by Broadcom Software
 
-Source: [Securing the DX NetOps Development Lifecycle with DevSecOps](https://academy.broadcom.com/blog/netops/dx-netops/securing-the-dx-netops-development-lifecycle-with-devsecops)
+[Securing the DX NetOps Development Lifecycle with DevSecOps](https://academy.broadcom.com/blog/netops/dx-netops/securing-the-dx-netops-development-lifecycle-with-devsecops)
+{: .label .label-yellow }
+
 
 In today's digital landscape, the rise of cybersecurity exploits and software vulnerabilities has become a pressing concern for enterprises. Recent incidents, such as Sun Burst and Log4j, have highlighted the importance of securing software supply chains and adopting robust security practices. To address these challenges, forward-thinking organizations like Broadcom Software have turned to DevSecOps, a strategic approach that integrates security into the early stages of the software development lifecycle (SDLC).
 
@@ -90,7 +94,8 @@ To combat cyber threats effectively, staying up-to-date with the latest software
 
 ## The Evolution of DevSecOps: A Year in Review
 
-Source: [Top Stories Of 2022 From The World Of DevOps](https://www.linkedin.com/company/razorops/)
+[Top Stories Of 2022 From The World Of DevOps](https://www.linkedin.com/company/razorops/)
+{: .label .label-yellow }
 
 The year 2022 has been marked by numerous challenges, from the global impact of COVID-19 and ongoing conflicts to economic uncertainties. Amidst these adversities, however, innovation has thrived. Today, as we bid farewell to 2022, let us reflect on the significant milestones in the world of DevOps. What stands out when we think of DevOps in 2022?
 
@@ -122,7 +127,8 @@ As DevOps continues to evolve and mature, it has become an indispensable part of
 
 ## The Evolution of DevSecOps: Advancing Security in the Digital Age
 
-Source: [Epic Failures in DevSecOps by DevSecOps Days Press](https://www.linkedin.com/posts/rajkgrover_epic-failures-in-devsecops-vol-1-activity-7025826736101548032-VoBE/?utm_source=share&utm_medium=member_desktop)
+[Epic Failures in DevSecOps by DevSecOps Days Press](https://www.linkedin.com/posts/rajkgrover_epic-failures-in-devsecops-vol-1-activity-7025826736101548032-VoBE/?utm_source=share&utm_medium=member_desktop)
+{: .label .label-yellow }
 
 In today's rapidly evolving digital landscape, security has become a critical concern for organizations. The integration of security practices into the DevOps process has given rise to a new approach known as DevSecOps. This article delves into the history of DevSecOps and provides ten actionable ways to advance in this field.
 
@@ -164,7 +170,8 @@ Stay innovative and forward-thinking. Continuously explore emerging technologies
 
 ## True Story of Implementing SecDevOps in FinTech
 
-Source: [Snyk](https://www.youtube.com/watch?v=_d6JJfl9S5g)
+[Snyk](https://www.youtube.com/watch?v=_d6JJfl9S5g)
+{: .label .label-yellow }
 
 In the fast-paced world of FinTech, where technology and finance intersect, security is of paramount importance. The integration of security practices into the DevOps workflow has given rise to a powerful approach known as SecDevOps. In the captivating video "The True Story of Implementing SecDevOps in FinTech" by John Smith, the challenges, successes, and lessons learned from implementing SecDevOps in the FinTech industry are explored. This article will delve into the key insights from the video and shed light on the journey of implementing SecDevOps in the dynamic world of FinTech.
 
@@ -182,7 +189,8 @@ Throughout the implementation journey, several valuable lessons were learned. Co
 
 ## The Impact of DevSecOps on SOC: Enhancing Security Collaboration
 
-Source: [DevSecOps and SOC](https://www.linkedin.com/posts/elishlomo_informationsecurity-cybersecurity-cloudsecurity-activity-6957956550984364032-43Wv/?utm_source=share&utm_medium=member_desktop)
+{: .label .label-yellow }
+[DevSecOps and SOC](https://www.linkedin.com/posts/elishlomo_informationsecurity-cybersecurity-cloudsecurity-activity-6957956550984364032-43Wv/?utm_source=share&utm_medium=member_desktop)
 
 The integration of security into the DevOps process, known as DevSecOps, has revolutionized the way organizations approach software development and deployment. This collaborative approach not only improves the speed and efficiency of software delivery but also enhances security practices. In the realm of cybersecurity, the Security Operations Center (SOC) plays a crucial role in monitoring, detecting, and responding to security incidents. This article explores the relationship between DevSecOps and SOC, highlighting the ways in which DevSecOps can positively impact SOC operations.
 
@@ -203,7 +211,8 @@ In a DevSecOps environment, everyone involved in security should have quick acce
 
 ## Simplifying DevSecOps with Dynamic Application Security Testing (DAST)
 
-Source: [How to declutter DevSecOps with DAST](https://www.scmagazine.com/resource/application-security/how-to-declutter-devsecops-with-dast?utm_content=245701246&utm_medium=social&utm_source=linkedin&hss_channel=lcp-11680352)
+{: .label .label-yellow }
+[How to declutter DevSecOps with DAST](https://www.scmagazine.com/resource/application-security/how-to-declutter-devsecops-with-dast?utm_content=245701246&utm_medium=social&utm_source=linkedin&hss_channel=lcp-11680352)
 
 DevSecOps is a crucial approach that combines development, security, and operations to ensure secure and efficient software development. However, the complexity and rapid pace of modern development environments can sometimes lead to challenges in integrating security effectively. In this article, we will explore how Dynamic Application Security Testing (DAST) can help streamline DevSecOps processes and enhance application security.
 
@@ -226,7 +235,8 @@ DAST provides actionable insights into identified vulnerabilities, allowing team
 
 ## Enhancing DevSecOps with OWASP DSOMM: A Maturity Model Perspective
 
-Source: [DevSecOps maturity model using OWASP DSOMM](https://aniediogo.hashnode.dev/devsecops-maturity-model-using-owasp-dsomm)
+{: .label .label-yellow }
+[DevSecOps maturity model using OWASP DSOMM](https://aniediogo.hashnode.dev/devsecops-maturity-model-using-owasp-dsomm)
 
 DevSecOps, the integration of security practices into the software development lifecycle, has become crucial in today's fast-paced and evolving digital landscape. To effectively implement and mature DevSecOps practices, organizations can leverage frameworks and models that provide guidance and structure. In this article, we will explore the OWASP DSOMM (DevSecOps Maturity Model) and how it can help organizations enhance their DevSecOps initiatives.
 
@@ -249,7 +259,8 @@ DevSecOps is not just about implementing tools and technologies but also fosteri
 ## The Role of Threat Modeling in DevSecOps: Strengthening Security from the Ground Up
 
 
-Source: [Continuous Security: Threat Modeling in DevSecOps](https://bishopfox.com/blog/threat-modeling-in-devsecops)
+{: .label .label-yellow }
+[Continuous Security: Threat Modeling in DevSecOps](https://bishopfox.com/blog/threat-modeling-in-devsecops)
 
 In the fast-paced world of software development, security is a critical concern that cannot be ignored. DevSecOps, the integration of security practices into the software development lifecycle, has emerged as a powerful approach to building secure applications. One of the key components of DevSecOps is threat modeling, a proactive technique that helps identify and address potential security threats early in the development process. In this article, we will explore the significance of threat modeling in DevSecOps and how it strengthens security from the ground up.
 
@@ -272,7 +283,8 @@ By identifying security risks early in the development process, organizations ca
 ## Hard-Coding Secrets: Be Aware of the Scariest Breach for Your Organization
 
 
-Source: [Continuous Security: Threat Modeling in DevSecOps](https://medium.com/flat-pack-tech/hard-coding-secrets-be-aware-of-the-scariest-breach-for-your-organization-3e858ab296f2)
+{: .label .label-yellow }
+[Continuous Security: Threat Modeling in DevSecOps](https://medium.com/flat-pack-tech/hard-coding-secrets-be-aware-of-the-scariest-breach-for-your-organization-3e858ab296f2)
 
 In today's digital age, organizations face an ever-increasing threat of data breaches and cyberattacks. While there are various vulnerabilities that attackers exploit, one of the scariest breaches that can occur is the exposure of hard-coded secrets. Hard-coding secrets, such as passwords, API keys, and other sensitive information directly into software code, poses a significant risk to organizations. In this article, we will explore the dangers of hard-coding secrets and the steps organizations can take to mitigate this potential security nightmare.
 
@@ -300,7 +312,8 @@ Regularly conduct security testing, including static code analysis and dynamic a
 ## Hilti's DevSecOps Journey: Building Secure and Efficient Software with GitLab
 
 
-Source: [How CI/CD and robust security scanning accelerated Hilti’s SDLC](https://about.gitlab.com/customers/hilti/)
+{: .label .label-yellow }
+[How CI/CD and robust security scanning accelerated Hilti’s SDLC](https://about.gitlab.com/customers/hilti/)
 
 DevSecOps has become a crucial practice for organizations seeking to develop secure and efficient software. Hilti, a global leader in the construction industry, has embraced DevSecOps principles and harnessed the power of GitLab to enhance its software development processes. In this article, we will explore Hilti's DevSecOps journey and how GitLab has played a pivotal role in integrating security seamlessly into their development pipeline.
 

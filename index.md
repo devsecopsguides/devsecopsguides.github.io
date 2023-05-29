@@ -71,7 +71,7 @@ and
 
 Brought to you by:
 
-![HADESS.IO](./assets/images/hadess-logo.png)
+![HADESS.IO](./assets/images/hadess-logo_light.png)
 
 **HADESS**
 

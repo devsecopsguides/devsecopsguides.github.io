@@ -60,12 +60,36 @@ Authentication, Session Management, Access Control, Malicious Input handling, Ou
 
 ### Code Review
 
-* Static Application Security Testing (SAST) -> FindSecbugs, Fortify, Coverity, klocwork.
-* Dynamic Application Security Testing (DAST) -> OWASP ZAP, BurpSuite
-* Interactive Application Security Testing (IAST) -> CheckMarks Varacode
-* Run-time Application Security Protection(RASP) -> OpenRASP
-* SEI CERT Coding: https://wiki.sei.cmu.edu/confluence/display/seccode/SEI+CERT+Coding+Standards
-* Software Assurance Marketplace (SWAMP): https://www.mir-swamp.org/
+* **Static Application Security Testing (SAST)** 
+
+{: .highlight }
+FindSecbugs, Fortify, Coverity, klocwork.
+
+* **Dynamic Application Security Testing (DAST)**
+
+{: .highlight }
+OWASP ZAP, BurpSuite
+
+* **Interactive Application Security Testing (IAST)** 
+
+{: .highlight }
+CheckMarks Varacode
+
+
+* **Run-time Application Security Protection(RASP)** 
+
+{: .highlight }
+OpenRASP
+
+* **SEI CERT Coding**
+
+{: .highlight }
+https://wiki.sei.cmu.edu/confluence/display/seccode/SEI+CERT+Coding+Standards
+
+* **Software Assurance Marketplace (SWAMP)**
+
+{: .highlight }
+https://www.mir-swamp.org/
 
 ### Environment Hardening 
 
@@ -74,16 +98,24 @@ Authentication, Session Management, Access Control, Malicious Input handling, Ou
 
 ### Constant monitoring mechanism
 
-1. Common vulnerabilities and exposures (CVEs) 
+* **Common vulnerabilities and exposures (CVEs)** 
+
+{: .highlight }
 OpenVAS, NMAP 
 
-2. Integrity monitoring
+* **Integrity monitoring**
+
+{: .highlight }
 OSSEC
 
-3. Secure configuration compliance
+* **Secure configuration compliance**
+
+{: .highlight }
 OpenSCAP
 
-4. Sensitive information exposure 
+* **Sensitive information exposure** 
+
+{: .note }
 No specific open source tool in this area. However, we may define specific regular expression patterns
 
 
