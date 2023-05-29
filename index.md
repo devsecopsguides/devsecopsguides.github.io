@@ -64,6 +64,8 @@ and
 * [Ayoub NAJIM](https://www.linkedin.com/in/ayoub-najim-299081151/)
 * [Nditah Samweld](https://www.linkedin.com/in/nditah/)
 * [Mahesh Mahajan](https://linkedin.com/in/themr255)
+* [Shivam Agnihotri](https://www.linkedin.com/in/shivam-agnihotri/)
+
 
 
 
