@@ -53,7 +53,7 @@ allprojects {
 
 ### Use secure credentials for accessing repositories
 
- Use encrypted credentials in the `build.gradle` file or environment variables for accessing repositories.
+Use encrypted credentials in the `build.gradle` file or environment variables for accessing repositories.
 
 
 ### Use plugins and dependencies from trusted sources only
