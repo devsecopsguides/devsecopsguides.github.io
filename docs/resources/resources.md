@@ -74,7 +74,7 @@ Knowledge base in cybersecurity, administration and secure development
 
 ### sottlmarek DevSecOps
 
-https://github.com/sottlmarek/DevSecOps
+[sottlmarek DevSecOps](https://github.com/sottlmarek/DevSecOps)
 
 
 ## Framework

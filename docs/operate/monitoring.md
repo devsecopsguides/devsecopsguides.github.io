@@ -356,111 +356,111 @@ sudo service stackdriver-agent status
 
 ## Netdata
 
-1- In the Netdata web interface, go to the "Dashboard" section and select the "system.cpu" chart to view CPU usage metrics. You can also select the "system.ram" chart to view memory usage metrics.
+* In the Netdata web interface, go to the "Dashboard" section and select the "system.cpu" chart to view CPU usage metrics. You can also select the "system.ram" chart to view memory usage metrics.
 
-2- To reduce failover using machine learning, you can configure Netdata's anomaly detection feature. In the Netdata web interface, go to the "Anomaly Detection" section and select "Add alarm".
+* To reduce failover using machine learning, you can configure Netdata's anomaly detection feature. In the Netdata web interface, go to the "Anomaly Detection" section and select "Add alarm".
 
-3- For the "Detect" field, select "cpu.system". This will detect anomalies in the system CPU usage.
+* For the "Detect" field, select "cpu.system". This will detect anomalies in the system CPU usage.
 
-4- For the "Severity" field, select "Warning". This will trigger a warning when an anomaly is detected.
+* For the "Severity" field, select "Warning". This will trigger a warning when an anomaly is detected.
 
-5- For the "Action" field, select "Notify". This will send a notification when an anomaly is detected.
+* For the "Action" field, select "Notify". This will send a notification when an anomaly is detected.
 
-6- You can also configure Netdata's predictive analytics feature to predict when a system will fail. In the Netdata web interface, go to the "Predict" section and select "Add algorithm".
+* You can also configure Netdata's predictive analytics feature to predict when a system will fail. In the Netdata web interface, go to the "Predict" section and select "Add algorithm".
 
-7- For the "Algorithm" field, select "Autoregression". This will use autoregression to predict system behavior.
+* For the "Algorithm" field, select "Autoregression". This will use autoregression to predict system behavior.
 
-8- For the "Target" field, select "cpu.system". This will predict CPU usage.
+* For the "Target" field, select "cpu.system". This will predict CPU usage.
 
-9- For the "Window" field, select "30 minutes". This will use a 30-minute window to make predictions.
+* For the "Window" field, select "30 minutes". This will use a 30-minute window to make predictions.
 
-10-Finally, click "Create" to create the algorithm.
+* Finally, click "Create" to create the algorithm.
 
 
 ## Sysdig
 
 
-1- Capture system events and write them to a file.
+- [ ] Capture system events and write them to a file.
 
 ```
 sysdig -w <filename.scap>
 ```
 
-2- Customize the output format of captured events
+- [ ] Customize the output format of captured events
 
 ```
 sysdig -p "%evt.num %evt.type %evt.args"
 ```
 
-3- Filter events by process name (e.g., nginx)
+- [ ] Filter events by process name (e.g., nginx)
 
 ```
 sysdig proc.name=nginx
 ```
 
-4- Read events from a file and filter by process name (e.g., httpd).
+- [ ] Read events from a file and filter by process name (e.g., httpd).
 
 ```
 sysdig -r <filename.scap> proc.name=httpd
 ```
 
 
-5- Display file open events
+- [ ] Display file open events
 
 ```
 sysdig -c file_open
 ```
 
-6- Customize the output format of captured events
+- [ ] Customize the output format of captured events
 
 ```
 sysdig -c fdbytes_by fd.sport
 ```
 
 
-7- Monitor IP traffic in real-time.
+- [ ] Monitor IP traffic in real-time.
 
 ```
 sysdig -c spy_ip
 ```
 
-8- Show top containers by CPU usage.
+- [ ] Show top containers by CPU usage.
 
 ```
 sysdig -c topcontainers_cpu
 ```
 
-9- Display process execution time.
+- [ ] Display process execution time.
 
 ```
 sysdig -c proc_exec_time
 ```
 
-10- Monitor system calls made by processes.
+- [ ] Monitor system calls made by processes.
 
 ```
 sysdig -c proc_calls
 ```
 
-11- sysdig -c container_top
+- [ ] Top Container
 
 ```
-
+sysdig -c container_top
 ```
 
-12- Customize the output format of captured events
+- [ ] Customize the output format of captured events
 
 ```
 Show top containers by resource usage.
 ```
 
-13- Display Kubernetes pod information.
+- [ ] Display Kubernetes pod information.
 
 ```
 sysdig -c k8s.pods
 ```
 
-14- Monitor Kubernetes deployment events.
+- [ ] Monitor Kubernetes deployment events.
 
 ```
 sysdig -c k8s.deployments
@@ -471,33 +471,33 @@ sysdig -c k8s.deployments
 
 
 
-1- Retrieve average CPU usage timeseries data for a specific time range.
+- [ ] Retrieve average CPU usage timeseries data for a specific time range.
 Create Custom Alerting Profile:
 
 ```
 timeseriesquery "metric=CPU|avg:system.cpu.usage" --start-time="2023-05-01T00:00:00Z" --end-time="2023-05-02T00:00:00Z": 
 ```
 
-2- Create a new alerting profile for detecting high memory usage, with a threshold of 80%.
+- [ ] Create a new alerting profile for detecting high memory usage, with a threshold of 80%.
 Retrieve Deployment Events
 
 ```
 create-alerting-profile --name="High Memory Usage" --metric="memory.resident" --condition="> threshold:80" --enabled=true: 
 ```
 
-3- Retrieve a list of deployment events that occurred within a specific time range.
+- [ ] Retrieve a list of deployment events that occurred within a specific time range.
 
 ```
 deployment-events --start-time="2023-05-01T00:00:00Z" --end-time="2023-05-02T00:00:00Z"
 ```
 
-4- Create a new custom dashboard with a 2x2 layout.
+- [ ] Create a new custom dashboard with a 2x2 layout.
 
 ```
 dashboard create --name="My Custom Dashboard" --layout="2x2": 
 ```
 
-5- Analyze the performance and dependencies of a specific application named "My Application".
+- [ ] Analyze the performance and dependencies of a specific application named "My Application".
 
 ```
 application analyze --name="My Application": 

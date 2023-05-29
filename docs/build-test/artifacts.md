@@ -24,6 +24,7 @@ Artifacts are typically created during the build and deployment process, and are
 ## Checklist for developing an artifact in DevSecOps
 
 
+
 1- Create a secure development environment:
 
 * Set up a development environment that is separate from production.

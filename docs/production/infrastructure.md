@@ -17,65 +17,66 @@ Linkerd Security Cheatsheet:
 
 
 
-1- Inject Linkerd's sidecar proxy into deployment YAML files for automatic mTLS.
+- [ ] Inject Linkerd's sidecar proxy into deployment YAML files for automatic mTLS.
 
 ```
 linkerd --context <context> inject --manual <input.yaml> | kubectl apply -f -
 ```
 
-2- Enable mTLS for a specific deployment.
+- [ ] Enable mTLS for a specific deployment.
+
 ```
 linkerd --context <context> -n <namespace> -o yaml tls web deployment/<deployment> | kubectl apply -f -
 ```
  
 
-3- Tap into the traffic of a specific deployment, monitoring for unauthorized access attempts
+- [ ] Tap into the traffic of a specific deployment, monitoring for unauthorized access attempts
 
 ```
 linkerd --context <context> -n <namespace> tap deploy/<deployment> --namespace=<target-namespace> --to <target-deployment> --method=<http-method>
 ```
 
 
-4- Observe traffic and analyze potential security-related issues using Linkerd's tap command.
+- [ ] Observe traffic and analyze potential security-related issues using Linkerd's tap command.
 
 ```
 linkerd --context <context> -n <namespace> -o json tap deploy/<deployment> | jq . | less
 ```
 
 
-5- Install Istio with automatic mTLS enabled.
+- [ ] Install Istio with automatic mTLS enabled.
 
 ```
 istioctl --context <context> install --set profile=demo --set values.global.mtls.auto=true: 
 ```
 
-6- Generate Istio manifest files for the current configuration.
+- [ ] Generate Istio manifest files for the current configuration.
 
 ```
 istioctl --context <context> manifest generate | kubectl apply -f -: 
 ```
 
-7- Perform a TLS handshake check for a specific host and namespace.
+- [ ] Perform a TLS handshake check for a specific host and namespace.
 
 ```
 istioctl --context <context> authn tls-check <host> -n <namespace>: 
 ```
 
 
-8- Check Istio authorization policies for specific traffic flows.
+- [ ] Check Istio authorization policies for specific traffic flows.
 
 ```
 istioctl --context <context> -n <namespace> authz check deploy/<deployment> --from <source-deployment> --to <target-deployment> --namespace=<target-namespace> --method=<http-method>
 ```
 
 
-9- Generate a packet capture (PCAP) file for a specific pod for in-depth analysis.
+- [ ] Generate a packet capture (PCAP) file for a specific pod for in-depth analysis.
 
 ```
 istioctl --context <context> -n <namespace> pcaps <pod-name> -o <output-file.pcap>
 ```
 
-10- Open Jaeger, the distributed tracing system, to visualize and analyze Istio-traced requests.
+- [ ] Open Jaeger, the distributed tracing system, to visualize and analyze Istio-traced requests.
 
 ```
 istioctl --context <context> -n <namespace> dashboard jaeger
@@ -84,29 +85,29 @@ istioctl --context <context> -n <namespace> dashboard jaeger
 ### Chaos
 
 
-1- Configure Chaos Monkey
+- [ ] Configure Chaos Monkey
 
 Edit the `chaos.properties` file to specify the target service, frequency of chaos events, and other settings.
 
-2- Start Chaos Monkey	
+- [ ] Start Chaos Monkey	
 
 ```
 ./gradlew bootRun
 ```
 
-4	Verify Chaos Monkey is running	
+- [ ] Verify Chaos Monkey is running	
 
 Access the Chaos Monkey dashboard at `http://localhost:8080/chaosmonkey`
 
-5	Enable Chaos Monkey for a specific service	
+- [ ] Enable Chaos Monkey for a specific service	
 
 Set the `chaos.monkey.enabled` property to `true` for the desired service in the configuration file.
 
-6	Disable Chaos Monkey for a specific service	
+- [ ] Disable Chaos Monkey for a specific service	
 
 Set the `chaos.monkey.enabled` property to `false` for the desired service in the configuration file.
 
-7- Customize Chaos Monkey behavior	
+- [ ] Customize Chaos Monkey behavior	
 
 Modify the `chaos.monkey...` properties in the configuration file to define the chaos events, such as `chaos.monkey.watcher.probablility` for adjusting the likelihood of an event occurring.
 
@@ -114,26 +115,26 @@ Modify the `chaos.monkey...` properties in the configuration file to define the 
 ## Container
 
 
-1- Run a specific benchmark
+- [ ] Run a specific benchmark
 
 ```
 kube-bench --benchmark <benchmark-name>
 ```
 
-2- Generate a JSON report for a specific benchmark
+- [ ] Generate a JSON report for a specific benchmark
 
 ```
 kube-bench --benchmark <benchmark-name> --json
 ```
 
 
-3- Run benchmarks as a non-root user
+- [ ] Run benchmarks as a non-root user
 
 ```
 kube-bench --benchmark <benchmark-name> --run-as non-root
 ```
 
-4- Export the benchmark results to a log file.
+- [ ] Export the benchmark results to a log file.
 
 
 ```
@@ -156,19 +157,19 @@ kube-linter lint <path/to/kubernetes/yaml/files>
 ### Checkov
 
 
-1- Scan Terraform Files
+- [ ] Scan Terraform Files
 
 ```
 checkov -d <path/to/terraform/files>: 
 ```
 
-2- Output Scan Results in JSON Format
+- [ ] Output Scan Results in JSON Format
 
 ```
 checkov -o json: Generate scan results in JSON format.
 ```
 
-3- Ignore Specific Check IDs or File Paths
+- [ ] Ignore Specific Check IDs or File Paths
 
 ```
 checkov --skip-check <check1,check2>: 
@@ -179,31 +180,31 @@ checkov --skip-check <check1,check2>:
 ### Twistlock
 
 
-1- Pull Twistlock Scanner Image:
+- [ ] Pull Twistlock Scanner Image:
 
 ```
 docker pull twistlock/scanner:latest: Pull the latest Twistlock Scanner image from Docker Hub.
 ```
 
-2- Scan a Docker Image:
+- [ ] Scan a Docker Image:
 
 ```
 docker run --rm -v /var/run/docker.sock:/var/run/docker.sock twistlock/scanner:latest <image-name>:<tag>: Perform a security scan on the specified Docker image.
 ```
 
-3- Authenticate Twistlock Console:
+- [ ] Authenticate Twistlock Console:
 
 ```
 docker run --rm -v /var/run/docker.sock:/var/run/docker.sock twistlock/scanner:latest --auth <console-url> --user <username> --password <password>: Authenticate the Twistlock Scanner with the Twistlock Console.
 ```
 
-4- Generate HTML Report:
+- [ ] Generate HTML Report:
 
 ```
 docker run --rm -v /var/run/docker.sock:/var/run/docker.sock twistlock/scanner:latest --output-file <report-file.html> <image-name>:<tag>: Generate an HTML report for the scan results.
 ```
 
-5- Specify Scan Policies:
+- [ ] Specify Scan Policies:
 
 ```
 docker run --rm -v /var/run/docker.sock:/var/run/docker.sock twistlock/scanner:latest --policy-file <policy-file.yaml> <image-name>:<tag>: Use a custom policy file for the scan.
@@ -215,27 +216,27 @@ docker run --rm -v /var/run/docker.sock:/var/run/docker.sock twistlock/scanner:l
 ### Terrascan
 
 
-1- Scan Terraform Files:
+- [ ] Scan Terraform Files:
 
 ```
 terrascan scan -i <path/to/terraform/files>
 ```
 
 
-2- Specify Policy Path
+- [ ] Specify Policy Path
 
 ```
 terrascan scan -p <path/to/policy>
 ```
 
 
-3- Output Scan Results in JSON Format:
+- [ ] Output Scan Results in JSON Format:
 
 ```
 terrascan scan -f json
 ```
 
-4- Ignore Specific Rules or Resources:
+- [ ] Ignore Specific Rules or Resources:
 
 ```
 terrascan scan --skip-rules <rule1,rule2>
@@ -245,21 +246,21 @@ terrascan scan --skip-rules <rule1,rule2>
 ### Tfsec
 
 
-1- Scan Terraform Files
+- [ ] Scan Terraform Files
 
 ```
 tfsec <path/to/terraform/files>
 ```
 
 
-2- Output Scan Results in JSON Format
+- [ ] Output Scan Results in JSON Format
 
 ```
 tfsec --format=json: Generate scan results in JSON format.
 ```
 
 
-3- Ignore Specific Rules or Warnings
+- [ ] Ignore Specific Rules or Warnings
 
 ```
 tfsec --ignore <rule1,rule2>
@@ -478,6 +479,7 @@ Configures a local SOCKS proxy that routes traffic through the Chisel server.
 ```
 chisel client <server_host>:<server_port> -f -S <local_port>
 ```
+
 Description: 
 
 Sets up a reverse tunnel and exposes a local web service through the Chisel server using the HTTP proxy protocol.

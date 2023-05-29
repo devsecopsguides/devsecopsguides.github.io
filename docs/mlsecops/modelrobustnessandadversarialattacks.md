@@ -16,34 +16,34 @@ Assessing and improving the robustness of machine learning models against advers
 ## OWASP Machine Learning Security Verification Standard (MLSVS)
 
 
-1- Familiarize with MLSVS  
+- [ ] Familiarize with MLSVS  
 
 Read the MLSVS documentation available on the OWASP website.
 
-2- Assess Threat Model
+- [ ] Assess Threat Model
 
 Conduct a threat modeling exercise to identify potential security risks and threats in your machine learning system.
 
-3- Verify Model Training Data  Perform data validation and integrity checks on the training dataset to ensure its quality and prevent adversarial tampering.
+- [ ] Verify Model Training Data  Perform data validation and integrity checks on the training dataset to ensure its quality and prevent adversarial tampering.
 
-4- Verify Model Training Process Validate the security measures implemented during the model training process, such as access controls, versioning, and secure storage.
+- [ ] Verify Model Training Process Validate the security measures implemented during the model training process, such as access controls, versioning, and secure storage.
 
-5- Evaluate Model Robustness Test the model against various attack techniques, such as evasion attacks, poisoning attacks, and adversarial inputs, to assess its resilience.
+- [ ] Evaluate Model Robustness Test the model against various attack techniques, such as evasion attacks, poisoning attacks, and adversarial inputs, to assess its resilience.
 
-6- Verify Model Explanations Validate the interpretability and explainability of the model's predictions to ensure transparency and accountability.
+- [ ] Verify Model Explanations Validate the interpretability and explainability of the model's predictions to ensure transparency and accountability.
 
-7- Assess Model Deployment Security  Evaluate the security controls implemented during the deployment of the machine learning model, including access controls, authentication, and encryption.
+- [ ] Assess Model Deployment Security  Evaluate the security controls implemented during the deployment of the machine learning model, including access controls, authentication, and encryption.
 
-8- Monitor Model Performance Establish monitoring mechanisms to detect and mitigate model performance degradation, data drift, and adversarial attacks in real-time.
+- [ ] Monitor Model Performance Establish monitoring mechanisms to detect and mitigate model performance degradation, data drift, and adversarial attacks in real-time.
 
-9- Implement Privacy Protection  Apply privacy-preserving techniques, such as differential privacy, anonymization, or federated learning, to protect sensitive data used in the machine learning system.
+- [ ] Implement Privacy Protection  Apply privacy-preserving techniques, such as differential privacy, anonymization, or federated learning, to protect sensitive data used in the machine learning system.
 
-10- Regularly Update MLSVS Practices  Stay updated with the latest MLSVS guidelines and best practices to adapt to evolving machine learning security threats.
+- [ ] Regularly Update MLSVS Practices  Stay updated with the latest MLSVS guidelines and best practices to adapt to evolving machine learning security threats.
 
 
 ## Supply Chain Security for MLSecOps
 
-1. Install Sigstore
+* **Install Sigstore**
 
 ```
 # Clone the Sigstore repository
@@ -56,7 +56,7 @@ cd sigstore
 make install
 ```
 
-2. Generate and manage cryptographic keys
+* **Generate and manage cryptographic keys**
 
 ```
 # Generate a new key pair
@@ -69,26 +69,26 @@ sigstore key list
 sigstore key set <key-id>
 ```
 
-3. Sign a software artifact
+* **Sign a software artifact**
 
 ```
 # Sign a software artifact using the active key
 sigstore sign <artifact-file>
 ```
 
-4. Verify the signature of a signed artifact:
+* **Verify the signature of a signed artifact:**
 
 ```
 # Verify the signature of a signed artifact
 sigstore verify <signed-artifact-file>
 ```
 
-5. Integrate Sigstore into the supply chain
+* **Integrate Sigstore into the supply chain**
 
 Sigstore can be integrated into various stages of the supply chain, such as during software development, build, deployment, and distribution. For example, you can configure your CI/CD pipeline to sign artifacts with Sigstore after successful builds and verify signatures during deployment.
 
 
-6. Real-world example
+* **Real-world example**
 
 Let's say you have a machine learning model file named "model.pkl" that you want to sign and verify using Sigstore:
 

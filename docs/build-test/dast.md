@@ -14,15 +14,15 @@ DAST tools work by interacting with an application in much the same way as a use
 
 Here are some key features of DAST:
 
-1- Realistic testing: DAST provides a more realistic testing environment than SAST because it tests the application in a running state, simulating how an attacker would interact with it.
+* Realistic testing: DAST provides a more realistic testing environment than SAST because it tests the application in a running state, simulating how an attacker would interact with it.
 
-2- Automation: DAST tools can be automated to provide continuous testing, allowing for faster feedback on vulnerabilities.
+* Automation: DAST tools can be automated to provide continuous testing, allowing for faster feedback on vulnerabilities.
 
-3- Scalability: DAST tools can be scaled to test large and complex applications, making them suitable for enterprise-level testing.
+* Scalability: DAST tools can be scaled to test large and complex applications, making them suitable for enterprise-level testing.
 
-4- Coverage: DAST tools can provide coverage for a wide range of security vulnerabilities, including those that may be difficult to detect through other forms of testing.
+* Coverage: DAST tools can provide coverage for a wide range of security vulnerabilities, including those that may be difficult to detect through other forms of testing.
 
-5- Ease of use: DAST tools are typically easy to use and require minimal setup, making them accessible to developers and security teams.
+* Ease of use: DAST tools are typically easy to use and require minimal setup, making them accessible to developers and security teams.
 
 
 
@@ -39,7 +39,7 @@ Here are some key features of DAST:
 Assuming we have a web application that we want to test for security vulnerabilities using DAST, we can use OWASP ZAP, an open-source web application security scanner, in our pipeline.
 
 
-1- First, we need to install OWASP ZAP and configure it with our web application. This can be done by running the following commands in the pipeline:
+1- **First, we need to install OWASP ZAP and configure it with our web application. This can be done by running the following commands in the pipeline:**
 
 ```
 - name: Install OWASP ZAP
@@ -55,7 +55,7 @@ Assuming we have a web application that we want to test for security vulnerabili
 
 ```
 
-2- Next, we need to run the security scan using OWASP ZAP. This can be done by running the following command in the pipeline:
+2- **Next, we need to run the security scan using OWASP ZAP. This can be done by running the following command in the pipeline:**
 
 ```
 - name: Run OWASP ZAP scan
@@ -67,7 +67,7 @@ Assuming we have a web application that we want to test for security vulnerabili
 
 This will start the OWASP ZAP spider to crawl the web application and then run an active scan to identify security vulnerabilities.
 
-3- Finally, we need to generate a report of the security scan results. This can be done by running the following command in the pipeline:
+3- **Finally, we need to generate a report of the security scan results. This can be done by running the following command in the pipeline:**
 
 ```
 - name: Generate OWASP ZAP report
