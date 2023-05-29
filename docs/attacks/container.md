@@ -23,63 +23,63 @@ Using container images that contain vulnerable or outdated software components, 
 
 ### Malicious Images via Aqua
 
-docker-network-bridge-
-ipv6:0.0.2
-docker-network-bridge-
-ipv6:0.0.1
-docker-network-ipv6:0.0.12
-ubuntu:latest
-ubuntu:latest
-ubuntu:18.04
-busybox:latest
-alpine: latest
-alpine-curl
-xmrig:latest
-alpine: 3.13
-dockgeddon: latest
-tornadorangepwn:latest
-jaganod: latest
-redis: latest
-gin: latest (built on host)
-dockgeddon:latest
-fcminer: latest
-debian:latest
-borg:latest
-docked:latestk8s.gcr.io/pause:0.8
-dockgeddon:latest
-stage2: latest
-dockerlan:latest
-wayren:latest
-basicxmr:latest
-simpledockerxmr:latest
-wscopescan:latest
-small: latest
-app:latest
-Monero-miner: latest
-utnubu:latest
-vbuntu:latest
-swarm-agents:latest
-scope: 1.13.2
-apache:latest
-kimura: 1.0
-xmrig: latest
-sandeep078: latest
-tntbbo:latest
-kuben2
+* docker-network-bridge-
+* ipv6:0.0.2
+* docker-network-bridge-
+* ipv6:0.0.1
+* docker-network-ipv6:0.0.12
+* ubuntu:latest
+* ubuntu:latest
+* ubuntu:18.04
+* busybox:latest
+* alpine: latest
+* alpine-curl
+* xmrig:latest
+* alpine: 3.13
+* dockgeddon: latest
+* tornadorangepwn:latest
+* jaganod: latest
+* redis: latest
+* gin: latest (built on host)
+* dockgeddon:latest
+* fcminer: latest
+* debian:latest
+* borg:latest
+* docked:latestk8s.gcr.io/pause:0.8
+* dockgeddon:latest
+* stage2: latest
+* dockerlan:latest
+* wayren:latest
+* basicxmr:latest
+* simpledockerxmr:latest
+* wscopescan:latest
+* small: latest
+* app:latest
+* Monero-miner: latest
+* utnubu:latest
+* vbuntu:latest
+* swarm-agents:latest
+* scope: 1.13.2
+* apache:latest
+* kimura: 1.0
+* xmrig: latest
+* sandeep078: latest
+* tntbbo:latest
+* kuben2
 
 
 ### Other Images
 
-OfficialImagee
-Ubuntuu
-Cent0S
-Alp1ne
-Pythoon
+* OfficialImagee
+* Ubuntuu
+* Cent0S
+* Alp1ne
+* Pythoon
 
 
 
 
-## Privileged Container: 
+## Privileged Container
 
 Running containers with elevated privileges, allowing potential attackers to gain control over the underlying host system. Example: Running a container with root-level access and unrestricted capabilities.
 
@@ -110,7 +110,7 @@ FROM ubuntu
 RUN docker run -it ubuntu /bin/bash
 ```
 
-## Exposed Container APIs: 
+## Exposed Container APIs 
 
 Insecurely exposing container APIs without proper authentication or access controls, allowing attackers to manipulate or extract sensitive information from containers. Example: Exposing Docker API without any authentication or encryption.
 
@@ -149,7 +149,7 @@ EXPOSE 8080
 ```
 
 
-## Container Escape:
+## Container Escape
 
 Exploiting vulnerabilities in the container runtime or misconfigurations to break out of the container's isolation and gain unauthorized access to the host operating system. Example: Exploiting a vulnerability in the container runtime to access the host system and other containers.
 
@@ -191,7 +191,7 @@ container.start
 ```
 
 
-## Container Image Tampering: 
+## Container Image Tampering
 
 Modifying or replacing container images with malicious versions that may contain malware, backdoors, or vulnerable components. Example: Tampering with a container image to inject malicious code that steals sensitive information.
 
@@ -238,7 +238,7 @@ container = Docker::Container.create('Image' => image.id)
 container.start
 ```
 
-## Insecure Container Configuration: 
+## Insecure Container Configuration
 
 Misconfigurations in container settings, such as weak access controls or excessive permissions, allowing attackers to compromise the container or its environment. Example: Running a container with unnecessary capabilities or insecure mount points.
 
@@ -284,7 +284,7 @@ container.start
 
 
 
-## Denial-of-Service (DoS): 
+## Denial-of-Service (DoS)
 
 Overloading container resources or exploiting vulnerabilities in the container runtime to disrupt the availability of containerized applications. Example: Launching a DoS attack against a container by overwhelming it with excessive requests.
 
@@ -327,7 +327,7 @@ services:
 ```
 
 
-## Kernel Vulnerabilities: 
+## Kernel Vulnerabilities
 
 Exploiting vulnerabilities in the kernel or host operating system to gain unauthorized access or control over containers. Example: Exploiting a kernel vulnerability to escalate privileges and compromise containers.
 
@@ -360,7 +360,7 @@ In the compliant code snippet, the kubehunter tool is used to perform a vulnerab
 
 
 
-## Shared Kernel Exploitation: 
+## Shared Kernel Exploitation
 
 Containers sharing the same kernel can be vulnerable to attacks that exploit kernel vulnerabilities, allowing attackers to affect multiple containers. Example: Exploiting a kernel vulnerability to gain unauthorized access to multiple containers on the same host.
 
@@ -399,7 +399,7 @@ CMD ["secure-app"]
 ```
 
 
-## Insecure Container Orchestration: 
+## Insecure Container Orchestration
 
 Misconfigurations or vulnerabilities in container orchestration platforms, such as Kubernetes, can lead to unauthorized access, privilege escalation, or exposure of sensitive information. Example: Exploiting a misconfigured Kubernetes cluster to gain unauthorized access to sensitive resources.
 
