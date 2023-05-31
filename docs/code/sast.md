@@ -315,8 +315,14 @@ mvn org.cyclonedx:cyclonedx-maven-plugin:makeBom --format XML
 ```
 
 
+## Retire.js
 
 
+You can use the Retire.js CLI to scan a directory or a specific JavaScript file. Here's an example command to scan a directory:
 
+
+```
+retire --path <directory-path>
+```
 
 

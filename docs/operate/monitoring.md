@@ -514,10 +514,189 @@ application analyze --name="My Application":
 
 
 
+## Alerta
+
+### Send a new alert
+
+Create and send a new alert to the Alerta system
+
+```
+curl -X POST -H "Content-Type: application/json" -d '{
+  "resource": "webserver1",
+  "event": "High CPU Usage",
+  "environment": "Production",
+  "severity": "major",
+  "service": ["Web Servers"],
+  "text": "High CPU usage detected on webserver1"
+}' https://your-alerta-url/api/alert
+```
+
+
+
+### Query alerts
+
+Retrieve alerts based on specific criteria
+
+
+```
+curl -X GET "https://your-alerta-url/api/alert?status=open&severity=major"
+```
 
 
 
 
+### Update an alert
+
+Update the details or status of an existing alert
+
+
+```
+curl -X PUT -H "Content-Type: application/json" -d '{
+  "status": "ack",
+  "note": "Investigating the issue..."
+}' https://your-alerta-url/api/alert/<alert_id>
+```
+
+
+
+### Delete an alert
+
+Delete an existing alert from the Alerta system
+
+```
+curl -X DELETE https://your-alerta-url/api/alert/<alert_id>
+```
+
+
+
+### Get alert history
+
+Retrieve the history of changes for a specific alert.
+
+
+```
+curl -X GET https://your-alerta-url/api/alert/<alert_id>/history
+```
+
+
+
+## ChatOps
+
+### Element
+
+#### Creating a New Matrix Account
+
+```
+# Riot
+riot-web
+
+# Element
+element-web
+```
+
+#### Joining a Matrix Chat Room
+
+```
+# Riot
+riot-web --url "https://matrix.org" --room "room_id"
+
+# Element
+element-web --url "https://matrix.org" --room "room_id"
+```
+
+#### Sending a Message in a Matrix Chat Room
+
+```
+# Riot
+riot-web --url "https://matrix.org" --room "room_id" --message "Hello, World!"
+
+# Element
+element-web --url "https://matrix.org" --room "room_id" --message "Hello, World!"
+```
+
+#### Displaying Room Details in Matrix
+
+```
+# Riot
+riot-web --url "https://matrix.org" --room "room_id" --details
+
+# Element
+element-web --url "https://matrix.org" --room "room_id" --details
+```
+
+#### Creating a New Matrix User
+
+```
+# Riot
+riot-web --url "https://matrix.org" --register --username "new_user" --password "password"
+
+# Element
+element-web --url "https://matrix.org" --register --username "new_user" --password "password"
+```
+
+#### Send a deployment notification to a chat room
+
+```
+# Riot
+riot-web --url "https://matrix.org" --room "room_id" --message "Deployment successful!"
+
+# Element
+element-web --url "https://matrix.org" --room "room_id" --message "Deployment successful!"
+```
+
+
+#### Trigger a CI/CD pipeline from a chat room
+
+```
+# Riot
+riot-web --url "https://matrix.org" --room "room_id" --message "!pipeline deploy"
+
+# Element
+element-web --url "https://matrix.org" --room "room_id" --message "!pipeline deploy"
+```
+
+#### Execute a command on a remote server from a chat room
+
+```
+# Riot
+riot-web --url "https://matrix.org" --room "room_id" --message "!exec ssh user@server 'ls -l'"
+
+# Element
+element-web --url "https://matrix.org" --room "room_id" --message "!exec ssh user@server 'ls -l'"
+```
+
+
+### Slack
+
+#### Send a deployment notification to a Slack channel:
+
+```
+slackcli --channel "#channel_name" --message "Deployment successful!"
+```
+
+#### Trigger a CI/CD pipeline from a Slack channel:
+
+```
+slackcli --channel "#channel_name" --message "!pipeline deploy"
+```
+
+#### Execute a command on a remote server from a Slack channel:
+
+```
+slackcli --channel "#channel_name" --message "!exec ssh user@server 'ls -l'"
+```
+
+#### Request a status update from an external service in a Slack channel:
+
+```
+slackcli --channel "#channel_name" --message "!status check"
+```
+
+#### Create a new ticket in a ticketing system from a Slack channel:
+
+```
+slackcli --channel "#channel_name" --message "!ticket create 'New issue: Need assistance'"
+```
 
 
 
