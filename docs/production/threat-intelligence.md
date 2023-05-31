@@ -25,9 +25,174 @@ Some of the key benefits of threat intelligence in DevSecOps include:
 
 
 
+## PCR
+
+
+* **Priority:** The priority of the Post Collection Request (PCR) should be determined by considering multiple factors and information. It is recommended to establish priority based on a combination of several criteria. One important factor to consider is the customer who is requesting the intelligence. For instance, if the request comes from the Chief Information Security Officer (CISO), it would be considered more significant compared to a request from a senior network engineer. Furthermore, priority can be influenced by the specific industry vertical being focused on. For example, if the request is made by a CTI analyst working for a bank, the collection manager would likely prioritize intelligence collection based on the common threats faced by the banking industry. By taking into account these various factors, the PCR can be assigned the appropriate level of priority.
+
+
+
+When determining the priority of intelligence collection, there are several key factors to consider. These include the customer's requirements, the desired output or outcome of the collection, the timing interval for the request, and the feasibility of carrying out the request with the available collection systems. While there is no one-size-fits-all approach to priority, these considerations play a crucial role in determining the order in which requests are addressed. In later chapters, the topic of priority will be explored further, particularly in relation to surveying the specific needs of an organization and its collection operations.
+
+
+
+
+
+
+* **Key:** The key serves as a distinct identifier that can be utilized in conjunction with other systems for reference and tracking purposes. It can be generated automatically, like a primary key, or combined with unique identifiers to provide additional information about the type or priority of the collection. By examining the expanded key, such as PCR-001-P-BIN-FIN-P1, an organization can easily discern the nature and significance of the collection.
+
+
+
+
+![Operationalizing Threat Intelligence A guide to developing and operationalizing cyber threat intelligence programs](../../../assets/images/pcr.png)
+
+
+## The collection operations life cycle
+
+Effective intelligence-gathering requires careful planning, taking into account established collection priorities, special requests for information (RFIs), and regular administration of collection operations. Proper planning ensures that data is collected in a way that aligns with the organization's intelligence-gathering needs.
+
+
+
+![Operationalizing Threat Intelligence A guide to developing and operationalizing cyber threat intelligence programs](../../../assets/images/collection.png)
+
+
+### People
+
+To meet the organization's needs, it is important to have a defined Priority Collection Requirement (PCR) and assess whether the organization has the right personnel to execute the collection. Personnel evaluation in this context can be divided into three categories: technical skills, language proficiency, and subject matter expertise (SME) focus area. These categories help the collection manager determine if the personnel have the necessary qualifications for effective collection.
+
+
+
+
+* Technical discipline: In many cases, collection operations can be effectively carried out with the right technical skills, particularly for passive and hybrid collection operations. These types of operations primarily rely on technical expertise to gather information, rather than actively engaging with vetted-access communities or developing sources through direct engagement. The collection manager's main consideration is to ensure that the personnel assigned to the collection possess the necessary technical skills to acquire the desired data.
+
+
+* Language requirement: Language skills can play a vital role in collection operations for several reasons. Firstly, if the information being collected is in a specific language, having someone who can read and interpret that language is essential to extract the relevant details. Additionally, language skills become necessary when conducting collection efforts in vetted-access communities that primarily communicate in a particular language. Moreover, these skills are crucial when engaging actively with sources or attempting to recruit individuals. If the intelligence gathering requires a regional focus, collection personnel may need to be native speakers with cultural and regional understanding to effectively carry out the operations.
+
+
+
+
+
+
+* SME focus area: In addition to technical and language skills, the collection manager should also assess whether the collector needs to have subject matter expertise (SME) in a specific threat area. It is common for individuals in the CTI industry to specialize in areas such as ransomware, banking trojans, nation-state threats, or advanced persistent threats (APTs). If a collector possesses specialized expertise in a particular threat area, it is advisable to assign them to the collection operation rather than someone with only general knowledge of that threat type. This ensures that the collection efforts benefit from the in-depth understanding and insights provided by an SME.
+
+
+
+
+
+### Process
+
+Once the collection manager has identified the suitable personnel for a collection operation, they should collaborate with the collection team to develop the operational plan. This involves considering several key factors that are crucial for a successful intelligence gathering. These factors will be discussed in the following sections.
+
+
+
+
+* OPSEC: we talked about the
+The OPSEC (Operations Security) process is of utmost importance and should be ingrained in the culture of the group. During operations planning, the collection manager should go through the OPSEC processes and procedures with the collection team. This ensures that the team understands the significance of OPSEC and prevents them from becoming complacent or feeling overly secure during the execution of the operation. By incorporating OPSEC into the planning phase, the team remains vigilant and maintains a strong focus on protecting sensitive information and maintaining operational security.
+
+
+
+* Review any current intelligence: During the development of the operations plan, it is important for the collection manager and team to thoroughly review all intelligence holdings related to the desired data and its source. This review provides valuable information about the collection process, the specific environment where the collection will take place, and details about the source of information. By conducting this review, the collection team gains a deeper understanding of the collection requirements and can effectively tailor their approach to ensure successful data acquisition.
+
+
+
+* Be cognizant of operation branches or sequels: When planning collection operations, it is crucial to consider the history of previous data collection from a specific source location. This history can provide valuable insights into the operations of the collection team and the story it tells. For example, it may reveal patterns such as repeated use of certain IP ranges or VPNs, which could indicate tracking of user information. In more complex scenarios, such as collecting from dark markets or hacking forums, the collection team must carefully assess their history in those locations. They need to consider factors such as existing personas, any incidents that may have compromised their identities, and the potential for setting up multiple collection operations. Understanding the history of collection from a source location is essential for effective operations planning.
+
+
+
+
+
+
+### Tools and technology
+
+After ensuring the availability of suitable personnel and conducting thorough planning, the collection manager should focus on the technology and infrastructure required for the operations plan. This includes evaluating the necessary collection tools and systems. Collection tools refer to the specific software or hardware used to gather intelligence, while collection systems encompass the broader infrastructure needed to support operational security (OPSEC) and collection requirements. It is essential for the collection manager to assess whether the team has access to the appropriate technologies and infrastructure to effectively carry out the collection activities.
+
+
+
+
+
+
+
+
+## Lockheed's Martin Cyber Kill Chain
+
+![Lockheed's Martin Cyber Kill Chain](../../../assets/images/lock_kill.png)
+
+### Reconnaissance:
+
+* Example: An attacker gathers information about the target organization using publicly available sources, social media, or other reconnaissance techniques.
+
+* Cheatsheet commands and tools:
+	* WHOIS lookup: `whois <target>`
+	* DNS enumeration: `nslookup <target>`
+	* Google dorking: `site:<target>`
+
+### Weaponization:
+
+* Example: The attacker crafts or obtains a malicious payload, such as a malware or exploit, to deliver to the target.
+
+* Cheatsheet commands and tools:
+	* Metasploit Framework: `msfvenom -p <payload> -f <format> -o <output>`
+	* Veil-Evasion: `veil-evasion`
+
+### Delivery:
+
+* Example: The attacker delivers the weaponized payload to the target through various methods, such as email attachments, compromised websites, or social engineering.
+
+* Cheatsheet commands and tools:
+	* Phishing email generation: GoPhish, SET
+	* Malicious website hosting: Apache, Nginx
+	* Exploit kits: Blackhole, Angler
+
+### Exploitation:
+
+* Example: The attacker takes advantage of vulnerabilities in the target's system or applications to gain unauthorized access.
+
+* Cheatsheet commands and tools:
+	* Exploitation frameworks: Metasploit, ExploitDB
+	* Exploit development: Python, Ruby, C/C++
+	* Web application scanners: Nessus, Nikto
+
+### Installation:
+
+* Example: The attacker installs backdoors, remote access tools, or other malicious software to establish persistence and maintain control over the compromised system.
+
+* Cheatsheet commands and tools:
+	* Remote administration tools: Netcat, TeamViewer
+	* Remote access trojans (RATs): DarkComet, Poison Ivy
+	* Fileless malware: PowerShell, WMI
+
+### Command and Control (C2):
+
+* Example: The attacker establishes communication channels with the compromised system to remotely control and manage the attack.
+
+* Cheatsheet commands and tools:
+	* C2 frameworks: Cobalt Strike, Metasploit
+	* Encrypted communication: TOR, SSL/TLS
+	* DNS-based communication: Dnsmasq, Dnscat2
+
+### Actions on Objectives:
+
+* Example: The attacker achieves their intended goals, which could include data theft, privilege escalation, further network compromise, or disruption of services.
+
+* Cheatsheet commands and tools:
+	* Data exfiltration: FTP, SCP, Steganography
+	* Privilege escalation: sudo, PowerSploit
+	* Network propagation: EternalBlue, WannaCry
+
+### Lateral Movement:
+
+* Example: The attacker moves laterally within the network, searching for additional targets or systems to compromise.
+
+* Cheatsheet commands and tools:
+	* Network scanning: Nmap, Masscan
+	* Credential theft: Mimikatz, Responder
+	* Pass-the-Hash: Psexec, PsExecWrapper
+
+
+
 ## DevOps threat matrix
 
-![Microsoft DevOps Threat](./assets/images/microsoft-devops-threat.png)
+![Microsoft DevOps Threat](../../../assets/images/microsoft_devops_threat.png)
 
 A DevOps Threat Matrix is a comprehensive framework or resource that identifies and categorizes potential security threats and risks associated with implementing DevOps practices. It aims to provide organizations with insights into the security challenges they may encounter while adopting a DevOps approach and offers guidance on mitigating these risks.
 

@@ -29,6 +29,46 @@ permalink: resources
 
 
 
+### Practical Threat Intelligence and Data-Driven Threat Hunting: A hands-on guide to threat hunting with the ATT&CK™ Framework and open source tools
+
+
+<img src="../../assets/images/pti.jpg" alt="" style="width: 260px;">
+
+
+Get to grips with cyber threat intelligence and data-driven threat hunting while exploring expert tips and techniques
+
+
+[Practical Threat Intelligence and Data-Driven Threat Hunting](https://www.amazon.com/Practical-Threat-Hunting/dp/1838556370){: .btn .btn-purple .mr-2 }
+
+
+
+### Operationalizing Threat Intelligence: A guide to developing and operationalizing cyber threat intelligence programs
+
+
+<img src="../../assets/images/op_ti.jpg" alt="" style="width: 260px;">
+
+
+Learn cyber threat intelligence fundamentals to implement and operationalize an organizational intelligence program
+
+
+[Operationalizing Threat Intelligence](https://www.amazon.com/Operationalizing-Threat-Intelligence-operationalizing-intelligence/dp/1801814686){: .btn .btn-purple .mr-2 }
+
+
+
+### Web Application Security: Exploitation and Countermeasures for Modern Web Applications
+
+
+<img src="../../assets/images/was.png" alt="" style="width: 260px;">
+
+
+While many resources for network and IT security are available, detailed knowledge regarding modern web application security has been lacking―until now. This practical guide provides both offensive and defensive security concepts that software engineers can easily learn and apply.
+
+
+
+[Web Application Security: Exploitation and Countermeasures for Modern Web Applications](https://www.amazon.com/Web-Application-Security-Exploitation-Countermeasures/dp/1492053112){: .btn .btn-purple .mr-2 }
+
+
+
 ### Practical Application Security
 
 
