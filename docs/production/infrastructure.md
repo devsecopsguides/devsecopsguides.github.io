@@ -570,5 +570,180 @@ chisel client <server_host>:<server_port> --ping
 ```
 
 
+## Incident Management
+
+
+
+
+### PagerDuty
+
+
+
+```
+import requests
+
+def trigger_pagerduty_incident(service_key, description, details):
+    url = "https://events.pagerduty.com/v2/enqueue"
+    payload = {
+        "routing_key": service_key,
+        "event_action": "trigger",
+        "payload": {
+            "summary": description,
+            "severity": "error",
+            "source": "vulnerability-scanner",
+            "custom_details": details
+        }
+    }
+    headers = {
+        "Content-Type": "application/json"
+    }
+
+    response = requests.post(url, json=payload, headers=headers)
+    if response.status_code == 202:
+        print("PagerDuty incident triggered successfully")
+    else:
+        print("Failed to trigger PagerDuty incident")
+
+# Usage example:
+service_key = "YOUR_PAGERDUTY_SERVICE_KEY"
+description = "Critical vulnerability detected"
+details = {
+    "scan_target": "example.com",
+    "vulnerability_description": "CVE-2023-1234",
+    "remediation_steps": "Update library version to 2.0.1"
+}
+
+trigger_pagerduty_incident(service_key, description, details)
+```
+
+
+
+In this example, the trigger_pagerduty_incident function sends a PagerDuty event to trigger an incident. It includes a summary, severity, source, and custom details such as the scan target, vulnerability description, and suggested remediation steps.
+
+
+Then we have defined three incident rules based on different vulnerability priorities: Critical, Medium, and Low. Each rule specifies a condition based on the priority field, and if the condition is met, corresponding actions are triggered.
+
+
+```
+incident_rules:
+  - name: Critical Vulnerability
+    description: Notify the Security Team for critical vulnerabilities
+    conditions:
+      - field: priority
+        operation: equals
+        value: P1
+    actions:
+      - type: notify-team
+        team: Security Team
+        message: "Critical vulnerability detected. Please investigate and take immediate action."
+      - type: add-note
+        content: "Critical vulnerability detected. Incident created for further investigation."
+  - name: Medium Vulnerability
+    description: Notify the Development Team for medium vulnerabilities
+    conditions:
+      - field: priority
+        operation: equals
+        value: P2
+    actions:
+      - type: notify-team
+        team: Development Team
+        message: "Medium vulnerability detected. Please review and prioritize for remediation."
+      - type: add-note
+        content: "Medium vulnerability detected. Incident created for further review."
+  - name: Low Vulnerability
+    description: Notify the Operations Team for low vulnerabilities
+    conditions:
+      - field: priority
+        operation: equals
+        value: P3
+    actions:
+      - type: notify-team
+        team: Operations Team
+        message: "Low vulnerability detected. Please assess and plan for future updates."
+      - type: add-note
+        content: "Low vulnerability detected. Incident created for tracking and monitoring."
+```
+
+
+
+### Opsgenie
+
+
+```
+import requests
+
+def create_opsgenie_alert(api_key, message, priority, details):
+    url = "https://api.opsgenie.com/v2/alerts"
+    headers = {
+        "Content-Type": "application/json",
+        "Authorization": f"GenieKey {api_key}"
+    }
+    payload = {
+        "message": message,
+        "priority": priority,
+        "details": details
+    }
+
+    response = requests.post(url, json=payload, headers=headers)
+    if response.status_code == 202:
+        print("Opsgenie alert created successfully")
+    else:
+        print("Failed to create Opsgenie alert")
+
+# Usage example:
+api_key = "YOUR_OPSGENIE_API_KEY"
+message = "Critical vulnerability detected"
+priority = "P1"
+details = {
+    "scan_target": "example.com",
+    "vulnerability_description": "CVE-2023-1234",
+    "remediation_steps": "Update library version to 2.0.1"
+}
+
+create_opsgenie_alert(api_key, message, priority, details)
+```
+
+
+In this example, the create_opsgenie_alert function sends an alert to Opsgenie, specifying the message, priority, and additional details such as the scan target, vulnerability description, and suggested remediation steps.
+
+
+
+Then we have defined three incident rules based on different vulnerability priorities: Critical, Medium, and Low. Each rule specifies a condition based on the priority field, and if the condition is met, corresponding actions are triggered.
+
+
+```
+rules:
+  - name: Critical Vulnerability
+    description: Notify the Security Team for critical vulnerabilities
+    condition: priority == "P1"
+    actions:
+      - notify-team:
+          name: Security Team
+          message: "Critical vulnerability detected. Please investigate and take immediate action."
+      - add-note:
+          content: "Critical vulnerability detected. Incident created for further investigation."
+  - name: Medium Vulnerability
+    description: Notify the Development Team for medium vulnerabilities
+    condition: priority == "P2"
+    actions:
+      - notify-team:
+          name: Development Team
+          message: "Medium vulnerability detected. Please review and prioritize for remediation."
+      - add-note:
+          content: "Medium vulnerability detected. Incident created for further review."
+  - name: Low Vulnerability
+    description: Notify the Operations Team for low vulnerabilities
+    condition: priority == "P3"
+    actions:
+      - notify-team:
+          name: Operations Team
+          message: "Low vulnerability detected. Please assess and plan for future updates."
+      - add-note:
+          content: "Low vulnerability detected. Incident created for tracking and monitoring."
+```
+
+
+
+
 
 
