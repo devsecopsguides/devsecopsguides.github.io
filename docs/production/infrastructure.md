@@ -1053,6 +1053,128 @@ func secureImageTransmission(manifest v1.Manifest) error {
 
 
 
+## API Umbrella and Kong
+
+
+### Rate Limiting
+
+
+```
+curl -X PUT \
+  -H "Content-Type: application/json" \
+  -H "X-Admin-Auth-Token: YOUR_ADMIN_AUTH_TOKEN" \
+  -d '{
+    "settings": {
+      "rate_limit_mode": "custom",
+      "rate_limits": [
+        {
+          "duration": 1,
+          "limit_by": "ip",
+          "limit": 100
+        }
+      ]
+    }
+  }' \
+  https://your-api-umbrella-host/admin/api/settings
+```
+
+
+
+
+
+### Authentication and Authorization
+
+
+```
+curl -X POST \
+  -H "Content-Type: application/json" \
+  -d '{
+    "name": "jwt-auth",
+    "config": {
+      "uri_param_names": ["token"],
+      "secret_is_base64": false
+    },
+    "plugin": "jwt"
+  }' \
+  http://localhost:8001/services/{service_id}/plugins
+```
+
+
+
+
+
+### SSL/TLS Termination
+
+
+```
+curl -X PUT \
+  -H "Content-Type: application/json" \
+  -H "X-Admin-Auth-Token: YOUR_ADMIN_AUTH_TOKEN" \
+  -d '{
+    "frontend_host": "your-api.example.com",
+    "backend_protocol": "https",
+    "backend_ssl_cert": "YOUR_SSL_CERT",
+    "backend_ssl_key": "YOUR_SSL_KEY"
+  }' \
+  https://your-api-umbrella-host/admin/api/services/{service_id}
+```
+
+
+
+
+
+### Logging and Monitoring
+
+
+```
+curl -X POST \
+  -H "Content-Type: application/json" \
+  -d '{
+    "name": "file-log",
+    "config": {
+      "path": "/var/log/kong/access.log"
+    },
+    "plugin": "file-log"
+  }' \
+  http://localhost:8001/services/{service_id}/plugins
+```
+
+
+
+
+
+### API Key Management
+
+
+```
+curl -X POST \
+  -H "Content-Type: application/json" \
+  -H "X-Admin-Auth-Token: YOUR_ADMIN_AUTH_TOKEN" \
+  -d '{
+    "api_key": {
+      "user_id": "your-user-id",
+      "key": "your-api-key",
+      "created_at": "2022-01-01T00:00:00Z"
+    }
+  }' \
+  https://your-api-umbrella-host/admin/api/api_keys
+```
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 

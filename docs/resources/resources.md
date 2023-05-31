@@ -114,14 +114,14 @@ Knowledge base in cybersecurity, administration and secure development
 
 ### sottlmarek DevSecOps
 
-[sottlmarek DevSecOps](https://github.com/sottlmarek/DevSecOps)
+[sottlmarek DevSecOps](https://github.com/sottlmarek/DevSecOps){: .btn .btn-purple .mr-2 }
 
 
 
 ### AcalephStorage Awesome DevSecOps
 
 
-[AcalephStorage Awesome DevSecOps](https://github.com/AcalephStorage/awesome-devops)
+[AcalephStorage Awesome DevSecOps](https://github.com/AcalephStorage/awesome-devops){: .btn .btn-purple .mr-2 }
 
 
 
@@ -130,7 +130,7 @@ Knowledge base in cybersecurity, administration and secure development
 
 
 [wmariuss Awesome DevOps](
-https://github.com/wmariuss/awesome-devops#api-gateway)
+https://github.com/wmariuss/awesome-devops#api-gateway){: .btn .btn-purple .mr-2 }
 
 
 

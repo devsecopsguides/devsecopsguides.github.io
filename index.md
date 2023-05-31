@@ -43,8 +43,13 @@ Our guides are written by experts in the field of DevSecOps, and are designed to
 
 ### Contributing
 
+Your Questions? This DevSecOps Guides could be answer this.
+
 When contributing to this repository, please first discuss the change you wish to make via issue,
-email, or any other method with the owners of this repository before making a change. Read more about becoming a contributor in [our GitHub repo](https://github.com/devsecopsguides/devsecopsguides.github.io).
+email, or any other method with the owners of this repository before making a change. 
+
+Read more about becoming a contributor in [our GitHub repo](https://github.com/devsecopsguides/devsecopsguides.github.io).
+
 
 1. Serve Project
 

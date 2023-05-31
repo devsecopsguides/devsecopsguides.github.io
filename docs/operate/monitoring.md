@@ -778,9 +778,96 @@ sensuctl filter create myfilter --action allow --expressions "event.Entity.Envir
 
 
 
+## Steampipe
+
+
+### Check for open security groups in AWS
+
+```
+select
+    aws_vpc.vpc_id,
+    aws_security_group.group_id,
+    aws_security_group.group_name,
+    aws_security_group.description
+from
+    aws_security_group
+    inner join aws_vpc on aws_security_group.vpc_id = aws_vpc.vpc_id
+where
+    aws_security_group.security_group_status = 'active'
+    and aws_security_group.group_name != 'default'
+    and aws_security_group.ip_permissions_egress = '0.0.0.0/0'
+```
+
+
+### Check for public S3 buckets in AWS
+
+```
+select
+    aws_s3_bucket.bucket_name,
+    aws_s3_bucket.creation_date,
+    aws_s3_bucket.owner_id,
+    aws_s3_bucket.owner_display_name
+from
+    aws_s3_bucket
+where
+    aws_s3_bucket.acl = 'public-read' or aws_s3_bucket.acl = 'public-read-write'
+```
+
+
+### Check for unencrypted RDS instances in AWS
+
+```
+select
+    aws_rds_db_instance.db_instance_identifier,
+    aws_rds_db_instance.encrypted,
+    aws_rds_db_instance.engine,
+    aws_rds_db_instance.engine_version
+from
+    aws_rds_db_instance
+where
+    aws_rds_db_instance.encrypted = false
+```
+
+
+### Check for outdated Docker images in Docker Hub
+
+```
+select
+    docker_hub_image.namespace,
+    docker_hub_image.name,
+    docker_hub_image.tag,
+    docker_hub_image.image_created
+from
+    docker_hub_image
+where
+    docker_hub_image.image_created < date_sub(current_date, interval 30 day)
+```
 
 
 
+
+### Check for unused IAM access keys in AWS
+
+```
+select
+    aws_iam_access_key.access_key_id,
+    aws_iam_access_key.user_name,
+    aws_iam_access_key.create_date,
+    aws_iam_access_key.status
+from
+    aws_iam_access_key
+where
+    aws_iam_access_key.status = 'Active'
+    and not exists (
+        select
+            1
+        from
+            aws_iam_user
+        where
+            aws_iam_user.user_name = aws_iam_access_key.user_name
+            and aws_iam_user.user_enabled = true
+    )
+```
 
 
 
