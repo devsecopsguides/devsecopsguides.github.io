@@ -7,6 +7,14 @@ parent: Production
 # Infrastructure
 {: .no_toc }
 
+## Table of contents
+{: .no_toc .text-delta }
+
+1. TOC
+{:toc}
+
+---
+
 
 ## Service Mesh
 
@@ -150,6 +158,65 @@ Scan Kubernetes YAML Files:
 
 ```
 kube-linter lint <path/to/kubernetes/yaml/files>
+```
+
+
+### Helm
+
+
+- [ ] Validate Chart Signatures
+
+Helm supports chart signing using cryptographic signatures. It is recommended to validate the signatures of the charts you download before deploying them to ensure they haven't been tampered with. You can use the helm verify command to verify the chart signature.
+
+```
+helm verify <chart-name>
+```
+
+- [ ] Limit Chart Sources
+
+To minimize the risk of downloading malicious or insecure charts, it's best to limit the sources from which you fetch charts. You can configure your Helm repositories to only allow trusted sources by modifying the repositories.yaml file.
+
+
+```
+helm repo list
+helm repo remove <repository-name>
+```
+
+- [ ] Scan Charts for Vulnerabilities
+
+Before deploying a chart, it's crucial to scan it for known vulnerabilities. Tools like Trivy or Anchore Engine can help you perform vulnerability scanning on Helm charts.
+
+```
+trivy <chart-path>
+```
+
+- [ ] Enable RBAC
+
+
+Helm allows you to enable Role-Based Access Control (RBAC) to control access to the cluster and restrict who can perform Helm operations. Configure RBAC rules to limit the permissions of Helm users and ensure only authorized users can install or upgrade charts.
+
+```
+kubectl create role <role-name> --verb=<allowed-verbs> --resource=<allowed-resources>
+kubectl create rolebinding <role-binding-name> --role=<role-name> --user=<user> --namespace=<namespace>
+```
+
+
+- [ ] Monitor Helm Releases
+
+Regularly monitor the status and changes of your Helm releases. Tools like Helm Operator or Prometheus can help you monitor the health and performance of your Helm deployments.
+
+```
+helm ls
+```
+
+
+
+- [ ] Scanning Helm Charts with Trivy
+
+Trivy can also scan Helm charts for vulnerabilities before deploying them. Here's an example of using Trivy to scan a Helm chart:
+
+```
+trivy chart <chart-path>
 ```
 
 

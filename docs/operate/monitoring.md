@@ -7,6 +7,14 @@ parent: Operate
 # Monitoring
 {: .no_toc }
 
+## Table of contents
+{: .no_toc .text-delta }
+
+1. TOC
+{:toc}
+
+---
+
 Monitoring in DevSecOps refers to the practice of continuously observing and analyzing an organization's IT systems, applications, and infrastructure to identify potential security issues, detect and respond to security incidents, and ensure compliance with security policies and regulations.
 
 In DevSecOps, monitoring is a critical component of a comprehensive security strategy, allowing organizations to identify and respond to security threats quickly and effectively. Some of the key benefits of monitoring in DevSecOps include:

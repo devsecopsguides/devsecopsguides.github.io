@@ -7,6 +7,14 @@ parent: Operate
 # Virtual Patching
 {: .no_toc }
 
+## Table of contents
+{: .no_toc .text-delta }
+
+1. TOC
+{:toc}
+
+---
+
 
 Virtual patching is a security technique used in DevSecOps to provide temporary protection against known vulnerabilities in software applications or systems. Virtual patching involves the use of security policies, rules, or filters that are applied to network traffic, system logs, or application code to prevent known vulnerabilities from being exploited.
 

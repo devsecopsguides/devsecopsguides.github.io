@@ -7,6 +7,14 @@ parent: Plan & Develop
 # Driver
 {: .no_toc }
 
+## Table of contents
+{: .no_toc .text-delta }
+
+1. TOC
+{:toc}
+
+---
+
 
 
 DevSecOps is a methodology that seeks to integrate security into the software development lifecycle, rather than treating it as a separate process that is bolted on at the end. The goal is to build secure, reliable software that meets the needs of the business, while also protecting sensitive data and critical infrastructure. There are several drivers and challenges associated with implementing DevSecOps, which are outlined below.

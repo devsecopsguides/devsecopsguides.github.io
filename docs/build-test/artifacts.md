@@ -7,6 +7,13 @@ parent: Build & Test
 # Artifacts
 {: .no_toc }
 
+## Table of contents
+{: .no_toc .text-delta }
+
+1. TOC
+{:toc}
+
+---
 
 Artifacts are typically created during the build and deployment process, and are stored in a repository or other storage location so that they can be easily retrieved and deployed as needed. There are a number of methods that can be used to save artifacts in a DevSecOps environment, including:
 

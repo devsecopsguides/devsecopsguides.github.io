@@ -7,6 +7,14 @@ parent: Build & Test
 # Smoke Test
 {: .no_toc }
 
+## Table of contents
+{: .no_toc .text-delta }
+
+1. TOC
+{:toc}
+
+---
+
 
 Smoke tests are typically conducted on a small subset of the application's functionality, and are designed to be quick and easy to execute. They may include basic checks such as verifying that the application can be launched, that key features are functional, and that data is being processed correctly. If the smoke test passes, the application can be considered ready for further testing.
 

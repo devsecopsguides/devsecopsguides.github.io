@@ -7,6 +7,14 @@ parent: Code
 # Secure Pipeline
 {: .no_toc }
 
+## Table of contents
+{: .no_toc .text-delta }
+
+1. TOC
+{:toc}
+
+---
+
 
 
 A secure pipeline is a set of processes and tools used to build, test, and deploy software in a way that prioritizes security at every stage of the development lifecycle. The goal of a secure pipeline is to ensure that applications are thoroughly tested for security vulnerabilities and compliance with security standards before they are released into production.

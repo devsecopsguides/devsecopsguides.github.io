@@ -7,6 +7,14 @@ parent: Plan & Develop
 # Methodology
 {: .no_toc }
 
+## Table of contents
+{: .no_toc .text-delta }
+
+1. TOC
+{:toc}
+
+---
+
 
 
 DevSecOps methodology is an approach to software development that integrates security practices into the software development process from the beginning. The goal of DevSecOps is to make security an integral part of the software development process, rather than an afterthought.

@@ -7,6 +7,14 @@ parent: Build & Test
 # IAST
 {: .no_toc }
 
+## Table of contents
+{: .no_toc .text-delta }
+
+1. TOC
+{:toc}
+
+---
+
 
 IAST stands for Interactive Application Security Testing. It is a type of application security testing that combines the benefits of SAST (Static Application Security Testing) and DAST (Dynamic Application Security Testing) tools.
 

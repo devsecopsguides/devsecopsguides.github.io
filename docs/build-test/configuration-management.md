@@ -7,6 +7,14 @@ parent: Build & Test
 # Configuration Management
 {: .no_toc }
 
+## Table of contents
+{: .no_toc .text-delta }
+
+1. TOC
+{:toc}
+
+---
+
 Configuration management is the process of managing and maintaining the configuration of an application or system in a consistent and reliable manner. In a DevSecOps environment, configuration management is an important component of ensuring that applications are secure and reliable. Here are some common tools and practices used in configuration management in DevSecOps:
 
 
@@ -101,3 +109,73 @@ $ ansible-vault create secrets.yml
 # secrets.yml
 api_key: ABCDEFGHIJKLMNOPQRSTUVWXYZ
 ```
+
+
+
+### SaltStack
+
+
+
+#### Secure File Management
+
+
+SaltStack provides secure file management through the use of the file.managed state module, which ensures the integrity and security of files on Salt Minions.
+
+```
+/etc/sudoers:
+  file.managed:
+    - source: salt://files/sudoers
+    - user: root
+    - group: root
+    - mode: 440
+    - backup: minion
+```
+
+This command manages the /etc/sudoers file on Salt Minions, ensuring that it is sourced from the Salt Master (salt://files/sudoers), owned by the root user and group, has the mode set to 440, and creates a backup of the previous file.
+
+
+#### State Management
+
+SaltStack's state management allows you to define and enforce desired system configurations, ensuring consistency and security across Salt Minions.
+
+
+```
+apache_package_installed:
+  pkg.installed:
+    - name: apache2
+
+apache_service_running:
+  service.running:
+    - name: apache2
+    - enable: True
+```
+
+This command defines two states: apache_package_installed and apache_service_running. The first state ensures that the apache2 package is installed on the Salt Minion, and the second state ensures that the apache2 service is running and enabled.
+
+
+#### Vulnerability Scanning Integration
+
+SaltStack can be integrated with vulnerability scanning tools to identify and remediate vulnerabilities on Salt Minions.
+
+
+```
+openvas_scan:
+  salt.modules.openvas.scan:
+    - target: '*'
+    - report_id: 'scan_report'
+    - create_task: True
+```
+
+This command initiates a vulnerability scan using OpenVAS on all Salt Minions (`target: '*'`). It generates a report with the ID `scan_report` and creates a scan task if it doesn't already exist.
+
+
+
+
+
+
+
+
+
+
+
+

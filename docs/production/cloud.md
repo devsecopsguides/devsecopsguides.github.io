@@ -7,6 +7,16 @@ parent: Production
 ## Cloud Scanning
 {: .no_toc }
 
+
+## Table of contents
+{: .no_toc .text-delta }
+
+1. TOC
+{:toc}
+
+---
+
+
 Cloud scanning in production DevSecOps refers to the process of continuously scanning the production environment of an application deployed on cloud infrastructure for potential security vulnerabilities and threats. This is done to ensure that the application remains secure and compliant with security policies and standards even after it has been deployed to the cloud.
 
 Cloud scanning tools can perform a variety of security scans on the production environment, including vulnerability scanning, penetration testing, and compliance auditing. These tools can help to identify security issues in real-time and provide alerts and notifications to the security team.
@@ -22,31 +32,6 @@ Some of the benefits of cloud scanning in production DevSecOps include:
 4. Reduced risk: Cloud scanning can help to reduce the risk of security breaches and other security incidents by detecting and addressing potential vulnerabilities in the production environment.
 
 
-### AWS Inspector	
-
-A tool that analyzes the behavior and configuration of AWS resources for potential security issues.	
-
-```
-aws inspector start-assessment-run --assessment-template-arn arn:aws:inspector:us-west-2:123456789012:target/0-nvgHXqLm/template/0-iMhM7g4p
-```
-
-
-### Azure Security Center	
-
-A tool that provides threat protection across all of your services and deploys quickly with no infrastructure to manage.	
-
-```
-az security assessment create --location westus --name "Example Assessment" --resource-group "MyResourceGroup" --scope /subscriptions/xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx/resourceGroups/MyResourceGroup/providers/Microsoft.Compute/virtualMachines/myVM
-```
-
-### Google Cloud Security Scanner	
-
-
-A tool that scans your App Engine app for common web vulnerabilities.	
-
-```
-gcloud beta app deploy --no-promote --version staging<br>gcloud beta app gen-config --custom<br>gcloud beta app deploy --config=cloudbuild.yaml --version=v1
-```
 
 
 ### CloudPassage Halo	
@@ -175,6 +160,18 @@ aws securityhub enable-security-hub
 ```
 
 
+#### AWS Inspector	
+
+A tool that analyzes the behavior and configuration of AWS resources for potential security issues.	
+
+```
+aws inspector start-assessment-run --assessment-template-arn arn:aws:inspector:us-west-2:123456789012:target/0-nvgHXqLm/template/0-iMhM7g4p
+```
+
+
+
+
+
 ### GCloud
 
 - [ ] Create a Service Account	
@@ -287,6 +284,17 @@ gcloud scc sources create <source-id> --source <source-type> --resource <resourc
 ```
 
 
+
+#### Google Cloud Security Scanner	
+
+
+A tool that scans your App Engine app for common web vulnerabilities.	
+
+```
+gcloud beta app deploy --no-promote --version staging<br>gcloud beta app gen-config --custom<br>gcloud beta app deploy --config=cloudbuild.yaml --version=v1
+```
+
+
 ### Azure
 
 - [ ] Create a Resource Group	
@@ -396,4 +404,12 @@ az ad rms registration create --resource-group <resource-group-name> --tenant-id
 
 ```
 az vm encryption enable --name <vm-name> --resource-group <resource-group-name> --disk-encryption-keyvault <keyvault-name>
+```
+
+#### Azure Security Center	
+
+A tool that provides threat protection across all of your services and deploys quickly with no infrastructure to manage.	
+
+```
+az security assessment create --location westus --name "Example Assessment" --resource-group "MyResourceGroup" --scope /subscriptions/xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx/resourceGroups/MyResourceGroup/providers/Microsoft.Compute/virtualMachines/myVM
 ```

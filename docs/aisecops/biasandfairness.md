@@ -7,6 +7,15 @@ parent: AiSecOps
 # Bias and Fairness
 {: .no_toc }
 
+## Table of contents
+{: .no_toc .text-delta }
+
+1. TOC
+{:toc}
+
+---
+
+
 
 
 Addressing issues related to bias and fairness in AI systems. This includes identifying and mitigating biases in training data, evaluating and measuring fairness metrics, and ensuring equitable outcomes across different demographic groups or protected classes.

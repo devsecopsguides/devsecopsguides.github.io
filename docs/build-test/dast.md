@@ -7,6 +7,14 @@ parent: Build & Test
 # DAST
 {: .no_toc }
 
+## Table of contents
+{: .no_toc .text-delta }
+
+1. TOC
+{:toc}
+
+---
+
 
 DAST stands for Dynamic Application Security Testing. It is a type of application security testing that involves testing an application in a running state to identify security vulnerabilities that may be present.
 
