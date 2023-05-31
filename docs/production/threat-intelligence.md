@@ -647,3 +647,21 @@ An open-source threat intelligence platform that allows you to collect, store, a
 ```
 curl -X POST 'http://misp.local/events/restSearch' -H 'Authorization: YOUR_API_KEY' -H 'Content-Type: application/json' -d '{ "returnFormat": "json", "eventid": [1,2,3], "enforceWarninglist":0 }'
 ```
+
+## Databases
+
+* https://otx.alienvault.com/
+* https://exchange.xforce.ibmcloud.com/
+* https://github.com/certtools/intelmq-feeds-documentation
+* https://sca.analysiscenter.veracode.com/vulnerability-database/search#
+* https://vulmon.com
+* https://github.com/advisories
+
+
+
+
+
+
+
+
+

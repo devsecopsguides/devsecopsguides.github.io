@@ -1806,4 +1806,7 @@ requests:
 
 
 
+### Ref
+
+* https://capec.mitre.org/index.html
 

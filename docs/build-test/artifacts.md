@@ -62,3 +62,57 @@ Include security testing tools in the build process.
 
 
 
+## Nexsus
+
+### Define an Artifact
+
+```
+artifact:
+  name: MyVulnerabilityScan
+  type: vulnerability_scan
+  target: target_host
+```
+
+### Schedule Artifact Execution
+
+```
+artifact_schedule:
+  name: DailyVulnerabilityScan
+  artifact: MyVulnerabilityScan
+  schedule: cron(0 0 * * *)
+```
+
+
+### Run Artifact
+
+```
+artifact_run:
+  name: VulnerabilityScan
+  artifact: MyVulnerabilityScan
+```
+
+### Retrieve Artifact Results
+
+```
+artifact_results:
+  name: VulnerabilityScanResults
+  artifact: MyVulnerabilityScan
+```
+
+
+### Remediate Vulnerabilities
+
+```
+artifact_remediation:
+  name: VulnerabilityRemediation
+  artifact: MyVulnerabilityScan
+  remediation_script: remediation_script.sh
+```
+
+
+
+
+
+
+
+
