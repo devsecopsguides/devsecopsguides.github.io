@@ -46,6 +46,14 @@ Our guides are written by experts in the field of DevSecOps, and are designed to
 When contributing to this repository, please first discuss the change you wish to make via issue,
 email, or any other method with the owners of this repository before making a change. Read more about becoming a contributor in [our GitHub repo](https://github.com/devsecopsguides/devsecopsguides.github.io).
 
+1. Serve Project
+
+```
+bundle exec jekyll serve
+```
+
+
+
 #### Thank you to the contributors of DevSecOps Guides!
 
 <ul class="list-style-none">

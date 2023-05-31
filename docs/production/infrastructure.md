@@ -745,5 +745,315 @@ rules:
 
 
 
+## Harbor
+
+### Create a new project in Harbor
+
+```
+curl -X POST -H 'Content-Type: application/json' -H 'Authorization: Bearer <TOKEN>' -d '{"project_name": "myproject"}' https://<HARBOR_HOST>/api/v2.0/projects
+```
+
+
+
+### Add a new user to Harbor
+
+
+```
+curl -X POST -H 'Content-Type: application/json' -H 'Authorization: Bearer <TOKEN>' -d '{"username": "newuser", "password": "password123"}' https://<HARBOR_HOST>/api/v2.0/users
+```
+
+
+### Scan an image for vulnerabilities in Harbor
+
+
+```
+curl -X POST -H 'Content-Type: application/json' -H 'Authorization: Bearer <TOKEN>' -d '{"registry": "https://<REGISTRY_HOST>", "repository": "myimage", "tag": "latest"}' https://<HARBOR_HOST>/api/v2.0/scan
+```
+
+
+### Delete a project in Harbor
+
+```
+curl -X DELETE -H 'Authorization: Bearer <TOKEN>' https://<HARBOR_HOST>/api/v2.0/projects/myproject
+```
+
+
+### Retrieve the list of repositories in Harbor
+
+```
+curl -H 'Authorization: Bearer <TOKEN>' https://<HARBOR_HOST>/api/v2.0/repositories
+```
+
+
+
+## Clair
+
+
+### Scan a Docker image with Clair
+
+```
+clairctl analyze -l <image_name>
+```
+
+
+
+### Retrieve vulnerability report for a Docker image from Clair
+
+
+```
+clairctl report -l <image_name>
+```
+
+
+
+
+### Update vulnerability database in Clair
+
+
+```
+clairctl update
+```
+
+
+
+### Delete a Docker image from Clair's database
+
+
+```
+clairctl delete -l <image_name>
+```
+
+
+
+### Get vulnerability details for a specific CVE in Clair
+
+
+```
+clairctl vulnerability <CVE_ID>
+```
+
+
+## Podman
+
+### Run a container in a rootless mode
+
+```
+podman run --rm -it --userns=keep-always <image_name>
+```
+
+
+### Enable seccomp profile for a container
+
+
+```
+podman run --rm -it --security-opt seccomp=/path/to/seccomp.json <image_name>
+```
+
+
+### Apply SELinux context to a container
+
+
+```
+podman run --rm -it --security-opt label=type:container_runtime_t <image_name>
+```
+
+
+### Configure AppArmor profile for a container
+
+
+```
+podman run --rm -it --security-opt apparmor=docker-default <image_name>
+```
+
+
+### Enable read-only root filesystem for a container
+
+
+```
+podman run --rm -it --read-only <image_name>
+```
+
+
+## skopeo
+
+
+### Copy an image from one container registry to another, verifying its authenticity:
+
+```
+skopeo copy --src-creds=<source_credentials> --dest-creds=<destination_credentials> --src-tls-verify=true --dest-tls-verify=true docker://<source_registry>/<source_image>:<tag> docker://<destination_registry>/<destination_image>:<tag>
+```
+
+
+
+
+### Inspect an image manifest to view its details and verify its integrity:
+
+
+```
+skopeo inspect --tls-verify=true docker://<registry>/<image>:<tag>
+```
+
+
+
+
+### Copy an image from a container registry to the local filesystem, validating its signature:
+
+
+```
+skopeo copy --src-creds=<source_credentials> --dest-tls-verify=true docker://<registry>/<image>:<tag> oci:<destination_directory>
+```
+
+
+
+
+### List the tags available for a specific image in a container registry:
+
+
+```
+skopeo list-tags --tls-verify=true docker://<registry>/<image>
+```
+
+
+
+
+
+### Delete an image from a container registry:
+
+
+
+```
+skopeo delete --creds=<registry_credentials> --tls-verify=true docker://<registry>/<image>:<tag>
+```
+
+
+
+
+## Open Containers Initiative (OCI)
+
+
+### Verify Image Integrity
+
+
+
+```
+import (
+    "fmt"
+    "github.com/opencontainers/go-digest"
+    "github.com/opencontainers/image-spec/specs-go/v1"
+)
+
+func verifyImageIntegrity(manifest v1.Manifest) error {
+    for _, layer := range manifest.Layers {
+        if layer.MediaType == "application/vnd.oci.image.layer.v1.tar" {
+            digest := layer.Digest
+            // Verify the integrity of the layer using the digest
+            isValid, err := verifyLayerDigest(digest)
+            if err != nil {
+                return err
+            }
+            if !isValid {
+                return fmt.Errorf("Layer integrity check failed")
+            }
+        }
+    }
+    return nil
+}
+
+func verifyLayerDigest(digest digest.Digest) (bool, error) {
+    // Implement logic to verify the digest against the stored layer
+    // Return true if the digest is valid, false otherwise
+}
+```
+
+
+### Enforce Image Vulnerability Scanning:
+
+
+
+
+```
+import (
+    "fmt"
+    "github.com/opencontainers/image-spec/specs-go/v1"
+)
+
+func enforceVulnerabilityScanning(manifest v1.Manifest) error {
+    for _, annotation := range manifest.Annotations {
+        if annotation.Name == "com.example.vulnerability-scanning" && annotation.Value != "enabled" {
+            return fmt.Errorf("Vulnerability scanning is not enabled for the image")
+        }
+    }
+    return nil
+}
+```
+
+
+### Implement Image Signing:
+
+
+
+
+```
+import (
+    "fmt"
+    "github.com/opencontainers/image-spec/specs-go/v1"
+)
+
+func signImage(manifest v1.Manifest, privateKey string) error {
+    // Use the private key to sign the image manifest
+    // Return an error if signing fails
+}
+```
+
+
+### Enforce Image Content Trust:
+
+
+
+
+```
+import (
+    "fmt"
+    "github.com/opencontainers/image-spec/specs-go/v1"
+)
+
+func enforceContentTrust(manifest v1.Manifest) error {
+    for _, annotation := range manifest.Annotations {
+        if annotation.Name == "com.example.content-trust" && annotation.Value != "true" {
+            return fmt.Errorf("Content trust is not enabled for the image")
+        }
+    }
+    return nil
+}
+```
+
+
+### Secure Image Transmission:
+
+
+
+
+```
+import (
+    "fmt"
+    "github.com/opencontainers/image-spec/specs-go/v1"
+)
+
+func secureImageTransmission(manifest v1.Manifest) error {
+    for _, layer := range manifest.Layers {
+        if layer.MediaType == "application/vnd.oci.image.layer.v1.tar" {
+            // Implement logic to enforce secure transmission of the layer
+            // Return an error if the transmission is not secure
+        }
+    }
+    return nil
+}
+```
+
+
+
+
+
+
 
 

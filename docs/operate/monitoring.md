@@ -719,7 +719,76 @@ global_config:
 
 
 
-## 
+## Sensu
+
+
+### Register a new check in Sensu:
+
+
+```
+sensuctl check create mycheck --command "check_mycheck.sh" --subscriptions linux --handlers default
+```
+
+
+### Register a new check in Sensu:
+
+
+```
+sensuctl check create mycheck --command "check_mycheck.sh" --subscriptions linux --handlers default
+```
+
+
+### Create a new handler in Sensu:
+
+
+
+```
+sensuctl handler create myhandler --type pipe --command "myhandler.sh"
+```
+
+
+### Create a new asset in Sensu:
+
+
+
+```
+sensuctl asset create myasset --url https://example.com/myasset.tar.gz --sha512sum abcdef1234567890
+```
+
+
+### Create a new namespace in Sensu:
+
+
+
+```
+sensuctl namespace create mynamespace
+```
+
+
+
+
+### Create a new filter in Sensu:
+
+
+
+```
+sensuctl filter create myfilter --action allow --expressions "event.Entity.Environment == 'production'"
+```
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
