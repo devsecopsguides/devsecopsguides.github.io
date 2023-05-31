@@ -114,5 +114,3 @@ artifact_remediation:
 
 
 
-
-

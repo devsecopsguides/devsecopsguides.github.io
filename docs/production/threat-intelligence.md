@@ -658,6 +658,11 @@ curl -X POST 'http://misp.local/events/restSearch' -H 'Authorization: YOUR_API_K
 * https://github.com/advisories
 
 
+## Playbook
+
+* https://gitlab.com/syntax-ir/playbooks
+
+
 
 
 

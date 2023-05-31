@@ -701,4 +701,25 @@ slackcli --channel "#channel_name" --message "!ticket create 'New issue: Need as
 
 
 
+## Robusta
+
+To set custom tolerations or a nodeSelector update your generated_values.yaml file as follows:
+
+
+```
+global_config:
+  krr_job_spec:
+    tolerations:
+    - key: "key1"
+      operator: "Exists"
+      effect: "NoSchedule"
+    nodeSelector:
+      nodeName: "your-selector
+```
+
+
+
+## 
+
+
 
