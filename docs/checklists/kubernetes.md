@@ -1,6 +1,6 @@
 ---
 layout: default
-title: Kuberneties
+title: Kubernetes
 parent: Checklists
 ---
 
