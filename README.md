@@ -31,7 +31,7 @@ Our guides are written by experts in the field of DevSecOps, and are designed to
 
 Brought to you by:
 
-![HADESS.IO](./assets/images/hadess-logo.png)
+![HADESS.IO](./assets/images/hadess-logo_light.png)
 
 **HADESS**
 
