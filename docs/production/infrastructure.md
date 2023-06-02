@@ -1164,6 +1164,85 @@ curl -X POST \
 
 
 
+## Argo CD
+
+
+### Enable authentication for Argo CD using OIDC (OpenID Connect)
+
+```
+# rbac-config.yaml
+apiVersion: rbac.authorization.k8s.io/v1
+kind: RoleBinding
+metadata:
+  name: argocd-admin
+  namespace: argocd
+subjects:
+- kind: User
+  name: <username>
+  apiGroup: rbac.authorization.k8s.io
+roleRef:
+  kind: ClusterRole
+  name: admin
+  apiGroup: rbac.authorization.k8s.io
+```
+
+
+
+### Enable SSL/TLS encryption for Argo CD
+
+```
+# values.yaml
+server:
+  config:
+    tls.enabled: true
+    tls.insecure: false
+    tls.crt: |
+      -----BEGIN CERTIFICATE-----
+      <your_certificate_here>
+      -----END CERTIFICATE-----
+    tls.key: |
+      -----BEGIN PRIVATE KEY-----
+      <your_private_key_here>
+      -----END PRIVATE KEY-----
+```
+
+
+
+### Restrict access to Argo CD's API server using network policies
+
+```
+# network-policy.yaml
+apiVersion: networking.k8s.io/v1
+kind: NetworkPolicy
+metadata:
+  name: argocd-network-policy
+  namespace: argocd
+spec:
+  podSelector: {}
+  ingress:
+  - from:
+    - namespaceSelector:
+        matchLabels:
+          name: <allowed_namespace>
+```
+
+
+### Enable Webhook authentication for Argo CD
+
+```
+# values.yaml
+server:
+  config:
+    repository.credentials:
+    - name: <repo_name>
+      type: helm
+      helm:
+        url: <helm_repo_url>
+        auth:
+          webhook:
+            url: <webhook_url>
+            secret: <webhook_secret>
+```
 
 
 
@@ -1172,6 +1251,116 @@ curl -X POST \
 
 
 
+## flux2
+
+
+### Enable RBAC (Role-Based Access Control) for Flux
+
+```
+# flux-system-rbac.yaml
+apiVersion: rbac.authorization.k8s.io/v1
+kind: ClusterRoleBinding
+metadata:
+  name: flux-system-rbac
+subjects:
+- kind: ServiceAccount
+  name: flux-system
+  namespace: flux-system
+roleRef:
+  kind: ClusterRole
+  name: cluster-admin
+  apiGroup: rbac.authorization.k8s.io
+```
+
+
+
+
+### Enable image scanning with Trivy for Flux workloads
+
+```
+# flux-system-policies.yaml
+apiVersion: image.toolkit.fluxcd.io/v1alpha2
+kind: Policy
+metadata:
+  name: flux-system-policies
+  namespace: flux-system
+spec:
+  policyType: tag
+  repositories:
+  - name: <repository_name>
+    imagePolicy:
+      name: trivy
+      enabled: true
+      args:
+        - "--severity"
+        - "HIGH,CRITICAL"
+```
+
+
+
+
+
+### Use GitOps for managing Kubernetes secrets with Flux
+
+```
+# secrets.yaml
+apiVersion: v1
+kind: Secret
+metadata:
+  name: <secret_name>
+  namespace: <namespace>
+stringData:
+  <key>: <value>
+```
+
+
+
+
+
+### Configure multi-tenancy with Flux using Git branches
+
+```
+# flux-system-repo.yaml
+apiVersion: source.toolkit.fluxcd.io/v1alpha2
+kind: GitRepository
+metadata:
+  name: flux-system-repo
+  namespace: flux-system
+spec:
+  url: <repository_url>
+  ref:
+    branch: <branch_name>
+  interval: 1m
+```
+
+
+
+
+
+### Enable cluster auto-scaling using Flux and Kubernetes Horizontal Pod Autoscaler (HPA)
+
+```
+# flux-system-autoscaler.yaml
+apiVersion: autoscaling/v2beta2
+kind: HorizontalPodAutoscaler
+metadata:
+  name: <hpa_name>
+  namespace: <namespace>
+spec:
+  scaleTargetRef:
+    apiVersion: apps/v1
+    kind: Deployment
+    name: <deployment_name>
+  minReplicas: <min_replicas>
+  maxReplicas: <max_replicas>
+  metrics:
+  - type: Resource
+    resource:
+      name: cpu
+      target:
+        type: Utilization
+        averageUtilization: <cpu_utilization>
+```
 
 
 
@@ -1179,3 +1368,88 @@ curl -X POST \
 
 
 
+
+## GoCD
+
+
+### Enable SSL/TLS for GoCD Server
+
+```
+<server>
+  <!-- Other server configuration settings -->
+
+  <ssl>
+    <keystore>/path/to/keystore.jks</keystore>
+    <keystore-password>keystore_password</keystore-password>
+    <key-password>key_password</key-password>
+  </ssl>
+</server>
+```
+
+
+
+### Implement Role-Based Access Control (RBAC)
+
+```
+curl -u <admin_username>:<admin_password> -H 'Content-Type: application/json' -X POST \
+  -d '{
+    "name": "Developers",
+    "users": ["user1", "user2"],
+    "pipelines": {
+      "read": ["pipeline1", "pipeline2"]
+    }
+  }' \
+  http://localhost:8153/go/api/admin/security/roles
+```
+
+### Configure LDAP or Active Directory Integration
+
+```
+<security>
+  <!-- Other security settings -->
+
+  <ldap uri="ldap://ldap.example.com:389" managerDn="cn=admin,dc=example,dc=com" managerPassword="password">
+    <loginFilter>(uid={0})</loginFilter>
+    <searchBases>ou=users,dc=example,dc=com</searchBases>
+    <loginAttribute>uid</loginAttribute>
+    <searchUsername>uid=admin,ou=users,dc=example,dc=com</searchUsername>
+    <searchPassword>password</searchPassword>
+  </ldap>
+</security>
+```
+
+### Implement Two-Factor Authentication (2FA)
+
+```
+<security>
+  <!-- Other security settings -->
+
+  <authConfigs>
+    <authConfig id="google_auth" pluginId="cd.go.authentication.plugin.google.oauth">
+      <property>
+        <key>ClientId</key>
+        <value>your_client_id</value>
+      </property>
+      <property>
+        <key>ClientSecret</key>
+        <value>your_client_secret</value>
+      </property>
+    </authConfig>
+  </authConfigs>
+</security>
+```
+
+### Enable Security Scanning of GoCD Agents
+
+```
+pipeline:
+  stages:
+    - name: Build
+      # Build stage configuration
+
+    - name: SonarQube
+      jobs:
+        - name: RunSonarQube
+          tasks:
+            - exec: sonar-scanner
+```

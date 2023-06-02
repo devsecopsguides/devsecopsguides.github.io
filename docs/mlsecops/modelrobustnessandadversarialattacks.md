@@ -387,7 +387,211 @@ inspec init profile <profile_directory>
 inspec shell
 ```
 
+## envd
 
+
+### Create a configuration file:
+
+```
+cp config.yml.example config.yml
+```
+
+
+### Start the envd service
+
+
+```
+python envd.py
+```
+
+### API
+
+API Endpoints:
+
+* /environments:
+  GET: Retrieve a list of all environments.
+  POST: Create a new environment.
+* /environments/{env_id}:
+  GET: Retrieve details of a specific environment.
+  PUT: Update an existing environment.
+  DELETE: Delete an environment.
+* /environments/{env_id}/variables:
+  GET: Retrieve a list of variables for a specific environment.
+  POST: Add a new variable to the environment.
+* /environments/{env_id}/variables/{var_id}:
+  GET: Retrieve details of a specific variable.
+  PUT: Update an existing variable.
+  DELETE: Delete a variable.
+
+#### Create a new environment
+
+```
+curl -X POST -H "Content-Type: application/json" -d '{"name": "Production", "description": "Production environment"}' http://localhost:5000/environments
+```
+
+#### Get the list of environments
+
+```
+curl -X GET http://localhost:5000/environments
+```
+
+#### Update an environment
+
+```
+curl -X PUT -H "Content-Type: application/json" -d '{"description": "Updated description"}' http://localhost:5000/environments/{env_id}
+```
+
+#### Delete a variable
+
+```
+curl -X DELETE http://localhost:5000/environments/{env_id}/variables/{var_id}
+```
+
+
+
+## Continuous Machine Learning (CML)
+
+
+### Securely Publishing Model Artifacts
+
+```
+name: Publish Model
+on:
+  push:
+    branches:
+      - main
+jobs:
+  publish_model:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout Code
+        uses: actions/checkout@v2
+      - name: Build Model
+        run: |
+          # Run commands to build and train the model
+          python train.py
+      - name: Publish Model Artifacts
+        uses: iterative/cml@v1
+        with:
+          command: cml-publish model
+          files: model.h5
+```
+
+This example demonstrates how to securely publish model artifacts after building and training a machine learning model. The cml-publish action is used to publish the model.h5 file as an artifact.
+
+
+### Running Security Scans
+
+```
+name: Run Security Scans
+on:
+  push:
+    branches:
+      - main
+jobs:
+  security_scan:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout Code
+        uses: actions/checkout@v2
+      - name: Run Security Scan
+        uses: iterative/cml@v1
+        with:
+          command: cml-run make scan
+```
+
+This example demonstrates how to run security scans on your codebase. The cml-run action is used to execute the make scan command, which can trigger security scanning tools to analyze the code for vulnerabilities.
+
+
+### Automated Code Review
+
+```
+name: Automated Code Review
+on:
+  pull_request:
+jobs:
+  code_review:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout Code
+        uses: actions/checkout@v2
+      - name: Run Code Review
+        uses: iterative/cml@v1
+        with:
+          command: cml-pr review
+          args: "--checkstyle"
+```
+
+This example demonstrates how to perform automated code reviews on pull requests. The cml-pr action is used to trigger a code review using the --checkstyle option, which can enforce coding standards and best practices.
+
+### Secret Management
+
+```
+name: Secret Management
+on:
+  push:
+    branches:
+      - main
+jobs:
+  secret_management:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout Code
+        uses: actions/checkout@v2
+      - name: Retrieve Secrets
+        uses: iterative/cml@v1
+        with:
+          command: cml-secrets pull
+          args: "--all"
+      - name: Build and Deploy
+        run: |
+          # Use the retrieved secrets to build and deploy the application
+          echo $API_KEY > api_key.txt
+          python deploy.py
+      - name: Cleanup Secrets
+        uses: iterative/cml@v1
+        with:
+          command: cml-secrets clear
+          args: "--all"
+```
+
+This example demonstrates how to securely manage secrets during the CI/CD pipeline. The cml-secrets action is used to pull secrets, such as an API key, from a secure storage and use them during the build and deploy process. Afterwards, the secrets are cleared to minimize exposure.
+
+### Secure Deployment with Review
+
+```
+name: Secure Deployment
+on:
+  push:
+    branches:
+      - main
+jobs:
+  secure_deployment:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout Code
+        uses: actions/checkout@v2
+      - name: Build and Test
+        run: |
+          # Run commands to build and test the application
+          python build.py
+          python test.py
+      - name: Request Deployment Review
+        uses: iterative/cml@v1
+        with:
+          command: cml-pr request
+          args: "--title 'Deployment Review' --body 'Please review the deployment' --assign @security-team"
+```
+
+
+This example demonstrates how to request a deployment review from the security team before deploying the application. The cml-pr action is used to create a pull request with a specific title, body, and assignee. This allows the security team to review and approve the deployment before it is executed.
+
+
+## Resources
+
+* https://github.com/devopscube/how-to-mlops
+* https://github.com/aws/studio-lab-examples
+* https://github.com/fuzzylabs/awesome-open-mlops
 
 
 

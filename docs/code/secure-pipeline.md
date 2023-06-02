@@ -1448,5 +1448,83 @@ st2 run incident-resolution.incident_resolution incident_id=<incident_id>
 ```
 
 
+## Secure Pipeline Using Jenkins Declarative Pipeline
 
+```
+pipeline {
+    agent any
+    
+    environment {
+        DOCKER_REGISTRY = "your_docker_registry"
+        DOCKER_CREDENTIALS_ID = "your_docker_credentials_id"
+        SONARQUBE_URL = "your_sonarqube_url"
+        SONARQUBE_TOKEN = "your_sonarqube_token"
+    }
+    
+    stages {
+        stage('Build') {
+            steps {
+                script {
+                    git 'https://github.com/devopscube/declarative-pipeline-examples.git'
+                    sh 'mvn clean install'
+                }
+            }
+        }
+        
+        stage('SonarQube Scan') {
+            steps {
+                withSonarQubeEnv('SonarQube') {
+                    script {
+                        sh "mvn sonar:sonar -Dsonar.projectKey=my_project -Dsonar.host.url=${SONARQUBE_URL} -Dsonar.login=${SONARQUBE_TOKEN}"
+                    }
+                }
+            }
+        }
+        
+        stage('Containerize') {
+            steps {
+                script {
+                    sh "docker build -t ${DOCKER_REGISTRY}/my-app:${BUILD_NUMBER} ."
+                    sh "docker login -u your_docker_username -p your_docker_password ${DOCKER_REGISTRY}"
+                    sh "docker push ${DOCKER_REGISTRY}/my-app:${BUILD_NUMBER}"
+                }
+            }
+        }
+        
+        stage('Deploy') {
+            steps {
+                script {
+                    sh "kubectl apply -f kube-deployment.yaml"
+                }
+            }
+        }
+    }
+    
+    post {
+        success {
+            echo "Pipeline executed successfully!"
+        }
+        
+        failure {
+            echo "Pipeline execution failed!"
+        }
+        
+        always {
+            echo "Cleaning up..."
+            sh "docker logout ${DOCKER_REGISTRY}"
+        }
+    }
+}
+```
+
+In this pipeline, the stages include building the project, performing a SonarQube scan, containerizing the application, and deploying it using Kubernetes. The pipeline also handles post-execution actions based on the success or failure of the pipeline.
+
+Make sure to replace the placeholders with appropriate values, such as `your_docker_registry`, `your_docker_credentials_id`, `your_sonarqube_url`, and `your_sonarqube_token`, to match your environment.
+
+
+
+
+## References
+
+* https://devopscube.com/declarative-pipeline-parameters/
 
