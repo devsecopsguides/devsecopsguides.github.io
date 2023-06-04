@@ -231,12 +231,17 @@ In the context of the DevOps Threat Matrix, "Initial Access" refers to a categor
 
 #### SCM authentication
 
+![](../../../assets/images/scm.png)
+
 SCM authentication refers to the process of authenticating and accessing an organization's source code management (SCM) system. It typically involves using authentication methods such as personal access tokens (PATs), SSH keys, or other allowed credentials. However, attackers may attempt to exploit this authentication process, gaining unauthorized access to the SCM by employing techniques like phishing attacks. This can pose a significant threat to the organization's source code and sensitive information. To mitigate this risk, it's crucial to be aware of potential attacks and implement robust security measures.
 
 
 
 
 #### CI/CD service authentication
+
+![](../../../assets/images/cicd-initial.drawio.png)
+
 
 CI/CD service authentication refers to the process of authenticating and accessing the Continuous Integration/Continuous Deployment (CI/CD) service used by an organization for automating software delivery pipelines. Attackers may attempt to exploit vulnerabilities in the authentication process to gain unauthorized access to the CI/CD service, which can lead to potential compromises in the organization's DevOps environment. To mitigate this risk, it is important to employ strong authentication methods and implement security measures to protect the CI/CD service from unauthorized access.
 
@@ -245,6 +250,8 @@ CI/CD service authentication refers to the process of authenticating and accessi
 
 
 #### Organization’s public repositories
+
+![](../../../assets/images/github.drawio.png)
 
 
 Access to an organization's public repositories with CI/CD capabilities can pose a security risk if not properly secured. Attackers may attempt to gain unauthorized access to these repositories and exploit their CI/CD capabilities to execute malicious code or disrupt the organization's pipelines. To mitigate this risk, organizations should implement strong access controls, monitor repository activity, and ensure secure CI/CD configurations.
@@ -255,6 +262,9 @@ Access to an organization's public repositories with CI/CD capabilities can pose
 #### Endpoint compromise
 
 
+![](../../../assets/images/endpoint.drawio.png)
+
+
 Endpoint compromise refers to a scenario where an attacker gains access to an organization's resources by compromising a developer's workstation or endpoint device. Once an endpoint is compromised, the attacker can leverage the compromised workstation to gain unauthorized access to the organization's source code management (SCM), registry, or other critical resources. To mitigate this risk, organizations should implement strong endpoint security measures and follow best practices for securing developer workstations.
 
 
@@ -262,6 +272,9 @@ Endpoint compromise refers to a scenario where an attacker gains access to an or
 
 
 #### Configured webhooks
+
+![](../../../assets/images/webhook.drawio.png)
+
 
 Configured webhooks can become a potential security risk if not properly secured. Attackers can exploit these webhooks to gain initial access to an organization's network. By triggering requests through the source code management (SCM) system, attackers can potentially gain unauthorized access to services that should not be publicly exposed or might be running outdated and vulnerable software versions within the organization's private network. To mitigate this risk, organizations should implement secure webhook configurations, monitor webhook activity, and apply necessary access controls.
 
@@ -272,11 +285,15 @@ Configured webhooks can become a potential security risk if not properly secured
 
 ### Execution
 
+
 The execution tactic in the DevOps Threat Matrix refers to the methods used by attackers to gain execution access on pipeline resources, including the pipeline itself or the deployment resources. Attackers may exploit vulnerabilities or employ various techniques to gain unauthorized control over these resources. Understanding these techniques and implementing appropriate security measures is crucial for mitigating the risk of unauthorized execution and maintaining the integrity of the DevOps pipeline.
 
 
 
 #### Poisoned pipeline execution (PPE)
+
+![](../../../assets/images/ppe.png)
+
 
 Poisoned pipeline execution (PPE) is a technique employed by attackers to inject malicious code into an organization's repository, allowing them to execute unauthorized actions within the repository's CI/CD system. This technique poses a significant threat as it can lead to the execution of malicious code during the CI/CD process, compromising the integrity of the pipeline and potentially allowing further unauthorized access. Understanding and mitigating the risks associated with poisoned pipeline execution is crucial to maintain the security of the CI/CD system.
 
@@ -313,6 +330,8 @@ Public Poisoned Pipeline Execution (Public PPE) refers to scenarios where the pi
 
 #### Dependency tampering
 
+![](../../../assets/images/dependency.drawio.png)
+
 
 Dependency tampering is a technique used by attackers to execute malicious code in the DevOps or production environment by injecting harmful code into a repository's dependencies. When these dependencies are downloaded and integrated into the system, the malicious code gets executed, potentially leading to unauthorized access or compromising the integrity of the environment. Preventing and mitigating the risk of dependency tampering requires implementing secure practices, regularly auditing dependencies, and ensuring their integrity.
 
@@ -345,6 +364,9 @@ Typosquatting is a technique employed by attackers where they publish malicious 
 
 #### DevOps resources compromise
 
+![](../../../assets/images/resources.drawio.png)
+
+
 
 DevOps resources compromise refers to scenarios where attackers target the compute resources used for executing CI/CD agents and other software within the pipeline. By exploiting vulnerabilities in the operating system, agent code, or other software installed on the virtual machines (VMs) or network devices, attackers can gain unauthorized access to the pipeline. This compromise can lead to the execution of unauthorized code, data theft, or disruption of the CI/CD process. To mitigate the risk of DevOps resources compromise, it is crucial to implement security measures, regularly update and patch software, and monitor the infrastructure for suspicious activities.
 
@@ -353,6 +375,9 @@ DevOps resources compromise refers to scenarios where attackers target the compu
 
 
 #### Control of common registry
+
+![](../../../assets/images/registry.drawio.png)
+
 
 
 Control of a common registry refers to a situation where an attacker gains control over a registry used by the organization, allowing them to introduce and execute malicious images or packages within the CI/CD pipeline or production environment. This compromise can lead to the execution of unauthorized or malicious code, data breaches, or disruption of the CI/CD process. Protecting against the control of a common registry requires implementing robust security measures, controlling access to the registry, and monitoring for any suspicious or unauthorized activities.
@@ -372,6 +397,9 @@ The persistency tactic in the context of DevOps threat matrix refers to techniqu
 
 #### Changes in repository
 
+![](../../../assets/images/per-reg.drawio.png)
+
+
 Changes in repository refer to techniques where adversaries exploit the automatic tokens within the CI/CD pipeline to access and push code changes to the repository. By leveraging these tokens, which often have sufficient permissions, attackers can achieve persistency within the environment. This persistence can enable unauthorized code modifications, data exfiltration, or further exploitation of the organization's systems. Preventing and mitigating the risk of changes in the repository requires implementing secure practices, controlling access to tokens, and monitoring repository activities for any suspicious or unauthorized changes.
 
 * Change/add scripts in code – we can change some of the initialization scripts/add new scripts, so they download a backdoor/starter for the attacker, so each time the pipeline is executing these scripts, the attacker’s code will be executed too.
@@ -383,6 +411,9 @@ Changes in repository refer to techniques where adversaries exploit the automati
 
 ##### Inject in Artifacts
 
+![](../../../assets/images/per-arti.drawio.png)
+
+
 Injecting code into artifacts involves exploiting the functionality of Continuous Integration (CI) environments that allow the creation and sharing of artifacts between pipeline executions. Attackers can manipulate these artifacts to inject malicious code or files, which can lead to unauthorized code execution or compromise of the CI/CD pipeline. Preventing and mitigating the risk of artifact injection requires implementing security measures, validating artifacts, and monitoring for any suspicious or unauthorized changes.
 
 
@@ -392,6 +423,9 @@ Injecting code into artifacts involves exploiting the functionality of Continuou
 
 ##### Modify images in registry
 
+![](../../../assets/images/per-img.drawio.png)
+
+
 
 Modifying images in the registry refers to a technique where an attacker gains access to the image registry used by CI/CD pipelines and manipulates the images stored in the registry. By modifying or planting malicious images, the attacker can ensure that these images are executed by the user's containers, leading to the execution of unauthorized or malicious code within the production environment. Preventing and mitigating the risk of image modification in the registry requires implementing strong security measures, controlling access to the registry, and monitoring for any unauthorized changes.
 
@@ -400,6 +434,9 @@ Modifying images in the registry refers to a technique where an attacker gains a
 
 
 ##### Create service credentials
+
+![](../../../assets/images/per-service.drawio.png)
+
 
 Creating service credentials in the context of DevOps refers to the process of generating and managing authentication credentials for services or applications used within the CI/CD pipeline or infrastructure. Service credentials provide secure access to various resources, such as cloud platforms, databases, or external APIs, and help establish trust and authorization between different components of the DevOps environment. Properly managing service credentials is crucial for maintaining the security and integrity of the DevOps pipeline and ensuring authorized access to sensitive resources.
 
@@ -417,6 +454,9 @@ Privilege escalation techniques in the context of DevOps refer to the methods us
 
 #### Secrets in private repositories
 
+![](../../../assets/images/priv-pro.drawio.png)
+
+
 The presence of secrets in private repositories poses a significant security risk within the DevOps environment. Attackers who have gained initial access can leverage this access to scan private repositories in search of hidden secrets. Private repositories are typically considered more secure as they are inaccessible from outside the organization. However, if sensitive information such as API keys, passwords, or cryptographic keys are mistakenly committed or stored within these repositories, they can be exposed to unauthorized individuals. Detecting and mitigating the presence of secrets in private repositories is essential to maintain the confidentiality and integrity of the organization's assets.
 
 
@@ -425,6 +465,7 @@ The presence of secrets in private repositories poses a significant security ris
 
 ##### Commit/push to protected branches
 
+![](../../../assets/images/priv-key.drawio.png)
 
 Committing or pushing code to protected branches in a repository can pose a significant security risk in the DevOps environment. If the pipeline has access to the repository and the repository's access controls are permissive, it may allow an attacker to bypass normal code review and approval processes and inject malicious code directly into important branches without the intervention of the development team. This can lead to unauthorized code execution, compromising the integrity and security of the application or system. Implementing proper access controls and review processes is crucial to mitigate the risk of unauthorized code changes in protected branches.
 
@@ -434,6 +475,8 @@ Committing or pushing code to protected branches in a repository can pose a sign
 
 
 ##### Certificates and identities from metadata services
+
+![](../../../assets/images/priv-cert.drawio.png)
 
 
 
@@ -446,12 +489,16 @@ In cloud-hosted pipelines, attackers may exploit the access they already have to
 
 ### Credential access
 
+
+
 Credential access techniques refer to the methods used by attackers to steal credentials within the DevOps environment. By obtaining valid credentials, attackers can gain unauthorized access to critical systems, services, or resources. It is crucial to protect credentials and implement measures to prevent their unauthorized access or theft. Understanding and mitigating credential access risks is essential to maintain the security and integrity of the DevOps environment.
 
 
 
 
 #### User credentials
+
+![](../../../assets/images/cred-key.drawio.png)
 
 
 User credentials are often required in CI pipelines to access external services such as databases, APIs, or other resources. However, if not properly secured, these credentials can become a target for attackers. They may try to gain access to the pipeline and extract the credentials to gain unauthorized access to external services. Protecting user credentials is crucial to prevent unauthorized access and maintain the security of the DevOps environment.
@@ -461,6 +508,8 @@ User credentials are often required in CI pipelines to access external services 
 
 
 ##### Service credentials
+
+![](../../../assets/images/cred-serv.drawio.png)
 
 Service credentials, such as service principal names (SPN) and shared access signature (SAS) tokens, are commonly used in DevOps environments to authenticate and authorize access to various services and resources. However, if these credentials are compromised, an attacker can gain unauthorized access to other services directly from the pipeline. Protecting service credentials is essential to prevent unauthorized access and maintain the security of the DevOps environment.
 
@@ -481,6 +530,8 @@ The lateral movement tactic in CI/CD environments refers to the techniques used 
 
 #### Compromise build artifacts
 
+![](../../../assets/images/arti.drawio.png)
+
 Compromising build artifacts is a supply chain attack where an attacker gains control over the CI pipelines and manipulates the build artifacts. By injecting malicious code into the building materials before the build process is completed, the attacker can introduce malicious functionality into the final build artifacts. Protecting build artifacts is essential to prevent the deployment of compromised or malicious software.
 
 
@@ -489,6 +540,7 @@ Compromising build artifacts is a supply chain attack where an attacker gains co
 
 ##### Registry injection
 
+![](../../../assets/images/regi.drawio.png)
 
 Registry injection is a technique where an attacker infects the registry used for storing build artifacts in a CI/CD pipeline. By injecting malicious images into the registry, the attacker aims to have these images downloaded and executed by containers that rely on the infected registry. Preventing registry injection is crucial to ensure the integrity and security of the build artifacts used in the CI/CD process.
 
@@ -499,6 +551,7 @@ Registry injection is a technique where an attacker infects the registry used fo
 
 ##### Spread to deployment resources
 
+![](../../../assets/images/depi.drawio.png)
 
 Spreading to deployment resources refers to the scenario where an attacker gains access to the deployment resources within a CI/CD pipeline. By leveraging the access granted to the pipeline, the attacker can propagate their presence to the deployment environment, leading to potential code execution, data exfiltration, and other malicious activities. Preventing the spread to deployment resources is crucial to maintain the security and integrity of the deployment environment.
 
@@ -516,6 +569,8 @@ Defense evasion techniques are employed by attackers to bypass or evade the secu
 
 #### Service logs manipulation
 
+![](../../../assets/images/monitoring.drawio.png)
+
 Service logs manipulation is a technique where an attacker, who has gained access to the environment, modifies the logs generated by various services. By tampering with the logs, the attacker aims to hide their activities and prevent defenders from detecting their presence or identifying the attacks they have executed. Detecting and preventing service logs manipulation is crucial for maintaining the integrity and reliability of log data for security analysis.
 
 
@@ -523,6 +578,8 @@ Service logs manipulation is a technique where an attacker, who has gained acces
 
 
 ##### Compilation manipulation
+
+![](../../../assets/images/change.drawio.png)
 
 Compilation manipulation is a technique used by attackers to inject malicious code into the compilation process, which can result in the inclusion of backdoors or vulnerabilities in the final software build. By tampering with the compilation process, the attacker aims to evade detection and introduce malicious functionality into the software without leaving obvious traces in the source code or version control system.
 
@@ -533,6 +590,8 @@ Compilation manipulation is a technique used by attackers to inject malicious co
 
 
 ##### Reconfigure branch protections
+
+![](../../../assets/images/unprotected.drawio.png)
 
 
 Reconfiguring branch protections is a technique where an attacker with administrative permissions modifies the configuration settings of branch protection tools. By altering these settings, the attacker can bypass the controls and introduce code into a branch without the need for any user intervention or approval. This can enable the attacker to inject malicious code into the codebase and potentially compromise the integrity of the repository.
@@ -551,6 +610,8 @@ The impact tactic refers to techniques used by attackers to exploit access to CI
 
 #### DDoS
 
+![](../../../assets/images/dos.drawio.png)
+
 DDoS (Distributed Denial of Service) is a type of attack where an adversary overwhelms a target system or network with a flood of traffic from multiple sources, causing service disruptions or outages. In a CI/CD environment, an attacker with access to compute resources can misuse them to launch DDoS attacks against external targets.
 
 
@@ -558,10 +619,16 @@ DDoS (Distributed Denial of Service) is a type of attack where an adversary over
 
 ##### Cryptocurrency mining
 
+![](../../../assets/images/crypto.drawio.png)
+
+
 Cryptocurrency mining is the process of using computational resources to solve complex mathematical problems and earn cryptocurrency rewards. In a compromised CI/CD environment, an attacker may utilize the compute resources for unauthorized cryptocurrency mining, consuming system resources and potentially causing performance degradation.
 
 
 ##### Local DoS
+
+![](../../../assets/images/localdos.drawio.png)
+
 
 Local Denial of Service (DoS) attacks are performed by an attacker who has gained access to the CI pipelines. The attacker uses the pipelines to launch DoS attacks against the organization's own infrastructure or services, causing disruptions or overloading the virtual machines (VMs) used in the CI/CD environment.
 
@@ -569,6 +636,9 @@ Local Denial of Service (DoS) attacks are performed by an attacker who has gaine
 
 
 ##### Resource deletion
+
+![](../../../assets/images/res-del.drawio.png)
+
 
 Resource deletion is a technique used by attackers who have gained access to CI/CD resources to cause denial of service by permanently deleting critical resources, such as cloud resources or repositories. By deleting these resources, the attacker disrupts the organization's operations and prevents normal functioning of the CI/CD environment.
 
@@ -590,12 +660,18 @@ The exfiltration tactic involves various techniques used by attackers to extract
 
 #### Clone private repositories
 
+![](../../../assets/images/ex-pro.drawio.png)
+
+
 In this scenario, the attacker leverages their access to the CI pipelines to clone private repositories, giving them access to sensitive code and potentially valuable intellectual property. They exploit the permissions and tokens available within the CI environment, such as GITHUB_TOKEN in GitHub, to clone private repositories.
 
 
 
 
 ##### Pipeline logs
+
+![](../../../assets/images/ex-pip.drawio.png)
+
 
 
 In this scenario, the attacker exploits their access to the CI/CD pipelines to access and view the pipeline execution logs. These logs often contain valuable information about the build process, deployment details, and potentially sensitive data such as credentials to services and user accounts.
@@ -604,6 +680,8 @@ In this scenario, the attacker exploits their access to the CI/CD pipelines to a
 
 
 ##### Exfiltrate data from production resources
+
+![](../../../assets/images/ex-res.drawio.png)
 
 
 In this scenario, the attacker exploits their access to the CI/CD pipelines, which also have access to production resources. This allows the attacker to exfiltrate sensitive data from the production environment using the pipeline as a means of transportation.
