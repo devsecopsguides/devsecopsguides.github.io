@@ -728,8 +728,45 @@ requests:
 
 
 
+## Selefra: open-source policy-as-code software that offers analytics for multi-cloud and SaaS environments
+
+- [ ] Configure Selefra:
+
+```
+$ selefra configure --provider <provider-name> --credentials <path-to-credentials-file>
+```
+
+- [ ] Create a Policy:
 
 
+
+```
+# policy.yaml
+metadata:
+  name: S3BucketPolicyCheck
+rules:
+  - name: Ensure S3 bucket policy exists
+    resource_type: aws_s3_bucket_policy
+    condition: resource.exists()
+```
+
+
+- [ ] Run Policy Check:
+
+
+
+```
+$ selefra check --policy policy.yaml --resources <path-to-resources>
+```
+
+
+- [ ] View Policy Violations:
+
+
+
+```
+$ selefra violations --policy policy.yaml --resources <path-to-resources>
+```
 
 
 

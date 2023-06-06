@@ -1453,3 +1453,381 @@ pipeline:
           tasks:
             - exec: sonar-scanner
 ```
+
+
+
+
+## Calico
+
+### Enable Calico network policies  
+
+```
+kubectl apply -f calico-policy.yaml
+```
+
+
+### Check Calico network policies    
+
+```
+kubectl get networkpolicies
+```
+
+
+### View Calico logs    
+
+```
+kubectl logs -n kube-system <calico-pod-name>
+```
+
+
+### Network Policy for Denying All Ingress Traffic:
+
+
+```
+apiVersion: networking.k8s.io/v1
+kind: NetworkPolicy
+metadata:
+  name: deny-all-ingress
+spec:
+  podSelector: {}
+  policyTypes:
+  - Ingress
+```
+
+
+### Network Policy for Allowing Ingress Traffic from a Specific Namespace:
+
+
+```
+apiVersion: networking.k8s.io/v1
+kind: NetworkPolicy
+metadata:
+  name: allow-ingress-from-namespace
+spec:
+  podSelector: {}
+  ingress:
+  - from:
+    - namespaceSelector:
+        matchLabels:
+          name: allowed-namespace
+```
+
+### Network Policy for Allowing Egress Traffic to a Specific IP or IP Range:
+
+
+```
+apiVersion: networking.k8s.io/v1
+kind: NetworkPolicy
+metadata:
+  name: allow-egress-to-ip-range
+spec:
+  podSelector: {}
+  egress:
+  - to:
+    - ipBlock:
+        cidr: 10.0.0.0/24
+```
+
+### Network Policy for Enforcing Pod Labels:
+
+
+```
+apiVersion: networking.k8s.io/v1
+kind: NetworkPolicy
+metadata:
+  name: enforce-pod-labels
+spec:
+  podSelector:
+    matchLabels:
+      app: backend
+  policyTypes:
+  - Ingress
+  ingress:
+  - from:
+    - podSelector:
+        matchLabels:
+          app: frontend
+```
+
+### Network Policy for Enforcing eBPF-based Network Security:
+
+
+```
+apiVersion: networking.k8s.io/v1
+kind: NetworkPolicy
+metadata:
+  name: enforce-ebpf-security
+spec:
+  podSelector: {}
+  egress:
+  - to:
+    - namespaceSelector:
+        matchLabels:
+          calico/knsname: kube-system
+  ingress:
+  - from:
+    - namespaceSelector:
+        matchLabels:
+          calico/knsname: kube-system
+```
+
+
+
+
+## AWS CloudFormation Guard
+
+### Create a Guard rule file    
+
+```
+cfn-guard init <rule-file-name>.ruleset
+```
+
+
+### Evaluate a CloudFormation template against Guard rules  
+
+```
+cfn-guard validate -t <template-file> -r <rule-file>
+```
+
+### Generate a template with Guard conditions   
+
+
+```
+cfn-guard generate -t <template-file> -r <rule-file> -o <output-file>
+```
+
+### Enable verbose output for evaluation results    
+
+```
+cfn-guard validate -t <template-file> -r <rule-file> --verbose
+```
+
+
+### Run Guard with custom configuration 
+
+
+```
+cfn-guard validate -t <template-file> -r <rule-file> --config <config-file>
+```
+
+
+### Check if an EC2 instance type is allowed:
+
+
+
+```
+rules:
+  - id: ec2InstanceTypeRule
+    description: Check allowed EC2 instance types
+    matches:
+      - resources:
+          - MyEC2Instance
+        properties:
+          instanceType:
+            notEquals: t2.micro
+```
+
+
+
+
+### Enforce tagging for an S3 bucket:
+
+
+
+```
+rules:
+  - id: s3BucketTaggingRule
+    description: Enforce tagging for S3 buckets
+    matches:
+      - resources:
+          - MyS3Bucket
+        properties:
+          tags:
+            notPresent: "my-tag"
+```
+
+
+
+### Ensure a specific VPC CIDR range is used:
+
+
+
+```
+cfn-guard validate -t <template-file> -r <rule-file> --config <config-file>
+```
+
+
+
+
+### Ensure a specific VPC CIDR range is used:
+ 
+
+
+```
+rules:
+  - id: vpcCIDRRule
+    description: Ensure a specific VPC CIDR range is used
+    matches:
+      - resources:
+          - MyVPC
+        properties:
+          cidrBlock:
+            equals: 10.0.0.0/16
+```
+
+
+
+
+### Restrict the use of insecure security groups:
+
+
+
+```
+rules:
+  - id: securityGroupRule
+    description: Restrict the use of insecure security groups
+    matches:
+      - resources:
+          - MySecurityGroup
+        properties:
+          securityGroupIngress:
+            notMatches:
+              - cidrIp: 0.0.0.0/0
+                ipProtocol: -1
+```
+
+
+
+
+### Ensure encryption is enabled for an RDS instance:
+
+
+
+```
+rules:
+  - id: rdsEncryptionRule
+    description: Ensure encryption is enabled for RDS instances
+    matches:
+      - resources:
+          - MyRDSInstance
+        properties:
+          storageEncrypted:
+            equals: true
+```
+
+
+
+
+## Regula
+
+
+### Scan a directory for compliance violations    
+
+```
+regula scan -d <directory-path>
+```
+
+### Scan a specific file for compliance violations      
+
+```
+regula scan -f <file-path>
+```
+
+### Scan a remote repository for compliance violations     
+
+```
+regula scan -r <repository-url>
+```
+
+### Scan a Terraform plan file for compliance violations        
+
+```
+regula scan -p <plan-file>
+```
+
+### Scan a directory and output results in JSON format      
+
+```
+regula scan -d <directory-path> --output json
+```
+
+### Check for unrestricted S3 bucket policies:
+   
+
+```
+name: S3 bucket policy should not be unrestricted
+resource_type: aws_s3_bucket_policy
+violating_actions:
+  - "*"
+```
+
+### Ensure that security groups do not allow unrestricted ingress traffic:
+
+
+```
+name: Security groups should not allow unrestricted ingress traffic
+resource_type: aws_security_group_rule
+violating_actions:
+  - ingress
+violating_fields:
+  - source_security_group_id: "sg-00000000"
+  - cidr_blocks:
+      - "0.0.0.0/0"
+```
+
+### Enforce encryption for EBS volumes:
+  
+
+```
+name: EBS volumes should be encrypted
+resource_type: aws_ebs_volume
+violating_actions:
+  - create
+  - modify
+violating_fields:
+  - encrypted: false
+```
+
+### Check for publicly accessible EC2 instances:
+   
+
+```
+name: EC2 instances should not be publicly accessible
+resource_type: aws_instance
+violating_fields:
+  - public_ip_address: "*"
+```
+
+### Ensure IAM policies do not have wildcard resource permissions:
+    
+
+```
+name: IAM policies should not have wildcard resource permissions
+resource_type: aws_iam_policy
+violating_fields:
+  - resources:
+      - "*"
+```
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
