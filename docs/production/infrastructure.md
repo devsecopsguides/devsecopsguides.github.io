@@ -1813,6 +1813,195 @@ violating_fields:
 
 
 
+## eBPF (extended Berkeley Packet Filter)
+
+
+### Check Cilium installation     
+
+```
+kubectl get pods -n kube-system
+```
+
+
+
+### View Cilium agent logs    
+
+```
+kubectl logs -n kube-system -l k8s-app=cilium
+```
+
+
+
+
+### View Cilium operator logs   
+
+```
+kubectl logs -n kube-system -l name=cilium-operator
+```
+
+
+
+
+### Describe NetworkPolicy  
+
+```
+kubectl describe networkpolicy <name>
+```
+
+
+
+
+### Apply L7 (Layer 7) Policy   
+
+```
+kubectl apply -f <l7policy.yaml>
+```
+
+
+
+
+### List L7 Policies     
+
+```
+kubectl get l7policy
+```
+
+
+
+
+### Update Cilium      
+
+```
+helm upgrade cilium cilium/cilium --version <version>
+```
+
+
+
+
+### Enforce Network Policies:
+
+ 
+
+```
+apiVersion: cilium.io/v2
+kind: CiliumNetworkPolicy
+metadata:
+  name: web-policy
+spec:
+  endpointSelector:
+    matchLabels:
+      app: web
+  ingress:
+    - fromEndpoints:
+        - matchLabels:
+            app: db
+  egress:
+    - toEndpoints:
+        - matchLabels:
+            app: internet
+```
+
+
+
+
+###  Enable Encryption for Cilium Communication:
+
+```
+apiVersion: cilium.io/v2
+kind: CiliumClusterwideNetworkPolicy
+metadata:
+  name: encryption-policy
+spec:
+  endpointSelector:
+    matchLabels:
+      app: cilium
+  ingress:
+    - fromEndpoints:
+        - matchLabels:
+            app: cilium
+  egress:
+    - toEndpoints:
+        - matchLabels:
+            app: cilium
+  egressEncryption:
+    - identity:
+        identityName: cilium
+        identityIssuer: self
+        identityPrivateKey: <base64-encoded-private-key>
+```
+
+
+
+
+### Implement DNS Policy
+
+```
+apiVersion: cilium.io/v2
+kind: CiliumNetworkPolicy
+metadata:
+  name: dns-policy
+spec:
+  endpointSelector:
+    matchLabels:
+      app: dns-server
+  ingress:
+    - fromEndpoints:
+        - matchLabels:
+            app: web
+  dns:
+    allowNonCiliumDNSResponse: false
+```
+
+
+
+
+### Enable HTTP Inspection     
+
+```
+apiVersion: cilium.io/v2
+kind: CiliumNetworkPolicy
+metadata:
+  name: http-inspection
+spec:
+  endpointSelector:
+    matchLabels:
+      app: web
+  ingress:
+    - fromEndpoints:
+        - matchLabels:
+            app: internet
+  http:
+    - match:
+        - method: GET
+          path: /api/secret
+      inspectResponse: true
+```
+
+
+
+### Implement Security Profiles     
+
+```
+apiVersion: cilium.io/v2
+kind: CiliumClusterwideNetworkPolicy
+metadata:
+  name: security-profile
+spec:
+  endpointSelector:
+    matchLabels:
+      app: cilium
+  securityProfile:
+    capabilities:
+      - NET_ADMIN
+      - SYS_MODULE
+    fileAccess:
+      - path: /etc/shadow
+        access: rw
+```
+
+
+
+
 
 
 
