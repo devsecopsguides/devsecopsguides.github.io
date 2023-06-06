@@ -1715,6 +1715,58 @@ rules:
             equals: true
 ```
 
+## kube-green
+
+
+### Check the health of a specific resource in the cluster    
+
+```
+kube-green check RESOURCE_NAME
+```
+
+
+### Check the health of all resources in a specific namespace      
+
+```
+kube-green check -n NAMESPACE
+```
+
+
+### Check the health of a specific resource with a custom timeout      
+
+```
+kube-green check --timeout TIMEOUT RESOURCE_NAME
+```
+
+
+### Get detailed information about the health status of a specific resource   
+
+```
+kube-green describe RESOURCE_NAME
+```
+
+
+### Watch the health status of a specific resource type in the cluster in real-time    
+
+```
+kube-green watch --kind RESOURCE_TYPE
+```
+
+
+### Monitor the health status of resources in a Kubernetes namespace and send notifications to a Slack channel:
+
+    
+```
+kube-green monitor --namespace <namespace> --notifications slack --slack-channel #channel-name
+```
+
+### Monitor the health status of resources in a Kubernetes namespace and send notifications to a Microsoft Teams channel:
+
+
+```
+kube-green monitor --namespace <namespace> --notifications teams --teams-channel #channel-name
+```
+
 
 
 
