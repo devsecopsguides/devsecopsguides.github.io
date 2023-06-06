@@ -133,6 +133,12 @@ Knowledge base in cybersecurity, administration and secure development
 https://github.com/wmariuss/awesome-devops#api-gateway){: .btn .btn-purple .mr-2 }
 
 
+### zoidbergwill Awesome eBPF
+
+
+[zoidbergwill Awesome eBPF](
+https://github.com/zoidbergwill/awesome-ebpf){: .btn .btn-purple .mr-2 }
+
 
 
 ## Framework
