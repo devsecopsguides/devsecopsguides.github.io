@@ -872,9 +872,122 @@ where
 
 
 
+## Sysdig
 
 
 
+### Capture system activity and save it to a file for later analysis  
+
+```
+sysdig -w <output_file>
+```
+
+
+### Display a live system activity summary with top processes 
+
+```
+sysdig -c top
+```
+
+### Monitor network activity with a summary of network connections  
+
+```
+sysdig -c netstat
+```
+
+### Filter system activity based on process name  
+
+```
+sysdig proc.name=<process_name>
+```
+
+### Filter system activity based on process ID (PID)  
+
+```
+sysdig proc.pid=<process_id>
+```
+
+### Monitor disk I/O activity for a specific process  
+
+```
+sysdig -p"%proc.name %evt.type" fd.type=char fd.name=/dev/sdX
+```
+
+### Trace system calls made by a specific process
+
+```
+sysdig -p"%proc.name %evt.type %evt.args" proc.name=<process_name>
+```
+
+### Monitor file system activity within a directory
+
+```
+sysdig -p"%evt.type %evt.args" evt.dir=<directory_path>
+```
+
+### Monitor system calls related to process creation
+
+```
+sysdig -p"%proc.name %evt.type" evt.type=clone or evt.type=fork
+```
+
+
+## Sysdig Inspect
+
+
+### Launch Sysdig Inspect on a live running container 
+
+```
+sysdig -p"%proc.name %evt.type" evt.type=clone or evt.type=fork
+```
+
+### Launch Sysdig Inspect on a specific trace file for offline analysis 
+
+```
+sysdig-inspect trace <trace_file>
+```
+
+### Filter the displayed events based on a specific process 
+
+```
+filter proc.name=<process_name>
+```
+
+### Filter the displayed events based on a specific system call 
+
+```
+filter evt.type=<system_call>
+```
+
+### Inspect the file system events within a specific directory  
+
+```
+fs.directory=<directory_path>
+```
+
+### Inspect the system calls made by a process  
+
+```
+syscall <process_name>
+```
+
+### Inspect the network connections of a process  
+
+```
+netconn <process_name>
+```
+
+### Inspect the open file descriptors of a process  
+
+```
+openfiles <process_name>
+```
+
+### Display a summary of captured system calls and events 
+
+```
+events
+```
 
 
 

@@ -141,6 +141,9 @@ https://github.com/zoidbergwill/awesome-ebpf){: .btn .btn-purple .mr-2 }
 
 
 
+
+
+
 ## Framework
 
 ### Cloud Adoption Framework
@@ -160,6 +163,38 @@ Hi! I’m Lars Windolf and my expertise is on system architecture and DevSecOps.
 
 
 [lzone](https://lzone.de/cheat-sheet/Container){: .btn .btn-purple .mr-2 }
+
+
+
+
+
+## Lab
+
+### Actionable Adversary Emulation for the Cloud
+
+
+Proven guidance and best practices that help you confidently adopt the cloud and achieve business outcomes.
+
+
+[Granular, Actionable Adversary Emulation for the Cloud](https://github.com/Datadog/stratus-red-team/){: .btn .btn-purple .mr-2 }
+
+
+
+## Threats
+
+### Cloud
+
+[MITRE ATT&CK Cloud](https://attack.mitre.org/matrices/enterprise/cloud/){: .btn .btn-purple .mr-2 }
+
+
+### DevOps
+
+[DevOps Threat Matrix](https://www.microsoft.com/en-us/security/blog/2023/04/06/devops-threat-matrix/){: .btn .btn-purple .mr-2 }
+
+
+[Kubernetes Threat Matrix](https://www.microsoft.com/en-us/security/blog/2020/04/02/attack-matrix-kubernetes/){: .btn .btn-purple .mr-2 }
+
+
 
 
 

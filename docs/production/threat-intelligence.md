@@ -891,7 +891,7 @@ In cloud-based Kubernetes deployments, attackers may leverage their access to a 
 
 
 
-#### Defense evasion
+### Defense evasion
 
 
 Defense evasion techniques are employed by attackers to evade detection and conceal their activities within Kubernetes environments. By actively evading security measures, attackers can prolong their presence, increase the likelihood of successful attacks, and bypass traditional security controls. Understanding common defense evasion techniques is crucial for organizations to enhance threat detection capabilities and bolster overall Kubernetes security. In this article, we will explore common defense evasion tactics and discuss strategies to mitigate these risks effectively.
@@ -936,7 +936,7 @@ To obfuscate their origin IP addresses, attackers may employ proxy servers, incl
 
 
 
-#### Credential access
+### Credential access
 
 
 The security of credentials is of paramount importance in Kubernetes environments. Attackers employ various techniques to steal credentials, including application credentials, service accounts, secrets, and cloud credentials. Safeguarding credential access is crucial to prevent unauthorized access, data breaches, and potential compromise of sensitive information. In this article, we will explore common credential access tactics and discuss strategies to enhance identity protection and mitigate the risks associated with credential theft in Kubernetes.
@@ -983,7 +983,7 @@ Developers often store secrets, such as application credentials, in Kubernetes c
 
 
 
-#### Discovery
+### Discovery
 
 Discovery attacks pose a significant threat to the security of Kubernetes environments. Attackers employ various techniques to explore the environment, gain insights into the cluster's resources, and perform lateral movement to access additional targets. Understanding and mitigating these discovery tactics is crucial to bolster the overall security posture of Kubernetes deployments. In this article, we will delve into common discovery techniques and discuss strategies to enhance defense and thwart unauthorized exploration in Kubernetes.
 
@@ -1043,7 +1043,7 @@ Cloud providers offer instance metadata services that provide information about 
 
 
 
-#### Lateral movement
+### Lateral movement
 
 
 Lateral movement attacks pose a significant threat in containerized environments, allowing attackers to traverse through a victim's environment, gain unauthorized access to various resources, and potentially escalate privileges. Understanding and mitigating lateral movement tactics is crucial for bolstering the security of Kubernetes deployments. In this article, we will explore common techniques used by attackers for lateral movement and discuss strategies to enhance defense and minimize the impact of these attacks in Kubernetes.
@@ -1139,7 +1139,7 @@ Tiller, the server-side component of Helm, may expose internal gRPC endpoints th
 
 
 
-#### Impact
+### Impact
 
 
 The Impact tactic in Kubernetes refers to techniques employed by attackers to disrupt, abuse, or destroy the normal behavior of the environment. These attacks can lead to data loss, resource abuse, and denial of service, resulting in severe consequences for organizations. Protecting Kubernetes deployments from such impact attacks is crucial to ensure the availability, integrity, and confidentiality of resources. In this article, we will explore common impact techniques used by attackers and discuss strategies to mitigate their effects in Kubernetes environments.
@@ -1183,6 +1183,121 @@ Compromised resources within a Kubernetes cluster can be abused by attackers for
 
 Attackers may launch DoS attacks to disrupt the availability of Kubernetes services. This can involve targeting containers, nodes, or the API server. To mitigate the impact of DoS attacks, it is crucial to implement network-level security measures such as ingress and egress filtering, rate limiting, and traffic monitoring. Additionally, implementing resource quotas, configuring horizontal pod autoscaling, and monitoring resource utilization can help in maintaining service availability and mitigating the impact of DoS attacks.
 
+
+
+
+
+## Cloud Threat Matrix
+
+![MITRE ATT&CK Cloud Threat Matrix](../../../assets/images/cloud-matrix.png)
+
+The MITRE ATT&CK framework provides a comprehensive knowledge base of adversary tactics and techniques used in cyber attacks. 
+
+### Initial Access:
+
+#### Cloud Account Phishing
+
+An attacker attempts to gain unauthorized access to a cloud account through phishing techniques.
+
+#### Cloud Service Exploitation 
+
+Attackers exploit vulnerabilities in cloud services to gain initial access.
+
+### Execution
+
+#### Remote Execution
+
+Attackers execute code or commands on a cloud system remotely.
+
+#### User Execution
+
+Attackers trick a user into executing malicious code or commands on a cloud system.
+
+
+### Persistence
+
+#### Persistence through Cloud Resource 
+
+Access: Attackers establish persistence by maintaining access to cloud resources or accounts.
+
+#### Persistence through Cloud Service
+
+Attackers use cloud services or features to establish persistence in the environment.
+
+
+### Privilege Escalation
+
+#### Access Cloud Service Permissions
+
+Attackers escalate their privileges by manipulating cloud service permissions.
+
+#### Container Escape
+
+Attackers escape containerization to gain higher privileges in the cloud environment.
+
+
+### Defense Evasion
+
+#### Clear Cloud Logs
+
+Attackers attempt to delete or manipulate logs in the cloud environment to evade detection.
+
+#### Modify Cloud Trail
+
+Attackers modify or tamper with cloud trail logs to hide their activities.
+
+
+### Credential Access
+
+#### Steal Cloud Service Credentials 
+
+Attackers steal cloud service credentials to gain unauthorized access.
+
+#### Capture Cloud Service Credentials
+
+Attackers capture cloud service credentials through various means.
+
+
+### Discovery
+
+#### Cloud Service Discovery
+
+Attackers discover cloud services and resources to gather information about the environment.
+
+#### Container Discovery 
+
+Attackers identify and explore containers within the cloud environment.
+
+
+### Lateral Movement
+
+#### Cloud Infrastructure Lateral Movement
+
+Attackers move laterally between cloud resources and accounts.
+
+#### Container-to-Container Lateral Movement
+
+Attackers move laterally between containers within the cloud environment.
+
+### Collection
+
+#### Data from Cloud Storage Object
+
+Attackers collect and exfiltrate data from cloud storage objects.
+
+#### Data from Container
+
+Attackers collect and exfiltrate data from containers in the cloud environment.
+
+### Exfiltration:
+
+#### Exfiltration Over Cloud Channel
+
+Attackers exfiltrate data through cloud-based communication channels.
+
+#### Exfiltration Over Other Network Medium
+
+Attackers exfiltrate data using other network mediums within the cloud environment.
 
 
 
