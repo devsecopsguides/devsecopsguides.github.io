@@ -78,6 +78,7 @@ and
 * [Nditah Samweld](https://www.linkedin.com/in/nditah/)
 * [Mahesh Mahajan](https://linkedin.com/in/themr255)
 * [Shivam Agnihotri](https://www.linkedin.com/in/shivam-agnihotri/)
+* [David das Neves](https://www.linkedin.com/in/daviddasneves/)
 
 
 
