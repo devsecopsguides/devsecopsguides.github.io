@@ -71,6 +71,7 @@ bundle exec jekyll serve
 
 and
 
+* [Tanya Janca](https://twitter.com/shehackspurple)
 * [Okan YILDIZ](https://www.linkedin.com/in/yildizokan/)
 * [Dan Williams](https://www.linkedin.com/in/danwilliamssecurityengineer/)
 * [Barnavo Chowdhury](https://www.linkedin.com/in/barnavochowdhury/)
