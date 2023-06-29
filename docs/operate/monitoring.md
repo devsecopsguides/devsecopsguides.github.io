@@ -990,5 +990,107 @@ events
 ```
 
 
+## Monitoring cron files  
 
+
+https://github.com/sqall01/LSMS/blob/main/scripts/monitor_cron.py
+
+
+
+## Monitoring /etc/hosts file 
+
+
+https://github.com/sqall01/LSMS/blob/main/scripts/monitor_hosts_file.py
+
+
+## Monitoring /etc/ld.so.preload file 
+
+
+https://github.com/sqall01/LSMS/blob/main/scripts/monitor_ld_preload.py
+
+
+## Monitoring /etc/passwd file  
+
+
+https://github.com/sqall01/LSMS/blob/main/scripts/monitor_passwd.py
+
+
+## Monitoring modules 
+
+
+https://github.com/sqall01/LSMS/blob/main/scripts/monitor_modules.py
+
+
+## Monitoring SSH authorized_keys files 
+
+
+https://github.com/sqall01/LSMS/blob/main/scripts/monitor_ssh_authorized_keys.py
+
+
+## Monitoring systemd unit files  
+
+
+https://github.com/sqall01/LSMS/blob/main/scripts/monitor_systemd_units.py
+
+
+## Search executables in /dev/shm 
+
+
+https://github.com/sqall01/LSMS/blob/main/scripts/search_dev_shm.py
+
+
+## Search fileless programs (memfd_create)    
+
+
+https://github.com/sqall01/LSMS/blob/main/scripts/search_memfd_create.py
+
+
+## Search hidden ELF files  
+
+
+https://github.com/sqall01/LSMS/blob/main/scripts/search_hidden_exe.py
+
+
+
+## Search immutable files  
+
+
+https://github.com/sqall01/LSMS/blob/main/scripts/search_immutable_files.py
+
+
+
+
+## Search kernel thread impersonations  
+
+
+https://github.com/sqall01/LSMS/blob/main/scripts/search_non_kthreads.py
+
+
+
+## Search processes that were started by a now disconnected SSH session  
+
+
+https://github.com/sqall01/LSMS/blob/main/scripts/search_ssh_leftover_processes.py
+
+
+
+
+## Search running deleted programs   
+
+
+https://github.com/sqall01/LSMS/blob/main/scripts/search_deleted_exe.py
+
+
+
+## Test script to check if alerting works   
+
+
+https://github.com/sqall01/LSMS/blob/main/scripts/test_alert.py
+
+
+
+## Verify integrity of installed .deb packages   
+
+
+https://github.com/sqall01/LSMS/blob/main/scripts/verify_deb_packages.py
 

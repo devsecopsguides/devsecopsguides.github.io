@@ -179,6 +179,19 @@ Proven guidance and best practices that help you confidently adopt the cloud and
 [Granular, Actionable Adversary Emulation for the Cloud](https://github.com/Datadog/stratus-red-team/){: .btn .btn-purple .mr-2 }
 
 
+### AWS Threat Simulation and Detection
+
+[sbasu7241 AWS Threat Simulation and Detection ](https://github.com/sbasu7241/AWS-Threat-Simulation-and-Detection/tree/main){: .btn .btn-purple .mr-2 }
+
+
+### Hunting queries and detections
+
+[FalconForceTeam FalconFriday](https://github.com/FalconForceTeam/FalconFriday/){: .btn .btn-purple .mr-2 }
+
+
+
+
+
 
 ## Threats
 
