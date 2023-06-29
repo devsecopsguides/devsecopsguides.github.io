@@ -413,3 +413,214 @@ A tool that provides threat protection across all of your services and deploys q
 ```
 az security assessment create --location westus --name "Example Assessment" --resource-group "MyResourceGroup" --scope /subscriptions/xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx/resourceGroups/MyResourceGroup/providers/Microsoft.Compute/virtualMachines/myVM
 ```
+
+
+## ScoutSuite
+
+### Run ScoutSuite for a cloud provider	
+
+```
+scout aws or scout azure or scout gcp
+```
+
+### Specify a specific region for a cloud provider	
+
+```
+scout aws --region <region_name>
+``` 
+
+or 
+
+```
+scout azure --location <location_name>
+```
+
+or 
+
+```
+scout gcp --project <project_id> --region <region_name>
+```
+
+### Generate a report in JSON format	
+
+```
+scout <provider> --report-dir <output_directory> --report-format json
+```
+
+### Generate a report in HTML format	
+
+```
+scout <provider> --report-dir <output_directory> --report-format html
+```
+
+### Specify the output file name for the report
+
+```
+scout <provider> --report-dir <output_directory> --report-format <format> --report-name <output_filename>
+```
+
+
+## Prowler
+
+### Run Prowler	
+
+```
+python prowler.py
+```
+
+### Specify an AWS profile	
+
+```
+python prowler.py --profile <profile_name>
+```
+
+### Specify a specific AWS region	
+
+```
+python prowler.py --region <region_name>
+```
+
+### Run specific checks/categories	
+
+```
+python prowler.py --check <check_id> or python prowler.py --category <category_name>
+```
+
+### Output results to a file	
+
+```
+python prowler.py --file <output_file>
+```
+
+### Include detailed findings in the output	
+
+```
+python prowler.py --findings
+```
+
+### Generate an HTML report	
+
+```
+python prowler.py --html-report
+```
+
+### Generate a CSV report	
+
+```
+python prowler.py --csv-report
+```
+
+### Generate a JUnit XML report	
+
+```
+python prowler.py --junit-xml
+```
+
+### Exclude specific checks	
+
+```
+python prowler.py --exclude-check <check_id>
+```
+
+### Specify a severity level threshold
+
+```
+python prowler.py --severity <severity_level>
+```
+
+
+## CCAT
+
+
+### Run CCAT	
+
+```
+python ccat.py
+```
+
+### Specify a specific AWS profile	
+
+```
+python ccat.py --profile <profile_name>
+```
+
+### Specify a specific AWS region	
+
+```
+python ccat.py --region <region_name>
+```
+
+### Run specific checks	
+
+```
+python ccat.py --checks <check_id>
+```
+
+### Exclude specific checks	
+
+```
+python ccat.py --exclude <check_id>
+```
+
+### Include detailed findings in the output	
+
+```
+python ccat.py --findings
+```
+
+### Output results to a file	
+
+```
+python ccat.py --output-file <output_file>
+```
+
+### Generate a CSV report	
+
+```
+python ccat.py --csv-report
+```
+
+### Generate an HTML report	
+
+```
+python ccat.py --html-report
+```
+
+### Specify a severity level threshold	
+
+```
+python ccat.py --severity <severity_level>
+```
+
+
+
+
+
+## SmogCloud
+
+
+```
+python3 smogcloud.py
+Open a web browser and go to http://localhost:5000
+```
+
+1. Scan a target URL for common cloud misconfigurations:   
+
+Enter the target URL in the web interface and click "Start Scan"
+
+2. View the scan results and vulnerabilities:
+
+Navigate to the "Results" page in the web interface
+
+3. Perform manual testing for specific cloud misconfigurations:
+
+Follow the provided instructions in the web interface or README file
+
+4. Generate a report of the scan results:   
+
+Click on "Generate Report" in the web interface
+
+
+
+
+

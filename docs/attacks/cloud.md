@@ -2179,3 +2179,114 @@ for email in service_account_emails:
 ```
 
 
+
+## AWS cross-account enumeration
+
+```
+weirdAAL.py cross_account_enum
+```
+
+## Privilege escalation through EC2 metadata   
+
+```
+weirdAAL.py ec2_metadata
+```
+
+## Enumeration of AWS Systems Manager parameters   
+
+```
+weirdAAL.py ssm_enum
+```
+
+## Enumeration of EC2 instances with public IP addresses   
+
+```
+weirdAAL.py public_ec2_enum
+```
+
+## Stealing EC2 instance metadata  
+
+```
+weirdAAL.py steal_metadata
+```
+
+## Privilege escalation by attaching an EC2 instance profile   
+
+```
+weirdAAL.py attach_instance_profile
+```
+
+## Enumeration of Elastic Beanstalk environments with public access    
+
+```
+weirdAAL.py public_eb_enum
+```
+
+## Privilege escalation through hijacking AWS CLI sessions 
+
+```
+weirdAAL.py hijack_cli
+```
+
+## Enumeration of ECR repositories with public access  
+
+```
+weirdAAL.py public_ecr_enum
+```
+
+## Privilege escalation through hijacking AWS SDK sessions 
+
+```
+weirdAAL.py hijack_sdk
+```
+
+## Enumeration of ECS clusters and services    
+
+```
+weirdAAL.py ecs_enum
+```
+
+## Privilege escalation through assumed role sessions 
+
+```
+weirdAAL.py assume_role
+```
+
+## Enumeration of AWS Glue Data Catalog databases 
+
+```
+weirdAAL.py glue_enum
+```
+
+## Privilege escalation through EC2 instance takeover  
+
+```
+weirdAAL.py ec2_takeover
+```
+
+## Enumeration of open S3 buckets and their contents   
+
+```
+weirdAAL.py s3_enum --list-objects
+```
+
+## Privilege escalation through RDS database credentials   
+
+weirdAAL.py rds_priv_esc
+
+## Enumeration of EKS clusters and associated resources    
+
+```
+weirdAAL.py eks_enum
+```
+
+## Privilege escalation through KMS key policy modifications   
+
+```
+weirdAAL.py kms_priv_esc
+```
+
+
+
+
+

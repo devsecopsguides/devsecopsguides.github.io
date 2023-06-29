@@ -587,6 +587,12 @@ jobs:
 This example demonstrates how to request a deployment review from the security team before deploying the application. The cml-pr action is used to create a pull request with a specific title, body, and assignee. This allows the security team to review and approve the deployment before it is executed.
 
 
+## Automate Machine Learning Lifecycle
+
+https://github.com/microsoft/nni
+
+
+
 ## Resources
 
 * https://github.com/devopscube/how-to-mlops

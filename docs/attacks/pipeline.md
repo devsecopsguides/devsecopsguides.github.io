@@ -565,3 +565,57 @@ stages:
 
 In the compliant code, each step in the pipeline has an associated security configuration that specifies the necessary roles or permissions required to execute that step. This ensures that only authorized individuals or entities can perform specific actions in the pipeline.
 
+
+
+
+
+## Insecure Configurations
+
+Inadequate or insecure configuration settings within CI/CD tools and platforms.
+Example of attacks: Unauthorized access to build pipelines, exposure of sensitive credentials, misconfigured access controls.
+
+## Vulnerability Management
+
+Inadequate or ineffective management of vulnerabilities in CI/CD processes and artifacts.
+Example of attacks: Exploitation of known vulnerabilities in application dependencies, outdated software components.
+
+## Inadequate Secrets Management
+
+Poor handling of sensitive information such as API keys, passwords, and certificates.
+Example of attacks: Disclosure of secrets through repository leaks, unauthorized access to production environments.
+
+## Insecure Third-Party Integrations
+
+Integration of untrusted or vulnerable third-party services or libraries in CI/CD workflows.
+Example of attacks: Supply chain attacks, malicious code injection through compromised dependencies.
+
+## Weak Access Controls
+
+Insufficient controls and monitoring of access to CI/CD pipelines, repositories, and build systems.
+Example of attacks: Unauthorized modification of build artifacts, privilege escalation, unauthorized access to sensitive data.
+
+## Insider Threats
+
+Risks posed by authorized individuals with malicious intent or accidental actions.
+Example of attacks: Unauthorized modification of CI/CD configurations, sabotage of build pipelines, data exfiltration.
+
+## Lack of Build Integrity
+
+Failure to ensure the integrity and authenticity of build artifacts throughout the CI/CD process.
+Example of attacks: Injection of malicious code or backdoors into build artifacts, tampering with deployment packages.
+
+## Inadequate Testing
+
+Insufficient or ineffective testing of CI/CD pipelines, leading to undetected vulnerabilities.
+Example of attacks: Exploitation of untested code paths, introduction of vulnerable code during the build process.
+
+## Insufficient Monitoring and Logging
+
+Lack of real-time monitoring and comprehensive logging for CI/CD activities and events.
+Example of attacks: Difficulty in identifying and responding to security incidents, delayed detection of unauthorized activities.
+
+## Lack of Compliance and Governance
+
+Failure to adhere to security policies, industry regulations, and compliance requirements in CI/CD workflows.
+Example of attacks: Non-compliance with data protection standards, regulatory fines, legal implications.
+

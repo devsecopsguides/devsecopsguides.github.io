@@ -1804,6 +1804,57 @@ requests:
 ```
 
 
+## API
+
+### Category: Broken Access Control
+
+Inadequate enforcement of access controls, allowing unauthorized users to access sensitive resources or perform unauthorized actions.
+Example of attacks: Accessing restricted data or functionality, privilege escalation, horizontal/vertical privilege escalation.
+
+### Category: Excessive Data Exposure
+
+APIs exposing more data than necessary, potentially leaking sensitive information.
+Example of attacks: Exposure of personally identifiable information (PII), financial data, or sensitive business data through API responses.
+
+### Category: Broken Authentication
+
+Flaws in authentication mechanisms that can lead to unauthorized access or account takeover.
+Example of attacks: Credential stuffing, session fixation, brute-forcing authentication tokens or passwords.
+
+### Category: Injection Attacks
+
+Lack of proper input validation and sanitization, enabling attackers to inject malicious code or exploit vulnerabilities.
+Example of attacks: SQL injection, OS command injection, XML/XXE injection, NoSQL injection.
+
+### Category: Improper Error Handling
+
+APIs revealing excessive or sensitive error details, which can aid attackers in exploiting vulnerabilities.
+Example of attacks: Information disclosure, error-based enumeration, bypassing security controls using error messages.
+
+### Category: Security Misconfiguration
+
+Poorly configured API settings, default credentials, or inadequate security configurations.
+Example of attacks: Unauthorized access to API endpoints, access to sensitive configuration data, exploitation of default credentials.
+
+### Category: Insecure Direct Object References
+
+Improper access control mechanisms that allow attackers to directly reference internal objects or resources.
+Example of attacks: Accessing other users' data, tampering with internal object references, bypassing authorization checks.
+
+### Category: Insufficient Logging and Monitoring
+
+Lack of proper logging and monitoring, hindering the detection and response to security incidents.
+Example of attacks: Unauthorized access attempts, API abuse, suspicious activity going unnoticed due to insufficient logging.
+
+### Category: Insecure Serverless Deployments
+
+Security weaknesses in serverless architectures, including issues with configuration, event handling, and access controls.
+Example of attacks: Unauthorized execution of serverless functions, sensitive data exposure through serverless configurations.
+
+### Category: Denial of Service (DoS)
+
+Vulnerabilities that can be exploited to overload or disrupt the availability of API services.
+Example of attacks: Sending excessive requests, resource exhaustion, API rate limiting bypass, flooding API endpoints.
 
 
 ### Ref
