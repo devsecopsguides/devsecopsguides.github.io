@@ -21,8 +21,8 @@ DevSecOps simple model more focus on fast and scalable
 | Stages        | Description | Tools |
 |:-------------|:------------------|:------|
 | Threat Modeling           | Identify and analyze potential security threats and vulnerabilities in the system design and architecture. | Microsoft Threat Modeling Tool, Pytm  |
-| SAST (Static Application Security Testing)           | Analyze source code to identify security vulnerabilities and coding flaws.  | SonarQube - Checkmarx - Fortify - Veracode  |
-| SCA (Software Composition Analysis)           | Identify and manage open-source and third-party components for known vulnerabilities and license compliance. | Sonatype Nexus Lifecycle - WhiteSource - Black Duck  |
+| SAST (Static Application Security Testing)           | Analyze source code to identify security vulnerabilities and coding flaws.  | Snyk - SonarQube - Checkmarx - Fortify - Veracode  |
+| SCA (Software Composition Analysis)           | Identify and manage open-source and third-party components for known vulnerabilities and license compliance. | Snyk - Sonatype Nexus Lifecycle - WhiteSource - Black Duck  |
 | Secure Pipeline           | Implement security controls and best practices in the CI/CD pipeline to ensure the integrity and security of the software delivery process.  | Jenkins - GitLab CI/CD - CircleCI  |
 | Real-time distributed messaging platforms           | Utilize messaging platforms for real-time communication, collaboration, and incident response.  | Slack - Microsoft Teams - Mattermost - Discord  |
 | Artifacts           | Securely manage and store build artifacts, such as Docker images or software packages.  | Docker Registry - Nexus Repository Manager - JFrog Artifactory  |
