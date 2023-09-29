@@ -1,0 +1,198 @@
+---
+layout: default
+title: Webservice
+parent: Checklists
+---
+
+# Webservice Security Checklist for DevSecOps
+{: .no_toc }
+
+## Table of contents
+{: .no_toc .text-delta }
+
+1. TOC
+{:toc}
+
+---
+
+<span class="d-inline-block p-2 mr-1 v-align-middle bg-green-000"></span>List of some best practices to Webservice for DevSecOps
+
+
+
+
+
+| 7  | Protect against SQL Injection                                 |                  |
+| 8  | Monitor and analyze web service logs                          | ``         |
+| 9  | Implement rate limiting                                       | ``                   |
+| 10 | Secure cookies                                                | `` |
+| 11 | Disable directory listing                                     | `Options -Indexes`                        |
+| 12 | Set X-Frame-Options header                                    | `Header always set X-Frame-Options DENY`  |
+| 13 | Set X-Content-Type-Options header                             | `Header always set X-Content-Type-Options nosniff` |
+| 14 | Set X-XSS-Protection header                                   | `Header always set X-XSS-Protection "1; mode=block"` |
+| 15 | Disable unused modules and features                           | Disable unused modules in web service configuration |
+| 16 | Ensure proper access controls                                 | Configure proper access controls          |
+| 17 | Implement network segmentation                                | Configure network segmentation            |
+| 18 | Use a secure configuration for the web server                 | Apply secure configuration settings       |
+| 19 | Regularly scan for vulnerabilities                            | Use a vulnerability scanner               |
+| 20 | Ensure proper error handling                                  | Configure custom error pages              |
+| 21 | Implement security headers                                    | `Header always set Strict-Transport-Security "max-age=31536000"` |
+| 22 | Use secure ciphers and protocols                              | Configure secure ciphers and protocols    |
+| 23 | Regularly audit access and activity logs                      | Schedule regular audits of logs           |
+| 24 | Backup web service configurations and data                    | Schedule regular backups                  |
+| 25 | Educate and train staff on security best practices            | Conduct regular security training sessions |
+
+
+
+### Enable HTTPS
+
+```
+openssl req -x509 -newkey rsa:4096 -keyout key.pem -out cert.pem -days 365
+```
+
+
+### Configure Content Security Policy (CSP)  
+
+```
+Header set Content-Security-Policy "default-src 'self';"
+```
+
+### Limit HTTP methods              
+
+```
+AllowMethods GET POST
+```
+
+### Enable Web Application Firewall (WAF)
+
+```
+mod_security on
+```
+
+### Regularly update web service software
+
+```
+apt-get update && apt-get upgrade
+```
+
+### Implement input validation 
+
+```
+Implement server-side input validation
+```
+
+### Protect against SQL Injection 
+
+```
+Use parameterized queries
+```
+
+
+### Monitor and analyze web service logs  
+
+```
+tail -f /var/log/webservice.log
+```
+
+
+### Implement rate limiting 
+
+```
+LimitRequestRate 20 5
+```
+
+
+### Secure cookies 
+
+```
+Header edit Set-Cookie ^(.*)$ $1;HttpOnly;Secure
+```
+
+###  Disable directory listing   
+
+```
+Options -Indexes
+```
+
+### Set X-Frame-Options header 
+
+```
+Header always set X-Frame-Options DENY
+```
+
+### Set X-Content-Type-Options header  
+
+```
+Header always set X-Content-Type-Options nosniff
+```
+
+### Set X-XSS-Protection header
+
+```
+Header always set X-XSS-Protection "1; mode=block"
+```
+
+### Disable unused modules and features 
+
+```
+Disable unused modules in web service configuration
+```
+
+### Ensure proper access controls   
+
+```
+Configure proper access controls
+```
+
+### Implement network segmentation     
+
+```
+Configure network segmentation
+```
+
+### Use a secure configuration for the web server
+
+```
+Apply secure configuration settings
+```
+
+### Regularly scan for vulnerabilities  
+
+```
+Use a vulnerability scanner 
+```
+
+### Ensure proper error handling
+
+```
+Configure custom error pages
+```
+
+### Implement security headers  
+
+```
+Header always set Strict-Transport-Security "max-age=31536000"
+```
+
+### Use secure ciphers and protocols 
+
+```
+Configure secure ciphers and protocols 
+```
+
+### Regularly audit access and activity logs 
+
+```
+Schedule regular audits of logs
+```
+
+### Backup web service configurations and data  
+
+```
+Schedule regular backups 
+```
+
+### Educate and train staff on security best practices
+
+```
+Conduct regular security training sessions
+```
