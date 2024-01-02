@@ -28,11 +28,3 @@ Our guides cover a wide range of topics related to DevSecOps, including:
 Our guides are written by experts in the field of DevSecOps, and are designed to be accessible to developers, security professionals, and operations teams at all levels of experience. Whether you are just getting started with DevSecOps or are looking to deepen your knowledge and skills, DevSecOpsGuides is the perfect resource for you.
 
 
-
-Brought to you by:
-
-![HADESS.IO](./assets/images/hadess-logo_dark.png)
-
-**HADESS**
-
-HADESS performs offensive cybersecurity services through infrastructures and software that include vulnerability analysis, scenario attack planning, and implementation of custom integrated preventive projects. We organized our activities around the prevention of corporate, industrial, and laboratory cyber threats.
