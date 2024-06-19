@@ -254,18 +254,32 @@ By following this approach, the password remains securely stored in the database
 
 
 ```php
+# You sould install pycryptodome before runing this code
+# pip install pycryptodome
 import base64
 from Crypto.Cipher import DES
+from Crypto.Util.Padding import pad, unpad
 
 def encrypt_data(data, key):
-    cipher = DES.new(key, DES.MODE_ECB)
-    encrypted_data = cipher.encrypt(data)
+    cipher = DES.new(key.encode(), DES.MODE_ECB)
+    padded_data = pad(data.encode(), DES.block_size)
+    encrypted_data = cipher.encrypt(padded_data)
     return base64.b64encode(encrypted_data).decode('utf-8')
 
 def decrypt_data(encrypted_data, key):
-    cipher = DES.new(key, DES.MODE_ECB)
-    decrypted_data = cipher.decrypt(base64.b64decode(encrypted_data))
-    return decrypted_data.decode('utf-8')
+    cipher = DES.new(key.encode(), DES.MODE_ECB)
+    decrypted_data = cipher.decrypt(base64.b64decode(encrypted_data.encode()))
+    return unpad(decrypted_data, DES.block_size).decode('utf-8')
+
+if __name__ == '__main__':
+    key = 'abcdefgh'                 # 8 bytes key for DES
+    data = 'Hello, World'            # Data to be encrypted
+
+    encrypted_data = encrypt_data(data, key)
+    print('Encrypted data:', encrypted_data)
+
+    decrypted_data = decrypt_data(encrypted_data, key)
+    print('Decrypted data:', decrypted_data)
 ```
 
 
@@ -280,23 +294,40 @@ The noncompliant code uses the DES (Data Encryption Standard) algorithm, which i
 
 
 ```php
-import base64
+# Importing required libraries
+import base64, os
+
+# Importing required libraries from cryptography
 from cryptography.hazmat.primitives.ciphers import Cipher, algorithms, modes
 from cryptography.hazmat.backends import default_backend
 
-def encrypt_data(data, key):
-    backend = default_backend()
-    cipher = Cipher(algorithms.AES(key), modes.GCM(), backend=backend)
-    encryptor = cipher.encryptor()
-    encrypted_data = encryptor.update(data) + encryptor.finalize()
-    return base64.urlsafe_b64encode(encrypted_data).decode('utf-8')
+# Function to encrypt data using AES-GCM algorithm and return the encrypted data in string format
+def encrypt(data:str, key:str) -> str:
+    iv = os.urandom(12)
+    encryptor = Cipher(algorithms.AES(key.encode('utf-8')), modes.GCM(iv), backend=default_backend()).encryptor()
+    encrypted_data = encryptor.update(data.encode('utf-8')) + encryptor.finalize()
+    return base64.urlsafe_b64encode(iv + encryptor.tag + encrypted_data).decode('utf-8')
 
-def decrypt_data(encrypted_data, key):
-    backend = default_backend()
-    cipher = Cipher(algorithms.AES(key), modes.GCM(), backend=backend)
-    decryptor = cipher.decryptor()
-    decrypted_data = decryptor.update(base64.urlsafe_b64decode(encrypted_data)) + decryptor.finalize()
-    return decrypted_data.decode('utf-8')
+# Function to decrypt data using AES-GCM algorithm and return the decrypted data in string format
+def decrypt(encrypted_data, key) -> str:
+    decoded_data = base64.urlsafe_b64decode(encrypted_data)
+    iv = decoded_data[:12]
+    tag = decoded_data[12:28]
+    encrypted_data = decoded_data[28:]
+    decryptor = Cipher(algorithms.AES(key.encode('utf-8')), modes.GCM(iv, tag), backend=default_backend()).decryptor()
+    return (decryptor.update(encrypted_data) + decryptor.finalize()).decode('utf-8')
+
+# Main function to test the above functions
+if __name__ == '__main__':
+    key = '689ef728d55342d9af07ed4194cf1d4C' # 32 bytes key for AES-256
+    data = 'Hello, World'                    # Data to be encrypted
+
+    # Encrypting and decrypting the data
+    encrypted_data = encrypt(data, key)
+    print('Encrypted data:', encrypted_data)
+
+    decrypted_data = decrypt(encrypted_data, key)
+    print('Decrypted data:', decrypted_data)
 ```
 
 The compliant code uses the cryptography library, which provides a more secure and modern cryptographic API. It employs the AES (Advanced Encryption Standard) algorithm with GCM (Galois/Counter Mode) mode, which is considered more secure than DES. The urlsafe_b64encode and urlsafe_b64decode functions from base64 module are used for encoding and decoding the encrypted data, respectively.
