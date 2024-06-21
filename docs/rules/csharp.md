@@ -521,22 +521,45 @@ public class CryptoUtils
 {
     public string Encrypt(string data, string key)
     {
-        byte[] dataBytes = System.Text.Encoding.UTF8.GetBytes(data);
-        byte[] keyBytes = System.Text.Encoding.UTF8.GetBytes(key);
-
-        using (AesCryptoServiceProvider aesCryptoProvider = new AesCryptoServiceProvider())
+        string Result = "";
+        byte[] keyBytes = Encoding.UTF8.GetBytes(key);
+        byte[] dataBytes = Encoding.UTF8.GetBytes(data);
+    
+        using (var aes = Aes.Create())
         {
-            aesCryptoProvider.Key = keyBytes;
-            aesCryptoProvider.Mode = CipherMode.CBC;
-            aesCryptoProvider.Padding = PaddingMode.PKCS7;
-
-            ICryptoTransform encryptor = aesCryptoProvider.CreateEncryptor();
-            byte[] encryptedData = encryptor.TransformFinalBlock(dataBytes, 0, dataBytes.Length);
-            encryptor.Dispose();
-            aesCryptoProvider.Clear();
-
-            return Convert.ToBase64String(encryptedData);
+            aes.Key = keyBytes;
+            aes.Mode = CipherMode.CBC; //Better security
+            aes.Padding = PaddingMode.PKCS7;
+    
+            aes.GenerateIV(); //Generate a random IV (Init Vector) for each encryption
+    
+            using var encryptor = aes.CreateEncryptor();
+            Result = Convert.ToBase64String(aes.IV.Concat(encryptor.TransformFinalBlock(dataBytes, 0, dataBytes.Length)).ToArray());
         }
+    
+        return Result;
+    }
+
+    public string Decrypt(string encryptedData, string key)
+    {
+        string Result = "";
+        byte[] keyBytes = Encoding.UTF8.GetBytes(key);
+        byte[] encryptedBytesWithIV = Convert.FromBase64String(encryptedData);
+    
+        using (var aes = Aes.Create()) 
+        {
+            aes.Key = keyBytes;
+            aes.Mode = CipherMode.CBC; //Better security
+            aes.Padding = PaddingMode.PKCS7;
+    
+            //Extract IV from the encrypted data
+            aes.IV = encryptedBytesWithIV.Take(aes.BlockSize / 8).ToArray(); //Set IV for decryption
+            byte[] encryptedBytes = encryptedBytesWithIV.Skip(aes.BlockSize / 8).ToArray();
+    
+            using var decryptor = aes.CreateDecryptor();
+            Result = Encoding.UTF8.GetString(decryptor.TransformFinalBlock(encryptedBytes, 0, encryptedBytes.Length));
+        }
+        return Result;
     }
 }
 ```
