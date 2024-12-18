@@ -33,6 +33,13 @@ Some of the key features of secrets management tools include:
 
 4. Integration with other tools: Secrets management tools can be integrated with other DevOps tools, such as build servers, deployment tools, and orchestration frameworks, to provide seamless access to secrets during the application lifecycle.
 
+## Infisical	
+
+An open-source, all-in-one secrets management platform that simplifies secure secret sharing across development teams and integrates with modern development workflows and cloud services.
+
+```
+infisical secrets set DB_SECRETS='{"username":"admin","password":"s3cret"}' --path="myapp/database"
+```
 
 ## Hashicorp Vault	
 
