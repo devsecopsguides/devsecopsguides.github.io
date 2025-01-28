@@ -1,3 +1,11 @@
+---
+layout: default
+title: Privacy and Policy
+nav_order: 13
+has_children: false
+permalink: privacy-policy
+---
+
 At DevSecOpsGuides, accessible at [your website URL], your privacy is important to us. This Privacy Policy explains how we collect, use, and protect your information.
 
 1. Information We Collect
