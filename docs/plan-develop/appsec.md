@@ -62,6 +62,7 @@ Cheatsheet with rules/policies for preventing OWASP Top 10 vulnerabilities
 ## DREAD:
 
 ![dread](../../../assets/images/dread.png)
+Image by Session Hijacking - Threat Analysis and Countermeasures Article: https://www.researchgate.net/publication/277307339_Session_Hijacking_Threat_Analysis_and_Countermeasures/figures?lo=1
 
 
 * Damage potential: How much damage could be caused if the vulnerability is exploited?
