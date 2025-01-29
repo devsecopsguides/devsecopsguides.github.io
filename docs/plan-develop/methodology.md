@@ -36,8 +36,6 @@ These are just a few examples of the methodologies that can be used in DevSecOps
 
 ## DoD
 
-![DoD](../../../assets/images/dod-devsecops.png)
-
 
 DoD Methodology in DevSecOps refers to the specific methodology and framework that the US Department of Defense (DoD) follows to implement DevSecOps practices in its software development lifecycle. The DoD has created its own set of guidelines and best practices for DevSecOps that align with its specific security requirements and regulations.
 
@@ -60,9 +58,6 @@ Overall, the DoD Methodology for DevSecOps is designed to help the Department of
 
 
 ## Microsoft
-
-
-![Microsoft](../../../assets/images/microsoft-devsecops.png)
 
 
 Microsoft has its own approach to DevSecOps, which is known as the Microsoft Secure Development Lifecycle (SDL). The SDL is a comprehensive methodology that integrates security practices and tools throughout the entire software development process, from planning and design to testing and release.
