@@ -26,9 +26,6 @@ parent: Plan & Develop
 
 Threat modeling is a process that helps identify and prioritize potential security threats to a system or application. The goal of threat modeling is to identify security risks early in the development process and proactively mitigate them, rather than waiting for vulnerabilities to be discovered after deployment.
 
-![stride](../../../assets/images/stride.png)
-
-
 One popular method for conducting threat modeling is called STRIDE, which stands for Spoofing, Tampering, Repudiation, Information disclosure, Denial of service, and Elevation of privilege. These are the six types of security threats that can affect a system, and by considering each of them in turn, a threat model can help identify potential vulnerabilities and attacks.
 
 The STRIDE methodology is often used in combination with a diagram designer tool, such as Microsoft's Threat Modeling Tool or the open-source OWASP Threat Dragon. These tools allow you to create a visual representation of the system or application you are analyzing, and to map out potential threats and attack vectors.
