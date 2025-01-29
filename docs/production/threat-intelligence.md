@@ -54,17 +54,10 @@ When determining the priority of intelligence collection, there are several key 
 
 
 
-
-![Operationalizing Threat Intelligence A guide to developing and operationalizing cyber threat intelligence programs](../../../assets/images/pcr.png)
-
-
 ## The collection operations life cycle
 
 Effective intelligence-gathering requires careful planning, taking into account established collection priorities, special requests for information (RFIs), and regular administration of collection operations. Proper planning ensures that data is collected in a way that aligns with the organization's intelligence-gathering needs.
 
-
-
-![Operationalizing Threat Intelligence A guide to developing and operationalizing cyber threat intelligence programs](../../../assets/images/collection.png)
 
 
 ### People
@@ -126,7 +119,6 @@ After ensuring the availability of suitable personnel and conducting thorough pl
 
 ## Lockheed's Martin Cyber Kill Chain
 
-![Lockheed's Martin Cyber Kill Chain](../../../assets/images/lock_kill.png)
 
 ### Reconnaissance:
 
@@ -203,8 +195,6 @@ After ensuring the availability of suitable personnel and conducting thorough pl
 
 
 ## DevOps Threat Matrix
-
-![Microsoft DevOps Threat](../../../assets/images/microsoft_devops_threat.png)
 
 A DevOps Threat Matrix is a comprehensive framework or resource that identifies and categorizes potential security threats and risks associated with implementing DevOps practices. It aims to provide organizations with insights into the security challenges they may encounter while adopting a DevOps approach and offers guidance on mitigating these risks.
 
@@ -690,8 +680,6 @@ In this scenario, the attacker exploits their access to the CI/CD pipelines, whi
 
 
 ## Kubernetes Threat Matrix
-
-![Microsoft Kubernetes Threat Threat](../../../assets/images/k8s-matrix.png)
 
 
 The Threat Matrix highlights various attack techniques, including both known and hypothetical scenarios, that could be exploited by adversaries targeting Kubernetes environments. It categorizes these techniques into different stages of the attack lifecycle, such as initial access, privilege escalation, lateral movement, persistence, and exfiltration.
@@ -1188,8 +1176,6 @@ Attackers may launch DoS attacks to disrupt the availability of Kubernetes servi
 
 
 ## Cloud Threat Matrix
-
-![MITRE ATT&CK Cloud Threat Matrix](../../../assets/images/cloud-matrix.png)
 
 The MITRE ATT&CK framework provides a comprehensive knowledge base of adversary tactics and techniques used in cyber attacks. 
 
