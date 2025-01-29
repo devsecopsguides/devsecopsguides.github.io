@@ -193,10 +193,6 @@ Playbook Content Types:
 5. Relationship to Governance or Regulatory Requirements
 
 
-
-![IACD](../../../assets/images/iacd.png)
-
-
 Steps to Build a Playbook:
 
 
