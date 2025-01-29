@@ -18,9 +18,6 @@ Comprehensive resource for integrating security into the software development li
 ---
 
 
-![By David Edwards](./assets/images/main.jpg)
-Image by David Edwards: https://www.this-is-cool.co.uk/the-sci-fi-concept-art-of-david-edwards/
-
 
 Welcome to DevSecOpsGuides, a comprehensive resource for developers, security professionals, and operations teams who want to learn about the world of DevSecOps. DevSecOps is the practice of integrating security into the entire software development lifecycle, from code creation to deployment and beyond. This approach ensures that security is a top priority at every stage of the development process, leading to more secure and reliable applications.
 
