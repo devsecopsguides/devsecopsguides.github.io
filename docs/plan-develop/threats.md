@@ -2116,9 +2116,6 @@ Interactions:
 ## Threat detection 
 
 
-![stride](../../../assets/images/threats.png)
-
-
 | Abnormal network traffic    | Potential threats    | 
 |:---------------|:---------------------|
 | `Port/host scan` | The port or host scan behaviors mean one of the hosts may have been infected by a malware program, and the malware program is looking for vulnerabilities, other services, or hosts on the network.	 | 
