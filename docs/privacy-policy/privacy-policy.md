@@ -6,7 +6,7 @@ has_children: false
 permalink: privacy-policy
 ---
 
-At DevSecOpsGuides, accessible at [your website URL], your privacy is important to us. This Privacy Policy explains how we collect, use, and protect your information.
+At DevSecOpsGuides, accessible at https://wiki.devsecopsguides.com/privacy-policy, your privacy is important to us. This Privacy Policy explains how we collect, use, and protect your information.
 
 1. Information We Collect
 We collect information when you interact with our website, including:
@@ -44,7 +44,7 @@ You have the right to:
 Request access to your data.
 Ask us to delete your personal information.
 Opt-out of receiving communications at any time.
-To exercise these rights, please contact us at privacy@devsecopsguides.com.
+To exercise these rights, please contact us at reza.rashidi.business@gmail.com.
 
 7. Links to Other Websites
 Our website may contain links to external sites. We are not responsible for the privacy practices or content of those sites. We recommend reviewing their privacy policies.
@@ -54,7 +54,7 @@ We may update this Privacy Policy from time to time. Changes will be posted on t
 
 9. Contact Us
 If you have any questions about this Privacy Policy, please contact us at:
-Email: contact@devsecopsguides.com
+Email: reza.rashidi.business@gmail.com
 
 Ezoic Services
 Ezoic Services
